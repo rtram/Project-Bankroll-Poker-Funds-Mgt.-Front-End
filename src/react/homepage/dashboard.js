@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchingUserData } from '../actions/users'
+import { fetchingUserData } from '../../redux/actions/users.js'
 
 class Dashboard extends Component {
   componentDidMount() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './components/login'
-import Dashboard from './components/dashboard'
+import Login from './react/login/login.js'
+import Dashboard from './react/homepage/dashboard.js'
 
 class App extends Component {
   render() {
