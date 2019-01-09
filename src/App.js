@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './Components/Login'
+import Login from './components/login'
+import Dashboard from './components/dashboard'
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Login />
+          <Dashboard />
         </header>
       </div>
     );
