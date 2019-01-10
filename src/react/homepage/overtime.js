@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Line } from 'react-chartjs-2'
+import { Button } from 'semantic-ui-react'
 
 export default class OverTime extends Component {
   constructor() {
@@ -8,6 +9,24 @@ export default class OverTime extends Component {
       // CAN DISPLAY '30 days', '12 weeks', and '12 months'
       display: '30 days'
     }
+  }
+
+  toggle30Days = () => {
+    this.setState({
+      display: '30 days'
+    })
+  }
+
+  toggle12Weeks = () => {
+    this.setState({
+      display: '12 weeks'
+    })
+  }
+
+  toggle12Months = () => {
+    this.setState({
+      display: '12 months'
+    })
   }
 
   render() {
@@ -124,6 +143,9 @@ export default class OverTime extends Component {
           }}
         /> : null}
 
+        <Button onClick={this.toggle30Days}>30 Days</Button>
+        <Button onClick={this.toggle12Weeks}>3 Months</Button>
+        <Button onClick={this.toggle12Months}>1 Year</Button>
       </div>
     )
   }
