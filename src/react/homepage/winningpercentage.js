@@ -5,50 +5,46 @@ export default class WinningPercentage extends Component {
 
   render() {
 
-  let dataObject = {
-    data: {
-        labels: ['Wins', 'Losses'],
-        datasets: [{
-            label: 'Money Spent',
-            data: [50, 50],
-            backgroundColor: [
-                'rgba(230, 25, 75, .4)',
-                'rgba(245, 130, 48, .4)',
-                'rgba(255, 225, 25, .4)',
-                'rgba(210, 245, 60, .4)',
-                'rgba(60, 180, 75, .4)',
-                'rgba(70, 240, 240, .4)',
-                'rgba(0, 130, 200, .4)',
-                'rgba(145, 30, 180, .4)',
-                'rgba(240, 50, 230, .4)',
-                'rgba(128, 128, 128, .4)'
-            ],
-            borderColor: [
-                'red',
-                'orange',
-                'yellow',
-                'lime',
+    let dataObject = {
+      data: {
+          labels: ['Winning sessions', 'Losing Sessions'],
+          datasets: [{
+              label: 'Money Spent',
+              // CHANGE THIS KEY/VALUE TO DISPLAY DATA POINTS
+              data: this.props.data,
+              backgroundColor: [
+                  'rgba(0, 255, 0, .4)',
+                  'rgba(255, 0, 0, .4)',
+              ],
+              borderColor: [
                 'green',
-                'cyan',
-                'blue',
-                'purple',
-                'magenta',
-                'grey'
-            ],
-            borderWidth: 1
-        }]
+                'red'
+              ],
+              borderWidth: 1
+          }]
+      }
     }
-  }
+
+    let winCount;
+    let lossCount;
+    let winningPercentage;
+
+    if (this.props.data) {
+      winCount = this.props.data[0]
+      lossCount = this.props.data[1]
+      winningPercentage = (winCount/(winCount + lossCount))
+    }
 
     return (
       <div>
-        WinningPercentage
+        {this.props.data ? <div>You win {parseInt(winningPercentage * 100)}% of the time</div> : null}
         <Doughnut
           data={dataObject.data}
           width={750}
           height={500}
           options={{
             title: {
+              text: 'Session Winning Percentage',
               display: true,
               fontsize: 200
             },
