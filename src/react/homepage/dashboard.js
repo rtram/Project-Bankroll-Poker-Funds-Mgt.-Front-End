@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+
 import { fetchingUserData } from '../../redux/actions/users.js'
+import WinningPercentage from './winningpercentage'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -10,10 +12,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        {this.props.username}
-        {this.props.first_name}
-        {this.props.last_name}
-        Dashboard
+        <WinningPercentage />
       </div>
     );
   }
