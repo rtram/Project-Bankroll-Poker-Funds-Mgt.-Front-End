@@ -4,6 +4,7 @@ import './dashboard.css';
 
 import { fetchingUserData } from '../../redux/actions/users.js'
 import WinningPercentage from './winningpercentage'
+import OverTime from './overtime'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -26,6 +27,41 @@ class Dashboard extends Component {
     return winningPercentageData
   }
 
+  // RETURNS AN OBJECT W/ ARRAYS OF THE LAST 30, 90, AND 365 DAYS
+  createOverTimeLabels = () => {
+    let moment = require('moment')
+    let overTimeLabels = {}
+
+    let last30DayArray = []
+
+    for (let i = 0; i < 30; i++) {
+      let day = moment().subtract(i, 'days').format('l')
+      last30DayArray.push(day)
+    }
+
+    let last12WeekArray = []
+
+    for (let i = 0; i < 12; i++) {
+      let week = moment().subtract(i, 'weeks').format('l')
+      last12WeekArray.push(week)
+    }
+
+    let last12MonthArray = []
+
+    for (let i = 0; i < 12; i++) {
+      let month = moment().subtract(i, 'months').format('l')
+      last12MonthArray.push(month)
+    }
+
+    overTimeLabels = {
+      '30days': last30DayArray,
+      '12weeks': last12WeekArray,
+      '12months': last12MonthArray
+    }
+
+    return overTimeLabels
+  }
+
   render() {
     let winningPercentageData;
     if (this.props.sessions) {
@@ -34,6 +70,7 @@ class Dashboard extends Component {
 
     return (
       <div>
+        <OverTime labels={this.createOverTimeLabels()}/>
         <WinningPercentage data={winningPercentageData}/>
       </div>
     );

@@ -9,7 +9,7 @@ export default class WinningPercentage extends Component {
       data: {
           labels: ['Winning sessions', 'Losing Sessions'],
           datasets: [{
-              label: 'Money Spent',
+              label: 'Win Loss Percentage',
               // CHANGE THIS KEY/VALUE TO DISPLAY DATA POINTS
               data: this.props.data,
               backgroundColor: [
