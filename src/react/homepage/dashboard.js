@@ -83,23 +83,25 @@ class Dashboard extends Component {
 
     function getRunningTotal(datesArr) {
       let dateValues = []
+
       // POPULATES monthValues ARRAY W/ RUNNING TOTAL PER DATE
       for (let i = 0; i < datesArr.length ; i++) {
-        let startDate = new Date(datesArr[i])
-        let endDate = new Date(datesArr[datesArr.length-1])
+        let startDate = new Date(datesArr[0])
+        let endDate = new Date(datesArr[i])
 
         // RETURNS ALL SESSION OBJECTS BETWEEN START AND END DATE
         let filteredSessions = userSessions.filter(session => {
           let sessionDate = new Date(session.date)
-          return (sessionDate <= endDate && sessionDate >= startDate)
+          return (sessionDate >= startDate && sessionDate <= endDate)
         })
 
         // RETURNS ARRAY WITH RUNNING TOTAL PER DATE
         let mappedSessionTotals = filteredSessions.map(session => session.amount)
+
         const reducer = (sum, currentValue) => sum + currentValue
         let dateSum = mappedSessionTotals.reduce(reducer, 0)
 
-        dateValues.unshift(parseInt(dateSum))
+        dateValues.push(parseInt(dateSum))
       }
       return dateValues
     }
