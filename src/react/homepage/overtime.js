@@ -37,7 +37,7 @@ export default class OverTime extends Component {
           datasets: [{
               label: 'Money Spent',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
-              data: [...Array(30).keys()],
+              data: this.props.data['30days'],
               backgroundColor: [
                   'rgba(0, 255, 0, .4)',
               ],
@@ -55,7 +55,7 @@ export default class OverTime extends Component {
           datasets: [{
               label: 'Money Spent',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
-              data: [...Array(12).keys()],
+              data: this.props.data['12weeks'],
               backgroundColor: [
                   'rgba(0, 255, 0, .4)',
               ],
@@ -73,7 +73,7 @@ export default class OverTime extends Component {
           datasets: [{
               label: 'Money Spent',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
-              data: [...Array(12).keys()],
+              data: this.props.data['12months'],
               backgroundColor: [
                   'rgba(0, 255, 0, .4)',
               ],
@@ -95,7 +95,7 @@ export default class OverTime extends Component {
             height={500}
             options={{
               title: {
-                text: 'Session Winning Percentage',
+                text: 'Last 30 Day Winnings',
                 display: true,
                 fontsize: 200
               },
@@ -113,7 +113,7 @@ export default class OverTime extends Component {
           height={500}
           options={{
             title: {
-              text: 'Session Winning Percentage',
+              text: 'Quarter to Date Winnings',
               display: true,
               fontsize: 200
             },
@@ -132,7 +132,7 @@ export default class OverTime extends Component {
           height={500}
           options={{
             title: {
-              text: 'Session Winning Percentage',
+              text: 'Year to Date Winnings',
               display: true,
               fontsize: 200
             },
