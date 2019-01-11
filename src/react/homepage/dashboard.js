@@ -3,9 +3,15 @@ import { connect } from 'react-redux'
 import './dashboard.css';
 
 import { fetchingUserData } from '../../redux/actions/users.js'
-import WinningPercentage from './winningpercentage'
-import OverTime from './overtime'
-import Hourly from './hourly'
+
+// GRAPH IMPORTS
+import WinningPercentage from './WinningPercentage'
+import OverTime from './OverTime'
+import Hourly from './Hourly'
+
+// SESSION PANE IMPORT
+import SessionContainer from './sessioncontainer/SessionContainer'
+
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -149,6 +155,7 @@ class Dashboard extends Component {
         {this.props.sessions ? <OverTime labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
         {this.props.sessions ? <WinningPercentage data={this.winLossPercentage()}/> : null}
         {this.props.sessions ? <Hourly data={this.hourlyCalculator()}/> : null}
+        <SessionContainer />
       </div>
     );
   }

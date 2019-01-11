@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import NavBar from './react/navbar.js'
 import Login from './react/login/login.js'
-import Dashboard from './react/homepage/dashboard.js'
+import Dashboard from './react/homepage/Dashboard.js'
 
 import {
   Container,
@@ -48,10 +47,7 @@ class App extends Component {
         </Container>
       </Menu>
 
-
-
         <Container text style={{ marginTop: '7em' }}>
-          <NavBar />
           <Login />
           <Dashboard />
         </Container>
