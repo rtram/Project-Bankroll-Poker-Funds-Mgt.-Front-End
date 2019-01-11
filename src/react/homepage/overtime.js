@@ -35,7 +35,7 @@ export default class OverTime extends Component {
       data: {
           labels: this.props.labels['30days'],
           datasets: [{
-              label: 'Money Spent',
+              label: 'Money Won/Lost',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
               data: this.props.data['30days'],
               backgroundColor: [
@@ -53,7 +53,7 @@ export default class OverTime extends Component {
       data: {
           labels: this.props.labels['12weeks'],
           datasets: [{
-              label: 'Money Spent',
+              label: 'Money Won/Lost',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
               data: this.props.data['12weeks'],
               backgroundColor: [
@@ -71,7 +71,7 @@ export default class OverTime extends Component {
       data: {
           labels: this.props.labels['12months'],
           datasets: [{
-              label: 'Money Spent',
+              label: 'Money Won/Lost',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
               data: this.props.data['12months'],
               backgroundColor: [

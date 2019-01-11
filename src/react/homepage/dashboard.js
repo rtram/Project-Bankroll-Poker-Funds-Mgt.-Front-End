@@ -5,6 +5,7 @@ import './dashboard.css';
 import { fetchingUserData } from '../../redux/actions/users.js'
 import WinningPercentage from './winningpercentage'
 import OverTime from './overtime'
+import Hourly from './hourly'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -114,15 +115,31 @@ class Dashboard extends Component {
     let quarterValues = getRunningTotal(quarterDates)
     let yearValues = getRunningTotal(yearDates)
 
-    console.log(quarterValues)
-
     overTimeDataPoints={
       '30days': monthValues,
       '12weeks': quarterValues,
       '12months': yearValues
     }
-
     return overTimeDataPoints
+  }
+
+  // RETURNS HOURLY FLOAT ROUNDED TO THE NEAREST TWO DECIMAL PLACE
+  hourlyCalculator = () => {
+    const sessionsArr = this.props.sessions
+    let totalAmount;
+    let totalHours;
+
+    let amountObjectArr = sessionsArr.map(session => session.amount)
+    let hourObjectArr = sessionsArr.map(session => session.hours)
+
+    const reducer = (sum, currentValue) => sum + currentValue
+    totalAmount = amountObjectArr.reduce(reducer, 0)
+    totalHours = hourObjectArr.reduce(reducer, 0)
+
+    let hourly = totalAmount/totalHours
+    let twoDecimalHourly = Math.round(hourly * 100) / 100
+
+    return twoDecimalHourly
   }
 
   render() {
@@ -131,6 +148,7 @@ class Dashboard extends Component {
       <div>
         {this.props.sessions ? <OverTime labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
         {this.props.sessions ? <WinningPercentage data={this.winLossPercentage()}/> : null}
+        {this.props.sessions ? <Hourly data={this.hourlyCalculator()}/> : null}
       </div>
     );
   }
