@@ -163,6 +163,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
+    user_id: state.user.id,
     username: state.user.username,
     first_name: state.user.first_name,
     last_name: state.user.last_name,

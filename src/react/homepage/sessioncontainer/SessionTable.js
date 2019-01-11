@@ -26,7 +26,7 @@ class SessionTable extends Component {
   render() {
     return (
       <div>
-      <Table singleLine>
+      <Table >
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Date</Table.HeaderCell>
@@ -40,7 +40,7 @@ class SessionTable extends Component {
         <Table.Body>
           {this.props.sessions ? this.recent10Sessions().map(session => {
             return (
-              <SessionRow session={session}/>
+              <SessionRow key={session.id} session={session}/>
             )
           }) : null
           }

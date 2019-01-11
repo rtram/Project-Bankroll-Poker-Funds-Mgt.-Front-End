@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
+import { postingSession } from '../../../redux/actions/sessions.js'
+
 import { Form, Button } from 'semantic-ui-react'
 
 class SessionForm extends Component {
@@ -9,22 +11,23 @@ class SessionForm extends Component {
     this.state = {
       date:'',
       location: '',
-      hours: null,
-      buyin: null,
-      cashout: null,
-      amount: null
+      hours: '',
+      buyin: '',
+      cashout: '',
+      amount: ''
     }
   }
 
+  // SETS STATE ONCHANGE OF FORM INPUT FORMS
   handleChange = event => {
     if (event.target.name === 'buyin') {
-      let amount = event.target.value - this.state.cashout
+      let amount = this.state.cashout - event.target.value
       this.setState({
         [event.target.name]: event.target.value,
         amount: amount
       })
     } else if (event.target.name === 'cashout') {
-        let amount = this.state.buyin - event.target.value
+        let amount = event.target.value - this.state.buyin
         this.setState({[event.target.name]: event.target.value,
         amount: amount
         })
@@ -35,9 +38,23 @@ class SessionForm extends Component {
     }
   }
 
+  onSubmit = event => {
+    event.preventDefault()
+
+    let sessionObject = {
+      date: this.state.date,
+      location: this.state.location,
+      hours: this.state.hours,
+      amount: this.state.amount,
+      user_id: this.props.user_id
+    }
+
+    this.props.postingSession(sessionObject)
+  }
+
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.onSubmit}>
         <Form.Group>
           <Form.Field width={5}>
             <label>Date</label>
@@ -98,13 +115,12 @@ class SessionForm extends Component {
       </Form>
     )
   }
-
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-
+    user_id: state.user.id,
   }
 }
 
-export default connect(null, mapDispatchToProps)(SessionForm);
+export default connect(mapStateToProps, { postingSession })(SessionForm);
