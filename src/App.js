@@ -24,8 +24,7 @@ class App extends Component {
       <Menu fixed='top' inverted>
         <Container>
           <Menu.Item as='a' header>
-            <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-            Bankroll Project
+            <Image size='tiny' src='https://i.imgur.com/7LjNOYe.png' style={{  marginRight: '1.5em' }}  />
           </Menu.Item>
           <Menu.Item as='a'>Home</Menu.Item>
 
@@ -48,6 +47,8 @@ class App extends Component {
           </Dropdown>
         </Container>
       </Menu>
+
+
 
         <Container text style={{ marginTop: '7em' }}>
           <NavBar />
