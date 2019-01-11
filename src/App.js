@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Login from './react/login/login.js'
+import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
 
 import {
