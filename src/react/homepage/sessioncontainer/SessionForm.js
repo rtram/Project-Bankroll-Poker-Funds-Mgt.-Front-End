@@ -52,6 +52,8 @@ class SessionForm extends Component {
     this.props.postingSession(sessionObject)
   }
 
+
+
   render() {
     return (
       <Form onSubmit={this.onSubmit}>

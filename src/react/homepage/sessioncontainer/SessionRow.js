@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import SessionModal from './SessionModal.js'
+
 import { Table } from 'semantic-ui-react'
 
 
@@ -24,12 +27,13 @@ class SessionRow extends Component {
 
   render() {
     return(
-      <Table.Row singleLine>
-        <Table.Cell>{this.props.session.date}</Table.Cell>
+      <Table.Row>
+        <Table.Cell class='selectable'>{this.props.session.date}</Table.Cell>
         <Table.Cell>{this.props.session.location}</Table.Cell>
         <Table.Cell>{this.props.session.hours}</Table.Cell>
         <Table.Cell>${this.integerToFloat(this.props.session.amount)}</Table.Cell>
         <Table.Cell>${this.hourlyCalculator()}</Table.Cell>
+        <SessionModal session={this.props.session}/>
       </Table.Row>
     )
   }

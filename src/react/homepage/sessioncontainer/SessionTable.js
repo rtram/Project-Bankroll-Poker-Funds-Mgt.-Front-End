@@ -26,25 +26,26 @@ class SessionTable extends Component {
   render() {
     return (
       <div>
-      <Table >
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell>Location</Table.HeaderCell>
-            <Table.HeaderCell>Hours Played</Table.HeaderCell>
-            <Table.HeaderCell>Won/Loss</Table.HeaderCell>
-            <Table.HeaderCell>Hourly</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+        <Table class='ui selectable celled table'>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Date</Table.HeaderCell>
+              <Table.HeaderCell>Location</Table.HeaderCell>
+              <Table.HeaderCell>Hours Played</Table.HeaderCell>
+              <Table.HeaderCell>Won/Loss</Table.HeaderCell>
+              <Table.HeaderCell>Hourly</Table.HeaderCell>
+              <Table.HeaderCell></Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
 
-        <Table.Body>
-          {this.props.sessions ? this.recent10Sessions().map(session => {
-            return (
-              <SessionRow key={session.id} session={session}/>
-            )
-          }) : null
-          }
-        </Table.Body>
+          <Table.Body>
+            {this.props.sessions ? this.recent10Sessions().map(session => {
+              return (
+                <SessionRow key={session.id} session={session}/>
+              )
+            }) : null
+            }
+          </Table.Body>
         </Table>
       </div>
     )

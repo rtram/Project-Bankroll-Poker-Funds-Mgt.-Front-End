@@ -6,6 +6,18 @@ const userReducer = (state = [], action) => {
       return action.data
     case 'POST_SESSION':
       return {...state, sessions:[...state.sessions, action.payload]}
+    case 'UPDATED_SESSION':
+      let originalSession = state.sessions.find(session => session.id === action.payload.id)
+      let index = state.sessions.indexOf(originalSession)
+      let sessionCopy = [...state.sessions]
+      sessionCopy.splice(index, 1, action.payload)
+      return {...state, sessions:[...sessionCopy]}
+    case 'DELETED_SESSION':
+      originalSession = state.sessions.find(session => session.id === action.payload.id)
+      index = state.sessions.indexOf(originalSession)
+      sessionCopy = [...state.sessions]
+      sessionCopy.splice(index, 1)
+      return {...state, sessions:[...sessionCopy]}
     default:
       return state
   }
