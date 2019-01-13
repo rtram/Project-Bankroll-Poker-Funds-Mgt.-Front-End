@@ -4,6 +4,8 @@ import './App.css';
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
 
+import {Route} from 'react-router-dom'
+
 import {
   Container,
   Divider,
@@ -48,8 +50,20 @@ class App extends Component {
       </Menu>
 
         <Container text style={{ marginTop: '7em' }}>
-          <Login />
-          <Dashboard />
+
+          <Route path='/home' render={props => {
+            // FILL IN HOMEPAGE
+          }} />
+
+          <Route path='/users/:id' render={props => {
+            let user_id = props.match.params.id
+            return <Dashboard user_id={user_id}/>
+          }} />
+
+          <Route path='/login' render={props => {
+            return <Login />
+          }} />
+
         </Container>
 
         <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
