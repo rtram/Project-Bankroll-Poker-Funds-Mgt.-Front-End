@@ -29,6 +29,22 @@ export default class OverTime extends Component {
     })
   }
 
+  backgroundColorRendering = (dataArray) => {
+    if (dataArray[dataArray.length - 1] > 0) {
+      return ['rgba(0, 255, 0, .4)']
+    } else {
+      return ['rgba(255, 0, 0, .4)']
+    }
+  }
+
+  borderColorRendering = (dataArray) => {
+    if (dataArray[dataArray.length - 1] > 0) {
+      return ['green']
+    } else {
+      return ['red']
+    }
+  }
+
   render() {
 
     let last30Days = {
@@ -38,12 +54,8 @@ export default class OverTime extends Component {
               label: 'Money Won/Lost',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
               data: this.props.data['30days'],
-              backgroundColor: [
-                  'rgba(0, 255, 0, .4)',
-              ],
-              borderColor: [
-                  'green',
-              ],
+              backgroundColor: this.backgroundColorRendering(this.props.data['30days']),
+              borderColor: this.borderColorRendering(this.props.data['30days']),
               borderWidth: 1
           }]
       }
@@ -56,12 +68,8 @@ export default class OverTime extends Component {
               label: 'Money Won/Lost',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
               data: this.props.data['12weeks'],
-              backgroundColor: [
-                  'rgba(0, 255, 0, .4)',
-              ],
-              borderColor: [
-                  'green',
-              ],
+              backgroundColor: this.backgroundColorRendering(this.props.data['12weeks']),
+              borderColor: this.borderColorRendering(this.props.data['12weeks']),
               borderWidth: 1
           }]
       }
@@ -74,12 +82,8 @@ export default class OverTime extends Component {
               label: 'Money Won/Lost',
               // CHANGE 'DATA' TO DISPLAY DATA POINTS
               data: this.props.data['12months'],
-              backgroundColor: [
-                  'rgba(0, 255, 0, .4)',
-              ],
-              borderColor: [
-                  'green',
-              ],
+              backgroundColor: this.backgroundColorRendering(this.props.data['12months']),
+              borderColor: this.borderColorRendering(this.props.data['12months']),
               borderWidth: 1
           }]
       }
