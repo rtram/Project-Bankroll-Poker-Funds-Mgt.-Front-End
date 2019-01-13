@@ -1,24 +1,22 @@
 const URL = 'http://localhost:3001/api/v1/sessions'
 
-const postedSession = ({ date, location, hours, amount }) => {
+const postedSession = (data) => {
+  console.log(data)
   return {
     type: 'POST_SESSION',
-    payload: { date, location, hours, amount}
+    payload: data
   };
 }
 
 const postingSession = sessionObject => {
-  return (dispatch) => {
+  return dispatch => {
+    dispatch(postedSession(sessionObject))
     fetch(URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(sessionObject)
-    })
-    .then(res => res.json())
-    .then(data => {
-      dispatch(postedSession(data))
     })
   }
 }

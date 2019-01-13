@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-
 import { Container, Header } from 'semantic-ui-react'
-
 
 // CONTAINER IMPORTS
 import SessionTable from './SessionTable'
