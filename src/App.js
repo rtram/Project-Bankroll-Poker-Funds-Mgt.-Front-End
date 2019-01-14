@@ -5,6 +5,8 @@ import Home from './react/home/Home.js'
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
 import TransferHome from './react/transfer/TransferHome.js'
+import DepositForm from './react/transfer/depositContainer/DepositForm.js'
+import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
@@ -50,9 +52,31 @@ class App extends Component {
                   </Menu.Item>
 
                   <Menu.Item as='a' position='right'>
-                    <Link to='/users/1/transfers'>
-                      Transfer
+                    <Link to='/users/1'>
+                      Poker Dashboard
                     </Link>
+                  </Menu.Item>
+
+                  <Menu.Item as='a' position='right'>
+                    <Dropdown item text='Transfer Money'>
+                      <Dropdown.Menu>
+                        <Dropdown.Item>
+                          <Link style={{ color: 'black' }} to='/users/1/transfers'>
+                            Transfer Dashboard
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link style={{ color: 'black' }} to='/users/1/transferhome/deposit'>
+                            Add To Personal Balance
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link style={{ color: 'black' }} to='/users/1/transferhome/transfer'>
+                            Pay Or Request Money
+                          </Link>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </Menu.Item>
 
                 </Container>
@@ -66,6 +90,14 @@ class App extends Component {
 
                 <Route exact path='/users/:id' render={props => {
                   return <Dashboard id={user_id}/>
+                }} />
+
+                <Route exact path='/users/:id/transferhome/deposit' render={props => {
+                  return <DepositForm id={user_id}/>
+                }} />
+
+                <Route exact path='/users/:id/transferhome/transfer' render={props => {
+                  return <TransferForm id={user_id}/>
                 }} />
 
                 </Container>

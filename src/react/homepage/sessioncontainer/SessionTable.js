@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { CSSTransition } from 'react-transition-group';
+import { Table } from 'semantic-ui-react'
+import '../Dashboard.css'
 
 // IMPORT TABLE ROW
 import SessionRow from './SessionRow'
-
-import { Table } from 'semantic-ui-react'
 
 class SessionTable extends Component {
 
@@ -41,7 +42,14 @@ class SessionTable extends Component {
           <Table.Body>
             {this.props.sessions ? this.recent10Sessions().map(session => {
               return (
-                <SessionRow key={session.id} session={session}/>
+                <CSSTransition
+                  in={true}
+                  appear={true}
+                  timeout={1000}
+                  classNames='fade'
+                >
+                  <SessionRow key={session.id} session={session}/>
+                </CSSTransition>
               )
             }) : null
             }

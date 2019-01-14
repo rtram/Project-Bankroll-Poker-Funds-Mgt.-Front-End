@@ -14,7 +14,6 @@ class TransferHome extends Component {
   render() {
     return(
       <div>
-        Transfers Home
         <TransferProfile />
         <TransferHistoryContainer />
       </div>

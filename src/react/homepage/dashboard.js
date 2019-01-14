@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import './dashboard.css';
+import './Dashboard.css';
 
 import { fetchingUserData } from '../../redux/actions/users.js'
 
