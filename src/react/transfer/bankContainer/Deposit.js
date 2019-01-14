@@ -1,0 +1,78 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { } from '../../../redux/actions/users.js'
+import DepositConfirmation from './DepositConfirmation.js'
+import {
+  Container,
+  Segment,
+  Header,
+  Divider,
+  Grid,
+  Input,
+ } from 'semantic-ui-react'
+
+class Deposit extends Component {
+  constructor() {
+    super()
+    this.state={
+      balance: 0,
+      deposit: 0
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      balance: this.props.balance
+    })
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  render() {
+    return(
+      <Container>
+        <Segment>
+          <Grid columns={2} relaxed='very'>
+            <Grid.Column>
+              <Header>Account</Header>
+              <Input
+                onChange={this.handleChange}
+                action={{ color: 'green', labelPosition: 'left', icon: 'plus', content: 'Amount' }}
+                actionPosition='left'
+                placeholder='$'
+                type='number'
+                min="0.01"
+                step="0.01"
+                name='deposit'
+                value={this.state.deposit}
+              />
+              <DepositConfirmation
+                balance={this.state.balance}
+                deposit={this.state.deposit}
+              >
+                Deposit
+              </DepositConfirmation>
+            </Grid.Column>
+            <Grid.Column>
+              <Header>Bank</Header>
+            </Grid.Column>
+          </Grid>
+
+          <Divider vertical>Make A Deposit</Divider>
+        </Segment>
+      </Container>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    balance: state.user.balance
+  }
+}
+
+export default connect(mapStateToProps, { })(Deposit);

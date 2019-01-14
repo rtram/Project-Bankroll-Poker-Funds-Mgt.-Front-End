@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import TransferProfile from '../TransferProfile'
 import { fetchingUserData } from '../../../redux/actions/users.js'
+import TransferProfile from '../TransferProfile'
+import Deposit from './Deposit.js'
+import Withdraw from './Withdraw.js'
 
-class TransferForm extends Component {
+class Bank extends Component {
   componentDidMount() {
     this.props.fetchingUserData(this.props.id)
   }
@@ -12,10 +14,11 @@ class TransferForm extends Component {
     return(
       <div>
         <TransferProfile />
-        Pay Or Request Money
+        <Deposit />
+        <Withdraw />
       </div>
     )
   }
 }
 
-export default connect(null, { fetchingUserData })(TransferForm);
+export default connect(null, { fetchingUserData })(Bank);

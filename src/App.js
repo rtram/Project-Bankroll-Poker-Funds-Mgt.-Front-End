@@ -5,7 +5,7 @@ import Home from './react/home/Home.js'
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
 import TransferHome from './react/transfer/TransferHome.js'
-import DepositForm from './react/transfer/depositContainer/DepositForm.js'
+import Bank from './react/transfer/bankContainer/Bank.js'
 import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
 
 import { Switch, Route, Link } from 'react-router-dom'
@@ -44,62 +44,56 @@ class App extends Component {
                       <Image size='tiny' src='https://i.imgur.com/7LjNOYe.png' style={{  marginRight: '1.5em' }}  />
                     </Link>
                   </Menu.Item>
-
                   <Menu.Item as='a' position='left'>
                     <Link to='/home'>
                       Home
                     </Link>
                   </Menu.Item>
-
                   <Menu.Item as='a' position='right'>
                     <Link to='/users/1'>
                       Poker Dashboard
                     </Link>
                   </Menu.Item>
-
                   <Menu.Item as='a' position='right'>
-                    <Dropdown item text='Transfer Money'>
+                    <Dropdown item text='Transfers'>
                       <Dropdown.Menu>
                         <Dropdown.Item>
-                          <Link style={{ color: 'black' }} to='/users/1/transfers'>
+                          <Link style={{ color: 'black' }} to='/users/1/transferhome'>
                             Transfer Dashboard
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link style={{ color: 'black' }} to='/users/1/transferhome/deposit'>
-                            Add To Personal Balance
+                          <Link style={{ color: 'black' }} to='/users/1/bank'>
+                            Deposit or Withdraw to Bank
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link style={{ color: 'black' }} to='/users/1/transferhome/transfer'>
+                          <Link style={{ color: 'black' }} to='/users/1/transfer'>
                             Pay Or Request Money
                           </Link>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Menu.Item>
-
                 </Container>
               </Menu>
 
                 <Container text style={{ marginTop: '7em' }}>
+                  <Route path='/users/:id/transferhome' render={props => {
+                    return <TransferHome id={user_id}/>
+                  }} />
 
-                <Route exact path='/users/:id/transfers' render={props => {
-                  return <TransferHome id={user_id}/>
-                }} />
+                  <Route path='/users/:id/bank' render={props => {
+                    return <Bank id={user_id}/>
+                  }} />
 
-                <Route exact path='/users/:id' render={props => {
-                  return <Dashboard id={user_id}/>
-                }} />
+                  <Route path='/users/:id/transfer' render={props => {
+                    return <TransferForm id={user_id}/>
+                  }} />
 
-                <Route exact path='/users/:id/transferhome/deposit' render={props => {
-                  return <DepositForm id={user_id}/>
-                }} />
-
-                <Route exact path='/users/:id/transferhome/transfer' render={props => {
-                  return <TransferForm id={user_id}/>
-                }} />
-
+                  <Route exact path='/users/:id' render={props => {
+                    return <Dashboard id={user_id}/>
+                  }} />
                 </Container>
 
                 <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
