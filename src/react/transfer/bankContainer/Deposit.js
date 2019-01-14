@@ -15,20 +15,19 @@ class Deposit extends Component {
   constructor() {
     super()
     this.state={
-      balance: 0,
       deposit: 0
     }
-  }
-
-  componentDidMount() {
-    this.setState({
-      balance: this.props.balance
-    })
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
+    })
+  }
+
+  clearDepositState = () => {
+    this.setState({
+      deposit: 0
     })
   }
 
@@ -51,8 +50,8 @@ class Deposit extends Component {
                 value={this.state.deposit}
               />
               <DepositConfirmation
-                balance={this.state.balance}
                 deposit={this.state.deposit}
+                clearDepositState={this.clearDepositState}
               >
                 Deposit
               </DepositConfirmation>
@@ -69,10 +68,5 @@ class Deposit extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    balance: state.user.balance
-  }
-}
 
-export default connect(mapStateToProps, { })(Deposit);
+export default connect(null, { })(Deposit);

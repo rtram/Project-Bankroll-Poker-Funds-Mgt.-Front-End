@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { } from '../../../redux/actions/sessions.js'
+import { updatingUserBalance } from '../../../redux/actions/balances.js'
 
 import { Button, Modal } from 'semantic-ui-react'
 
@@ -13,7 +13,13 @@ class DepositConfirmation extends Component {
   }
 
   handleDeposit = () => {
+    let updateObject = {
+      id: this.props.id,
+      balance: this.calculateTotal()
+    }
 
+    this.props.updatingUserBalance(updateObject)
+    this.props.clearDepositState()
     this.handleToggle()
   }
 
@@ -23,26 +29,24 @@ class DepositConfirmation extends Component {
     })
   }
 
+  // RETURNS UPDATED BALANCE AS THE SUM OF OLD BALANCE + DEPOSIT
   calculateTotal = () => {
     let balance = this.props.balance
     if (isNaN(balance)) {
       balance = 0
     }
-
     let deposit = this.props.deposit
     if (isNaN(deposit) || deposit === '') {
       deposit = 0
     }
-
     let newTotal = parseFloat(balance) + parseFloat(deposit)
-
     return newTotal
   }
 
   render() {
     return(
       <Modal open={this.state.open} size='large' trigger={
-        <Button onClick={this.handleDeposit}color='blue' style={{width:'200px'}}>Deposit</Button>
+        <Button onClick={this.handleToggle} color='blue' style={{width:'200px'}}>Deposit</Button>
       }>
         <Modal.Header>Deposit Confirmation</Modal.Header>
 
@@ -58,5 +62,11 @@ class DepositConfirmation extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    id: state.user.id,
+    balance: state.user.balance
+  }
+}
 
-export default connect(null, { })(DepositConfirmation)
+export default connect(mapStateToProps, { updatingUserBalance })(DepositConfirmation)

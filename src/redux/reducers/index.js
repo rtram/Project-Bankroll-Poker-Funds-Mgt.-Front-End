@@ -18,6 +18,8 @@ const userReducer = (state = [], action) => {
       sessionCopy = [...state.sessions]
       sessionCopy.splice(index, 1)
       return {...state, sessions:[...sessionCopy]}
+    case 'UPDATED_USER_BALANCE':
+      return {...state, balance: action.payload.balance}
     default:
       return state
   }
