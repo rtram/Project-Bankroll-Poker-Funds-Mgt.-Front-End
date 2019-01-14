@@ -18,6 +18,17 @@ class SessionForm extends Component {
     }
   }
 
+  clearFormState = () => {
+    this.setState({
+      date:'',
+      location: '',
+      hours: '',
+      buyin: '',
+      cashout: '',
+      amount: ''
+    })
+  }
+
   // SETS STATE ONCHANGE OF FORM INPUT FORMS
   handleChange = event => {
     if (event.target.name === 'buyin') {
@@ -48,7 +59,7 @@ class SessionForm extends Component {
       amount: this.state.amount,
       user_id: this.props.user_id
     }
-
+    this.clearFormState()
     this.props.postingSession(sessionObject)
   }
 
