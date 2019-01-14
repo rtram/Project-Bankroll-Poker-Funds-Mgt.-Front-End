@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { } from '../../../redux/actions/users.js'
 import WithdrawConfirmation from './WithdrawConfirmation.js'
 import {
   Container,
@@ -11,24 +9,23 @@ import {
   Input,
  } from 'semantic-ui-react'
 
-class Withdraw extends Component {
+export default class Withdraw extends Component {
   constructor() {
     super()
     this.state={
-      balance: 0,
       withdraw: 0
     }
-  }
-
-  componentDidMount() {
-    this.setState({
-      balance: this.props.balance
-    })
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
+    })
+  }
+
+  clearWithdrawState = () => {
+    this.setState({
+      withdraw: 0
     })
   }
 
@@ -51,8 +48,8 @@ class Withdraw extends Component {
                   value={this.state.withdraw}
                 />
                 <WithdrawConfirmation
-                  balance={this.state.balance}
                   withdraw={this.state.withdraw}
+                  clearWithdrawState={this.clearWithdrawState}
                 >
                   Withdraw
                 </WithdrawConfirmation>
@@ -67,11 +64,3 @@ class Withdraw extends Component {
     )
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    balance: state.user.balance
-  }
-}
-
-export default connect(mapStateToProps, { })(Withdraw);

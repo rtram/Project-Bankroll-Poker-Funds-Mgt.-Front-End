@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { } from '../../../redux/actions/users.js'
 import DepositConfirmation from './DepositConfirmation.js'
 import {
   Container,
@@ -11,7 +9,7 @@ import {
   Input,
  } from 'semantic-ui-react'
 
-class Deposit extends Component {
+export default class Deposit extends Component {
   constructor() {
     super()
     this.state={
@@ -67,6 +65,3 @@ class Deposit extends Component {
     )
   }
 }
-
-
-export default connect(null, { })(Deposit);
