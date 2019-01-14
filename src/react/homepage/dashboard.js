@@ -15,7 +15,7 @@ import SessionContainer from './sessioncontainer/SessionContainer'
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.fetchingUserData()
+    this.props.fetchingUserData(this.props.id)
   }
 
 

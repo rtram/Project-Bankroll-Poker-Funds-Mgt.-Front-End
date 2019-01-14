@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatingSession, deletingSession } from '../../../redux/actions/sessions.js'
 
-import { Button, Header, Modal, Icon, Form } from 'semantic-ui-react'
+import { Button, Modal, Icon, Form } from 'semantic-ui-react'
 
 class SessionModal extends Component {
   constructor() {
