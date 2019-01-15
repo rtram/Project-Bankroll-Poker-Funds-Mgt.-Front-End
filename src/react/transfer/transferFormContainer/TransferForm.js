@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import TransferProfile from '../TransferProfile'
 import UserList from './UserList'
+import SearchBar from './SearchBar'
 import { fetchingUserData, fetchingUserList } from '../../../redux/actions/users.js'
 
 class TransferForm extends Component {
@@ -15,6 +16,7 @@ class TransferForm extends Component {
       <div>
         <TransferProfile />
         Pay Or Request Money
+        <SearchBar />
         <UserList />
       </div>
     )

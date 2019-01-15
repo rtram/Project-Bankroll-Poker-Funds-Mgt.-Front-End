@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 
-export default class UserCard extends Component {
+export default class PayForm extends Component {
 
   render() {
     return(
