@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 const userReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
-      return action.data
+      return action.payload
     case 'POST_SESSION':
       return {...state, sessions:[...state.sessions, action.payload]}
     case 'UPDATED_SESSION':
@@ -25,8 +25,18 @@ const userReducer = (state = [], action) => {
   }
 }
 
+const userListReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCHED_USER_LIST':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   user: userReducer,
+  userList: userListReducer
 });
 
 export default rootReducer;
