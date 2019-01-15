@@ -1,7 +1,36 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
+import { loggingIn } from '../../redux/actions/login.js'
 
 class Login extends Component {
+  constructor() {
+    super()
+    this.state = {
+      username: '',
+      password: ''
+    }
+  }
+
+  clearLoginState = () => {
+    this.setState({
+      username: '',
+      password: ''
+    })
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleLogin = () => {
+    let loginObject = {
+      user: this.state
+    }
+    this.props.loggingIn(loginObject)
+  }
 
   render() {
     return (
@@ -21,20 +50,30 @@ class Login extends Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/logo.png' /> Log-in to your account
+              <Icon name='sign-in' /> Log-in to your account
             </Header>
             <Form size='large'>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+                <Form.Input
+                  name='username'
+                  fluid icon='user'
+                  iconPosition='left'
+                  placeholder='Username'
+                  onChange={this.handleChange}
+                  value={this.state.username}
+                />
                 <Form.Input
                   fluid
+                  name='password'
                   icon='lock'
                   iconPosition='left'
                   placeholder='Password'
                   type='password'
+                  onChange={this.handleChange}
+                  value={this.state.password}
                 />
 
-                <Button color='teal' fluid size='large'>
+                <Button onClick={this.handleLogin} color='teal' fluid size='large'>
                   Login
                 </Button>
               </Segment>
@@ -49,4 +88,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(null, { loggingIn })(Login);
