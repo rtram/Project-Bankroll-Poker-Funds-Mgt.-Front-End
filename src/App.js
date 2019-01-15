@@ -7,6 +7,7 @@ import Dashboard from './react/homepage/Dashboard.js'
 import TransferHome from './react/transfer/TransferHome.js'
 import Bank from './react/transfer/bankContainer/Bank.js'
 import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
+import CasinoMap from './react/casinoMap/CasinoMap.js'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
@@ -29,13 +30,10 @@ class App extends Component {
 
         <Switch>
 
-          <Route path='/home' render={props => {
+          <Route exact path='/home' render={props => {
             return <Home />
           }} />
 
-          <Route path='/users/:id' render={props => {
-            let user_id = props.match.params.id
-            return (
               <div>
               <Menu fixed='top' inverted>
                 <Container>
@@ -52,6 +50,11 @@ class App extends Component {
                   <Menu.Item as='a' position='right'>
                     <Link to='/users/1'>
                       Poker Dashboard
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item as='a' position='right'>
+                    <Link to='/map'>
+                      Casino Map
                     </Link>
                   </Menu.Item>
                   <Menu.Item as='a' position='right'>
@@ -78,21 +81,27 @@ class App extends Component {
                 </Container>
               </Menu>
 
+
+              <Route path='/map' render={props => {
+                return <CasinoMap />
+              }} />
+
                 <Container text style={{ marginTop: '7em' }}>
+
                   <Route path='/users/:id/transferhome' render={props => {
-                    return <TransferHome id={user_id}/>
+                    return <TransferHome id={props.match.params.id}/>
                   }} />
 
                   <Route path='/users/:id/bank' render={props => {
-                    return <Bank id={user_id}/>
+                    return <Bank id={props.match.params.id}/>
                   }} />
 
                   <Route path='/users/:id/transfer' render={props => {
-                    return <TransferForm id={user_id}/>
+                    return <TransferForm id={props.match.params.id}/>
                   }} />
 
                   <Route exact path='/users/:id' render={props => {
-                    return <Dashboard id={user_id}/>
+                    return <Dashboard id={props.match.params.id}/>
                   }} />
                 </Container>
 
@@ -153,8 +162,6 @@ class App extends Component {
                   </Container>
                 </Segment>
               </div>
-            )
-          }} />
 
           <Route path='/login' render={props => {
             return <Login />
