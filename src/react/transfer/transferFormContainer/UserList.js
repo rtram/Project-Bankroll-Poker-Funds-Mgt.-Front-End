@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Container, Header, Grid, Segment } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import UserCard from './UserCard.js'
 
 class UserList extends Component {

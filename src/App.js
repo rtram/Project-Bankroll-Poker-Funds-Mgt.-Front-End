@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import NavBar from './NavBar.js'
+import Footer from './Footer.js'
 import Home from './react/home/Home.js'
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
@@ -9,19 +11,9 @@ import Bank from './react/transfer/bankContainer/Bank.js'
 import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
-import {
-  Container,
-  Divider,
-  Dropdown,
-  Grid,
-  Header,
-  Image,
-  List,
-  Menu,
-  Segment,
-} from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 class App extends Component {
   render() {
@@ -34,53 +26,14 @@ class App extends Component {
             return <Home />
           }} />
 
-              <div>
-              <Menu fixed='top' inverted>
-                <Container>
-                  <Menu.Item as='a' header>
-                    <Link to='/home'>
-                      <Image size='tiny' src='https://i.imgur.com/7LjNOYe.png' style={{  marginRight: '1.5em' }}  />
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item as='a' position='left'>
-                    <Link to='/home'>
-                      Home
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item as='a' position='right'>
-                    <Link to='/users/1'>
-                      Poker Dashboard
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item as='a' position='right'>
-                    <Link to='/map'>
-                      Casino Map
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item as='a' position='right'>
-                    <Dropdown item text='Transfers'>
-                      <Dropdown.Menu>
-                        <Dropdown.Item>
-                          <Link style={{ color: 'black' }} to='/users/1/transferhome'>
-                            Transfer Dashboard
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link style={{ color: 'black' }} to='/users/1/bank'>
-                            Deposit or Withdraw to Bank
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link style={{ color: 'black' }} to='/users/1/transfer'>
-                            Pay Or Request Money
-                          </Link>
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Menu.Item>
-                </Container>
-              </Menu>
+          <Route path='/login' render={props => {
+            return <Login />
+          }} />
 
+              <div>
+
+
+              <NavBar />
 
               <Route path='/map' render={props => {
                 return <CasinoMap />
@@ -105,67 +58,9 @@ class App extends Component {
                   }} />
                 </Container>
 
-                <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
-                  <Container textAlign='center'>
-                    <Grid divided inverted stackable>
-                      <Grid.Column width={3}>
-                        <Header inverted as='h4' content='Group 1' />
-                        <List link inverted>
-                          <List.Item as='a'>Link One</List.Item>
-                          <List.Item as='a'>Link Two</List.Item>
-                          <List.Item as='a'>Link Three</List.Item>
-                          <List.Item as='a'>Link Four</List.Item>
-                        </List>
-                      </Grid.Column>
-                      <Grid.Column width={3}>
-                        <Header inverted as='h4' content='Group 2' />
-                        <List link inverted>
-                          <List.Item as='a'>Link One</List.Item>
-                          <List.Item as='a'>Link Two</List.Item>
-                          <List.Item as='a'>Link Three</List.Item>
-                          <List.Item as='a'>Link Four</List.Item>
-                        </List>
-                      </Grid.Column>
-                      <Grid.Column width={3}>
-                        <Header inverted as='h4' content='Group 3' />
-                        <List link inverted>
-                          <List.Item as='a'>Link One</List.Item>
-                          <List.Item as='a'>Link Two</List.Item>
-                          <List.Item as='a'>Link Three</List.Item>
-                          <List.Item as='a'>Link Four</List.Item>
-                        </List>
-                      </Grid.Column>
-                      <Grid.Column width={7}>
-                        <Header inverted as='h4' content='Footer Header' />
-                        <p>
-                          Extra space for a call to action inside the footer that could help re-engage users.
-                        </p>
-                      </Grid.Column>
-                    </Grid>
+              <Footer />
 
-                    <Divider inverted section />
-                    <Image centered size='mini' src='/logo.png' />
-                    <List horizontal inverted divided link size='small'>
-                      <List.Item as='a' href='#'>
-                        Site Map
-                      </List.Item>
-                      <List.Item as='a' href='#'>
-                        Contact Us
-                      </List.Item>
-                      <List.Item as='a' href='#'>
-                        Terms and Conditions
-                      </List.Item>
-                      <List.Item as='a' href='#'>
-                        Privacy Policy
-                      </List.Item>
-                    </List>
-                  </Container>
-                </Segment>
               </div>
-
-          <Route path='/login' render={props => {
-            return <Login />
-          }} />
 
         </Switch>
       </div>

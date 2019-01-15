@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 
 export default class UserCard extends Component {
 
