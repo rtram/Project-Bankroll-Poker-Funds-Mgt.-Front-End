@@ -1,11 +1,11 @@
 const URL = 'http://localhost:3001/api/v1/login%20'
 
 const loggedIn = (data) => {
-  debugger
-  // return {
-  //   type:"LOGGED_IN",
-  //   payload: data
-  // }
+  localStorage.setItem('token', data.jwt)
+  return {
+    type:"LOGGED_IN",
+    payload: data
+  }
 }
 
 const loggingIn = (userObject) => {

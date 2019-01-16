@@ -34,9 +34,19 @@ const userListReducer = (state = [], action) => {
   }
 }
 
+const currentUserReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'LOGGED_IN':
+      return action.payload.user.id
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   user: userReducer,
-  userList: userListReducer
+  userList: userListReducer,
+  currentUser: currentUserReducer
 });
 
 export default rootReducer;

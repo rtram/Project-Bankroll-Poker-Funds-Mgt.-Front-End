@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './App.css';
 
 import NavBar from './NavBar.js'
@@ -11,11 +12,22 @@ import Bank from './react/transfer/bankContainer/Bank.js'
 import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import { Container } from 'semantic-ui-react'
 
 class App extends Component {
+  // constructor() {
+  //   super()
+  //   this.state={
+  //     loading: true
+  //   }
+  // }
+  //
+  // componentDidUpdate() {
+  //
+  // }
+
   render() {
     return (
       <div className="App">
@@ -26,9 +38,14 @@ class App extends Component {
             return <Home />
           }} />
 
-          <Route path='/login' render={props => {
-            return <Login />
-          }} />
+          <Route path='/login' render={() => {
+              if (Number.isInteger(this.props.currentUser)) {
+                return <Redirect to={`/users/${this.props.currentUser}`} />
+              } else {
+                return <Login />
+              }
+            }
+          } />
 
               <div>
 
@@ -68,4 +85,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(App);
