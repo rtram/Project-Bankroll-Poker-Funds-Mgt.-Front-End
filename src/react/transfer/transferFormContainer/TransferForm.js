@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import TransferProfile from '../TransferProfile'
 import UserList from './UserList'
 import SearchBar from './SearchBar'
-import { fetchingUserList } from '../../../redux/actions/users.js'
+import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
 
 class TransferForm extends Component {
   componentDidMount() {
-    // this.props.fetchingUserData(this.props.id)
+    this.props.fetchingUserBalances(this.props.currentUser)
     this.props.fetchingUserList()
   }
 
@@ -23,4 +23,10 @@ class TransferForm extends Component {
   }
 }
 
-export default connect(null, { fetchingUserList })(TransferForm);
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser,
+  }
+}
+
+export default connect(mapStateToProps, { fetchingUserList, fetchingUserBalances })(TransferForm);
