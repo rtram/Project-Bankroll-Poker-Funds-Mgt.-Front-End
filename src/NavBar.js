@@ -13,27 +13,27 @@ class NavBar extends Component {
     return(
       <Menu fixed='top' inverted>
         <Container>
-          <Menu.Item as='a' header>
+          <Menu.Item header>
             <Link to='/home'>
               <Image size='tiny' src='https://i.imgur.com/7LjNOYe.png' style={{  marginRight: '1.5em' }}  />
             </Link>
           </Menu.Item>
-          <Menu.Item as='a' position='left'>
+          <Menu.Item position='left'>
             <Link to='/home'>
               Home
             </Link>
           </Menu.Item>
-          <Menu.Item as='a' position='right'>
+          <Menu.Item position='right'>
             <Link to='/users/1'>
               Poker Dashboard
             </Link>
           </Menu.Item>
-          <Menu.Item as='a' position='right'>
+          <Menu.Item position='right'>
             <Link to='/map'>
               Casino Map
             </Link>
           </Menu.Item>
-          <Menu.Item as='a' position='right'>
+          <Menu.Item position='right'>
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
                 <Dropdown.Item>
@@ -54,7 +54,7 @@ class NavBar extends Component {
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
-          <Menu.Item as='a' position='right'>
+          <Menu.Item position='right'>
             <Link to='/login'>
               Login
             </Link>

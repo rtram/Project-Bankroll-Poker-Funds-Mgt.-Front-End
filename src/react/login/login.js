@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
 import { loggingIn } from '../../redux/actions/login.js'
+import { withRouter } from 'react-router-dom'
 
 class Login extends Component {
   constructor() {
@@ -88,4 +89,4 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { loggingIn })(Login);
+export default withRouter(connect(null, { loggingIn })(Login));
