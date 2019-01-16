@@ -63,7 +63,7 @@ class SessionTable extends Component {
 
 const mapStateToProps = state => {
   return {
-    sessions: state.user.sessions
+    sessions: state.sessions
   }
 }
 

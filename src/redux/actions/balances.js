@@ -8,11 +8,13 @@ const updatedUserBalance = (data) => {
 }
 
 const updatingUserBalance = (userObject) => {
+  let token = localStorage.getItem('token')
   return dispatch => {
     fetch(`${URL}/${userObject.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authentication" : `Bearer ${token}`
       },
       body: JSON.stringify(userObject)
     })

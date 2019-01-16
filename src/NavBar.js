@@ -24,7 +24,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item position='right'>
-            <Link to='/users/1'>
+            <Link to='/dashboard'>
               Poker Dashboard
             </Link>
           </Menu.Item>
@@ -37,17 +37,17 @@ class NavBar extends Component {
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <Link style={{ color: 'black' }} to='/users/1/transferhome'>
+                  <Link style={{ color: 'black' }} to='/transferhome'>
                     Transfer Dashboard
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link style={{ color: 'black' }} to='/users/1/bank'>
+                  <Link style={{ color: 'black' }} to='/bank'>
                     Deposit or Withdraw to Bank
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link style={{ color: 'black' }} to='/users/1/transfer'>
+                  <Link style={{ color: 'black' }} to='/transferform'>
                     Pay Or Request Money
                   </Link>
                 </Dropdown.Item>

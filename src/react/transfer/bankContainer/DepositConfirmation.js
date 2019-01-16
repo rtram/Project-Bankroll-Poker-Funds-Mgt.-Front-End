@@ -14,7 +14,7 @@ class DepositConfirmation extends Component {
 
   handleDeposit = () => {
     let updateObject = {
-      id: this.props.id,
+      id: this.props.currentUser,
       balance: this.calculateTotal()
     }
 
@@ -64,8 +64,8 @@ class DepositConfirmation extends Component {
 
 const mapStateToProps = state => {
   return {
-    id: state.user.id,
-    balance: state.user.balance
+    currentUser: state.currentUser,
+    balance: state.balance
   }
 }
 

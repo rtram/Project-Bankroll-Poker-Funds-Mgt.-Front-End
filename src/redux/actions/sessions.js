@@ -1,5 +1,27 @@
 const URL = 'http://localhost:3001/api/v1/sessions'
 
+const fetchedSessions = (data) => {
+  return {
+    type:"FETCHED_SESSIONS",
+    payload: data}
+}
+
+const fetchingSessions = (user_id) => {
+  let token = localStorage.getItem('token')
+  return (dispatch) => {
+    fetch(`${URL}/${user_id}`, {
+      method: 'GET',
+      headers: {
+        "Authentication" : `Bearer ${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(fetchedSessions(data))
+    })
+  }
+}
+
 const postedSession = data => {
   return {
     type: 'POST_SESSION',
@@ -58,4 +80,4 @@ const deletingSession = sessionObject => {
   }
 }
 
-export { postingSession, updatingSession, deletingSession };
+export { postingSession, updatingSession, deletingSession, fetchingSessions };

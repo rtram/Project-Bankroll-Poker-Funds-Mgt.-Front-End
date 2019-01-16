@@ -57,7 +57,7 @@ class SessionForm extends Component {
       location: this.state.location,
       hours: this.state.hours,
       amount: this.state.amount,
-      user_id: this.props.user_id
+      user_id: this.props.currentUser
     }
     this.clearFormState()
     this.props.postingSession(sessionObject)
@@ -132,7 +132,8 @@ class SessionForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    user_id: state.user.id,
+    currentUser: state.currentUser,
+    sessions: state.sessions
   }
 }
 

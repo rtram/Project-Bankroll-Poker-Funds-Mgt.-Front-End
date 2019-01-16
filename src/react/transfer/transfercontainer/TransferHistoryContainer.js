@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Container, Header, Grid, Segment } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 // CONTAINER IMPORTS
 import Transfer from './Transfer.js'
@@ -25,7 +26,7 @@ class TransferHistoryContainer extends Component {
   render() {
 
     return (
-      <div>
+      <div >
         <Container fluid>
           <Header as='h2'>Transfer History</Header>
           <Segment style={{ padding: '0em' }} vertical>
@@ -54,13 +55,11 @@ class TransferHistoryContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    user_id: state.user.id,
-    username: state.user.username,
-    first_name: state.user.first_name,
-    last_name: state.user.last_name,
-    sent_transactions: state.user.sent_transactions,
-    received_transactions: state.user.received_transactions
+    first_name: state.first_name,
+    last_name: state.last_name,
+    sent_transactions: state.sent_transactions,
+    received_transactions: state.received_transactions
   }
 }
 
-export default connect(mapStateToProps)(TransferHistoryContainer)
+export default withRouter(connect(mapStateToProps)(TransferHistoryContainer))

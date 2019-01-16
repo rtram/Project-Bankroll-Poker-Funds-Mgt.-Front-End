@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchingUserData } from '../../../redux/actions/users.js'
+import { } from '../../../redux/actions/users.js'
 import TransferProfile from '../TransferProfile'
 import Deposit from './Deposit.js'
 import Withdraw from './Withdraw.js'
 
 class Bank extends Component {
-  componentDidMount() {
-    this.props.fetchingUserData(this.props.id)
-  }
+  // componentDidMount() {
+  //   this.props.fetchingUserData(this.props.id)
+  // }
 
   render() {
     return(
@@ -21,4 +21,4 @@ class Bank extends Component {
   }
 }
 
-export default connect(null, { fetchingUserData })(Bank);
+export default connect(null, { })(Bank);

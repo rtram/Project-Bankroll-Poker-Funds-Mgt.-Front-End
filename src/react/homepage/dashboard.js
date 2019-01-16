@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './Dashboard.css';
 
-import { fetchingUserData } from '../../redux/actions/users.js'
+import { fetchingSessions } from '../../redux/actions/users.js'
 
 // GRAPH IMPORTS
 import WinningPercentage from './WinningPercentage'
@@ -15,7 +15,7 @@ import SessionContainer from './sessioncontainer/SessionContainer'
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.fetchingUserData(this.props.id)
+    this.props.fetchingSessions(this.props.currentUser)
   }
 
 
@@ -163,12 +163,9 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
-    user_id: state.user.id,
-    username: state.user.username,
-    first_name: state.user.first_name,
-    last_name: state.user.last_name,
-    sessions: state.user.sessions
+    currentUser: state.currentUser,
+    sessions: state.sessions
   }
 }
 
-export default connect(mapStateToProps, { fetchingUserData })(Dashboard);
+export default connect(mapStateToProps, { fetchingSessions })(Dashboard);

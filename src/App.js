@@ -17,16 +17,6 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 class App extends Component {
-  // constructor() {
-  //   super()
-  //   this.state={
-  //     loading: true
-  //   }
-  // }
-  //
-  // componentDidUpdate() {
-  //
-  // }
 
   render() {
     return (
@@ -36,33 +26,20 @@ class App extends Component {
           <Switch>
             <Route exact path='/login' render={() => {
                 if (Number.isInteger(this.props.currentUser)) {
-                  return <Redirect to={`/users/${this.props.currentUser}`} />
+                  return <Redirect to='/dashboard' />
                 } else {
-                console.log('working')
                   return <Login />
                 }
               }
             } />
             <Route path='/map' render={props => {
-              console.log('working')
-
               return <CasinoMap />
             }} />
-            <Route exact path='/users/:id' render={props => {
-              console.log('working')
-              console.log(props.match.params.id)
-
-              return <Dashboard id={props.match.params.id}/>
+            <Route exact path='/dashboard' component={Dashboard}/>
+            <Route path='/transferhome' component={TransferHome}/>
             }} />
-            <Route path='/users/:id/transferhome' render={props => {
-              return <TransferHome id={props.match.params.id}/>
-            }} />
-            <Route path='/users/:id/bank' render={props => {
-              return <Bank id={props.match.params.id}/>
-            }} />
-            <Route path='/users/:id/transfer' render={props => {
-              return <TransferForm id={props.match.params.id}/>
-            }} />
+            <Route path='/bank' component={Bank}/>
+            <Route path='/transferform' component={TransferForm}/>
 
           </Switch>
           </Container>
