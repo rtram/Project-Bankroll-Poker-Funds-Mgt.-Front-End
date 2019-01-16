@@ -30,16 +30,38 @@ class App extends Component {
                 } else {
                   return <Login />
                 }
-              }
-            } />
+              }} />
             <Route path='/map' render={props => {
               return <CasinoMap />
             }} />
-            <Route exact path='/dashboard' component={Dashboard}/>
-            <Route path='/transferhome' component={TransferHome}/>
-            }} />
-            <Route path='/bank' component={Bank}/>
-            <Route path='/transferform' component={TransferForm}/>
+            <Route exact path='/dashboard' render={() => {
+              if (Number.isInteger(this.props.currentUser)) {
+                return <Dashboard />
+              } else {
+                return <Login />
+              }
+            }}/>
+            <Route path='/transferhome' render={() => {
+              if (Number.isInteger(this.props.currentUser)) {
+                return <TransferHome />
+              } else {
+                return <Login />
+              }
+            }}/>
+            <Route path='/bank' render={() => {
+              if (Number.isInteger(this.props.currentUser)) {
+                return <Bank />
+              } else {
+                return <Login />
+              }
+            }}/>
+            <Route path='/transferform' render={() => {
+              if (Number.isInteger(this.props.currentUser)) {
+                return <TransferForm />
+              } else {
+                return <Login />
+              }
+            }}/>
 
           </Switch>
           </Container>
