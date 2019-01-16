@@ -90,8 +90,8 @@ const rootReducer = combineReducers({
   balance: balanceReducer,
   user: userReducer,
   sent_transactions: sentTransactionsReducer,
-  received_transactions: receivedTransactionsReducer
-  // userList: userListReducer,
+  received_transactions: receivedTransactionsReducer,
+  userList: userListReducer
 });
 
 export default rootReducer;

@@ -54,11 +54,16 @@ const fetchedUserList= (data) => {
 }
 
 const fetchingUserList = () => {
+  let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch('http://localhost:3001/api/v1/users')
+    fetch(URL, {
+      method: 'GET',
+      headers: {
+        "Authentication" : `Bearer ${token}`
+      }
+    })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       dispatch(fetchedUserList(data))
     })
   }

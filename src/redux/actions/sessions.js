@@ -30,11 +30,13 @@ const postedSession = data => {
 }
 
 const postingSession = sessionObject => {
+  let token = localStorage.getItem('token')
   return dispatch => {
     fetch(URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authentication" : `Bearer ${token}`
       },
       body: JSON.stringify(sessionObject)
     })
@@ -51,11 +53,13 @@ const updatedSession = data => {
 }
 
 const updatingSession = sessionObject => {
+  let token = localStorage.getItem('token')
   return dispatch => {
     fetch(`${URL}/${sessionObject.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authentication" : `Bearer ${token}`
       },
       body: JSON.stringify(sessionObject)
     })
@@ -72,10 +76,14 @@ const deletedSession = data => {
 }
 
 const deletingSession = sessionObject => {
+  let token = localStorage.getItem('token')
   return dispatch => {
     dispatch(deletedSession(sessionObject))
     fetch(`${URL}/${sessionObject.id}`, {
       method: "DELETE",
+      headers: {
+        "Authentication" : `Bearer ${token}`
+      }
     })
   }
 }
