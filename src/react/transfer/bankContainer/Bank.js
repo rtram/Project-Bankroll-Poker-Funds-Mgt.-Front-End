@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchingUserBalances } from '../../../redux/actions/users.js'
-import TransferProfile from '../TransferProfile'
+import UserBalance from '../UserBalance'
 import Deposit from './Deposit.js'
 import Withdraw from './Withdraw.js'
 
@@ -13,7 +13,7 @@ class Bank extends Component {
   render() {
     return(
       <div>
-        <TransferProfile />
+        <UserBalance />
         <Deposit />
         <Withdraw />
       </div>

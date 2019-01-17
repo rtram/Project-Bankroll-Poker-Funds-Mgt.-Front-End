@@ -107,4 +107,35 @@ const fetchingUserList = () => {
   }
 }
 
-export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser };
+const fetchedSelectedProfile = (data) => {
+  return {
+    type:"FETCHED_SELECTED_PROFILE",
+    payload: data
+  }
+}
+
+const fetchingSelectedProfile = (userObject) => {
+  let token = localStorage.getItem('token')
+  return (dispatch) => {
+    fetch(`${URL}/${userObject.id}`, {
+      method: 'GET',
+      headers: {
+        "Authentication" : `Bearer ${token}`,
+        "selectedProfile": `${userObject.id}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(fetchedSelectedProfile(data))
+    })
+  }
+}
+
+const clearSelectedProfile = (data) => {
+  return {
+    type:"CLEAR_SELECTED_PROFILE",
+    payload: data
+  }
+}
+
+export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile };

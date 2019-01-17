@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { Card, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { Card, Icon, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import ProfilePageContainer from '../profilePage/ProfilePageContainer.js'
+import { fetchingSelectedProfile } from '../../../redux/actions/users.js'
 
-export default class UserCard extends Component {
+class UserCard extends Component {
+
+  handleClick = () => {
+    this.props.fetchingSelectedProfile(this.props.user)
+  }
 
   render() {
     return(
@@ -13,7 +21,13 @@ export default class UserCard extends Component {
           </Card.Meta>
           <Card.Description></Card.Description>
         </Card.Content>
+        <Card.Content extra>
+          <Icon name='expand'/>
+          <Button onClick={this.handleClick}>Profile</Button>
+        </Card.Content>
       </Card>
     )
   }
 }
+
+export default connect(null, { fetchingSelectedProfile })(UserCard);

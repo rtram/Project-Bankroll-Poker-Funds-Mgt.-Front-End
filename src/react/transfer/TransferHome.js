@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import TransferHistoryContainer from './transfercontainer/TransferHistoryContainer.js'
-import TransferProfile from './TransferProfile'
+import UserBalance from './UserBalance'
 
 import { fetchingUserBalances } from '../../redux/actions/users.js'
 
@@ -14,7 +14,7 @@ class TransferHome extends Component {
   render() {
     return(
       <div>
-        <TransferProfile />
+        <UserBalance />
         <TransferHistoryContainer />
       </div>
     )

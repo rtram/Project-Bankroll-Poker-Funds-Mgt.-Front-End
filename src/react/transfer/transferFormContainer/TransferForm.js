@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import TransferProfile from '../TransferProfile'
+import UserBalance from '../UserBalance'
 import UserList from './UserList'
 import SearchBar from './SearchBar'
+import ProfilePageContainer from '../profilePage/ProfilePageContainer'
 import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
 
 class TransferForm extends Component {
@@ -13,11 +14,15 @@ class TransferForm extends Component {
 
   render() {
     return(
+      this.props.selectedProfile.length === 0 ?
       <div>
-        <TransferProfile />
+        <UserBalance />
         Pay Or Request Money
         <SearchBar />
         <UserList />
+      </div> :
+      <div>
+        <ProfilePageContainer />
       </div>
     )
   }
@@ -26,6 +31,7 @@ class TransferForm extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
+    selectedProfile: state.selectedProfile
   }
 }
 

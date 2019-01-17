@@ -101,6 +101,17 @@ const errorsReducer = (state = {}, action) => {
   }
 }
 
+const selectedProfileReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_SELECTED_PROFILE":
+      return [action.payload]
+    case "CLEAR_SELECTED_PROFILE":
+      return []
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
   sessions: sessionsReducer,
@@ -109,7 +120,8 @@ const rootReducer = combineReducers({
   sent_transactions: sentTransactionsReducer,
   received_transactions: receivedTransactionsReducer,
   userList: userListReducer,
-  errors: errorsReducer
+  errors: errorsReducer,
+  selectedProfile: selectedProfileReducer
 });
 
 export default rootReducer;

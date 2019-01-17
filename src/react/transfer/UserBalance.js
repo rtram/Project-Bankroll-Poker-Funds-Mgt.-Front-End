@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { Container, Header } from 'semantic-ui-react'
 
-class TransferProfile extends Component {
+class UserBalance extends Component {
 
   // RETURNS OBJECT'S FULL NAME STRING
   fullNameConverter = (object) => {
@@ -41,4 +41,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(TransferProfile)
+export default connect(mapStateToProps)(UserBalance)
