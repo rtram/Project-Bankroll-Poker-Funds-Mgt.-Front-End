@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import TransferHistoryContainer from './transfercontainer/TransferHistoryContainer.js'
 import UserBalance from './UserBalance'
-
 import { fetchingUserBalances } from '../../redux/actions/users.js'
 
 class TransferHome extends Component {
@@ -15,7 +13,7 @@ class TransferHome extends Component {
     return(
       <div>
         <UserBalance />
-        <TransferHistoryContainer />
+        <TransferHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
       </div>
     )
   }
@@ -24,6 +22,8 @@ class TransferHome extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
+    sent_transactions: state.sent_transactions,
+    received_transactions: state.received_transactions
   }
 }
 

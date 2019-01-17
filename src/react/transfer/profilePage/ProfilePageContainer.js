@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-
 import { clearSelectedProfile } from '../../../redux/actions/users.js'
 import TransferHistoryContainer from '../transfercontainer/TransferHistoryContainer.js'
-// import UserBalance from './UserBalance'
 
 class ProfilePageContainer extends Component {
 
@@ -17,6 +15,7 @@ class ProfilePageContainer extends Component {
       <div>
         <Button onClick={this.handleClear}> Back </Button>
         UserProfile
+        <TransferHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
       </div>
     )
   }
@@ -25,6 +24,8 @@ class ProfilePageContainer extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
+    sent_transactions: state.selectedProfile[0].sent_transactions,
+    received_transactions: state.selectedProfile[0].received_transactions
   }
 }
 

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import { Container, Header, Grid, Segment } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
 
 // CONTAINER IMPORTS
 import Transfer from './Transfer.js'
@@ -53,13 +51,4 @@ class TransferHistoryContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    first_name: state.first_name,
-    last_name: state.last_name,
-    sent_transactions: state.sent_transactions,
-    received_transactions: state.received_transactions
-  }
-}
-
-export default withRouter(connect(mapStateToProps)(TransferHistoryContainer))
+export default TransferHistoryContainer;
