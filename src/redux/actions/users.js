@@ -8,6 +8,7 @@ const displayErrors = (data) => {
 }
 
 const createdUser = (data) => {
+  localStorage.setItem('token', data.jwt)
   return {
     type:"LOGGED_IN",
     payload: data

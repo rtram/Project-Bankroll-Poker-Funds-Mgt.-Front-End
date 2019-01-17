@@ -37,7 +37,7 @@ class App extends Component {
             }} />
             <Route path='/signup' render={props => {
               if (Number.isInteger(this.props.currentUser)) {
-                return <Dashboard />
+                return <Redirect to='/dashboard' />
               } else {
               return <SignUp />
               }
@@ -46,28 +46,28 @@ class App extends Component {
               if (Number.isInteger(this.props.currentUser)) {
                 return <Dashboard />
               } else {
-                return <Login />
+                return <Redirect to='/login' />
               }
             }}/>
             <Route path='/transferhome' render={() => {
               if (Number.isInteger(this.props.currentUser)) {
                 return <TransferHome />
               } else {
-                return <Login />
+                return <Redirect to='/login' />
               }
             }}/>
             <Route path='/bank' render={() => {
               if (Number.isInteger(this.props.currentUser)) {
                 return <Bank />
               } else {
-                return <Login />
+                return <Redirect to='/login' />
               }
             }}/>
             <Route path='/transferform' render={() => {
               if (Number.isInteger(this.props.currentUser)) {
                 return <TransferForm />
               } else {
-                return <Login />
+                return <Redirect to='/login' />
               }
             }}/>
 
