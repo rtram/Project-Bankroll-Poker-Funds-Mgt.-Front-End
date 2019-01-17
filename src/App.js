@@ -11,7 +11,6 @@ import Dashboard from './react/homepage/Dashboard.js'
 import TransferHome from './react/transfer/TransferHome.js'
 import Bank from './react/transfer/bankContainer/Bank.js'
 import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
-import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer.js'
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'

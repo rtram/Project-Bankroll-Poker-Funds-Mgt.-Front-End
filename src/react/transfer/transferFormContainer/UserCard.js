@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Card, Icon, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import ProfilePageContainer from '../profilePage/ProfilePageContainer.js'
 import { fetchingSelectedProfile } from '../../../redux/actions/users.js'
 
 class UserCard extends Component {
@@ -22,7 +20,6 @@ class UserCard extends Component {
           <Card.Description></Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Icon name='expand'/>
           <Button onClick={this.handleClick}>Profile</Button>
         </Card.Content>
       </Card>
