@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
 import { loggingIn } from '../../redux/actions/login.js'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 class Login extends Component {
   constructor() {
@@ -80,7 +80,7 @@ class Login extends Component {
               </Segment>
             </Form>
             <Message>
-              New to us? <a href='#'>Sign Up</a>
+              New to us? <Link to='/signup'>Sign Up</Link>
             </Message>
           </Grid.Column>
         </Grid>

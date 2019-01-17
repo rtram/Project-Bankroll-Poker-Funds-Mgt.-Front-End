@@ -1,9 +1,32 @@
 const URL = 'http://localhost:3001/api/v1/users'
 
+const createdUser = (data) => {
+  return {
+    type:"CREATED_USER",
+    payload: data
+  }
+}
+
+const creatingUser = (userObject) => {
+  debugger
+  return dispatch => {
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userObject)
+    })
+      .then(res => res.json())
+      .then(data => dispatch(createdUser(data)))
+  }
+}
+
 const fetchedSessions = (data) => {
   return {
     type:"FETCHED_SESSIONS",
-    payload: data}
+    payload: data
+  }
 }
 
 const fetchingSessions = (user_id) => {
@@ -26,7 +49,8 @@ const fetchingSessions = (user_id) => {
 const fetchedUserBalances = (data) => {
   return {
     type:"FETCHED_USER_DATA",
-    payload: data}
+    payload: data
+  }
 }
 
 const fetchingUserBalances = (user_id) => {
@@ -69,4 +93,4 @@ const fetchingUserList = () => {
   }
 }
 
-export { fetchingSessions, fetchingUserList, fetchingUserBalances };
+export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser };

@@ -5,6 +5,7 @@ import './App.css';
 import NavBar from './NavBar.js'
 import Footer from './Footer.js'
 // import Home from './react/home/Home.js'
+import SignUp from './react/login/SignUp.js'
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
 import TransferHome from './react/transfer/TransferHome.js'
@@ -33,6 +34,9 @@ class App extends Component {
               }} />
             <Route path='/map' render={props => {
               return <CasinoMap />
+            }} />
+            <Route path='/signup' render={props => {
+              return <SignUp />
             }} />
             <Route exact path='/dashboard' render={() => {
               if (Number.isInteger(this.props.currentUser)) {

@@ -53,9 +53,17 @@ const balanceReducer = (state = 0, action) => {
 }
 
 const userReducer = (state = {}, action) => {
+  let userObject;
   switch(action.type) {
+    case 'CREATED_USER':
+       userObject= {
+        username: action.payload.username,
+        first_name: action.payload.first_name,
+        last_name: action.payload.last_name
+      }
+      return userObject
     case 'FETCHED_USER_DATA':
-      let userObject = {
+      userObject = {
         username: action.payload.username,
         first_name: action.payload.first_name,
         last_name: action.payload.last_name
