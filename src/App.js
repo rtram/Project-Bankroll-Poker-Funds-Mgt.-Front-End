@@ -36,7 +36,11 @@ class App extends Component {
               return <CasinoMap />
             }} />
             <Route path='/signup' render={props => {
+              if (Number.isInteger(this.props.currentUser)) {
+                return <Dashboard />
+              } else {
               return <SignUp />
+              }
             }} />
             <Route exact path='/dashboard' render={() => {
               if (Number.isInteger(this.props.currentUser)) {

@@ -17,7 +17,7 @@ class SignUp extends Component {
       password_confirmation: '',
       agree: false,
       termsAndCondition: false,
-      signup: false
+      signup: false,
     }
   }
 
@@ -28,6 +28,9 @@ class SignUp extends Component {
       last_name: '',
       password: '',
       password_confirmation: '',
+      agree: false,
+      termsAndCondition: false,
+      signup: false
     })
   }
 
@@ -58,16 +61,24 @@ class SignUp extends Component {
       last_name: this.state.last_name,
       password: this.state.password,
       password_confirmation: this.state.password_confirmation,
+      balance: 0
     }
     this.props.creatingUser(userObject)
     this.clearFormState()
   }
 
+  displayErrors = (errorArray) => {
+    this.setState({
+      errorMessages: errorArray
+    })
+  }
 
   render() {
+
     return (
       <Fragment>
         <Header as='h1'>Sign Up</Header>
+        {this.props.errors ? <p style={{color: 'red'}}>{this.props.errors.errors}</p> : null}
         <Form onSubmit={this.onSubmit}>
           <Form.Field required>
             <label>Username</label>
@@ -133,4 +144,10 @@ class SignUp extends Component {
   }
 }
 
-export default connect(null, { creatingUser })(SignUp);
+const mapStateToProps = state => {
+  return {
+    errors: state.errors
+  }
+}
+
+export default connect(mapStateToProps, { creatingUser })(SignUp);

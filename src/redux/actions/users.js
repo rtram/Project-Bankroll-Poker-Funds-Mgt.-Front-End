@@ -1,14 +1,20 @@
 const URL = 'http://localhost:3001/api/v1/users'
 
+const displayErrors = (data) => {
+  return {
+    type:"DISPLAY_ERRORS",
+    payload: data
+  }
+}
+
 const createdUser = (data) => {
   return {
-    type:"CREATED_USER",
+    type:"LOGGED_IN",
     payload: data
   }
 }
 
 const creatingUser = (userObject) => {
-  debugger
   return dispatch => {
     fetch(URL, {
       method: 'POST',
@@ -18,7 +24,14 @@ const creatingUser = (userObject) => {
       body: JSON.stringify(userObject)
     })
       .then(res => res.json())
-      .then(data => dispatch(createdUser(data)))
+      .then(data => {
+        if (data.errors) {
+          dispatch(displayErrors(data))
+        } else {
+          dispatch(createdUser(data))
+        }
+      }
+    )
   }
 }
 

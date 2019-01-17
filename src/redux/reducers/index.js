@@ -92,6 +92,15 @@ const receivedTransactionsReducer = (state = [], action) => {
   }
 }
 
+const errorsReducer = (state = {}, action) => {
+  switch(action.type) {
+    case 'DISPLAY_ERRORS':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
   sessions: sessionsReducer,
@@ -99,7 +108,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   sent_transactions: sentTransactionsReducer,
   received_transactions: receivedTransactionsReducer,
-  userList: userListReducer
+  userList: userListReducer,
+  errors: errorsReducer
 });
 
 export default rootReducer;
