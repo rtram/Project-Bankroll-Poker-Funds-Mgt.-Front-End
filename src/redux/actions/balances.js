@@ -1,6 +1,7 @@
 const URL = 'http://localhost:3001/api/v1/users'
 
 const updatedUserBalance = (data) => {
+  debugger
   return {
     type:"UPDATED_USER_BALANCE",
     payload: data
