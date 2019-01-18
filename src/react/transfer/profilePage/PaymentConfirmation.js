@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatingUserBalance, updatingRecipientBalance } from '../../../redux/actions/balances.js'
+import { postingTransaction } from '../../../redux/actions/users.js'
 
 import { Button, Modal, Input } from 'semantic-ui-react'
 
@@ -21,22 +22,44 @@ class PaymentConfirmation extends Component {
   }
 
   handlePayment = () => {
-    let currentUserObject = {
+    let currentUserBalanceObject = {
       id: this.props.currentUser,
       balance: this.calculateTotal()
     }
 
     let recipientBalance = parseFloat(this.props.selectedProfile.balance) + parseFloat(this.state.amount)
 
-    let recipientObject = {
+    let recipientBalanceObject = {
       id: this.props.selectedProfile.id,
       balance: recipientBalance
     }
 
-    this.props.updatingUserBalance(currentUserObject)
-    this.props.updatingRecipientBalance(recipientObject)
+    this.props.updatingUserBalance(currentUserBalanceObject)
+    this.props.updatingRecipientBalance(recipientBalanceObject)
+
+    let transactionObject = {
+      sender_id: this.props.currentUser,
+      recipient_id: this.props.selectedProfile.id,
+      amount: this.state.amount,
+      date: this.formatDate()
+    }
+
+    this.props.postingTransaction(transactionObject)
+
     this.resetState()
     this.handleToggle()
+  }
+
+  formatDate = () => {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 
   handleToggle = () => {
@@ -102,4 +125,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updatingUserBalance, updatingRecipientBalance })(PaymentConfirmation)
+export default connect(mapStateToProps, { updatingUserBalance, updatingRecipientBalance, postingTransaction })(PaymentConfirmation)

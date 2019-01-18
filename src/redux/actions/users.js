@@ -138,4 +138,30 @@ const clearSelectedProfile = (data) => {
   }
 }
 
-export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile };
+const postedTransaction = (data) => {
+  return {
+    type:"POSTED_TRANSACTION",
+    payload: data
+  }
+}
+
+const postingTransaction = (userObject) => {
+  let token = localStorage.getItem('token')
+  return (dispatch) => {
+    fetch("http://localhost:3001/api/v1/transactions", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authentication" : `Bearer ${token}`
+      },
+      body: JSON.stringify(userObject)
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(postedTransaction(data))
+    })
+  }
+}
+
+
+export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile, postingTransaction};

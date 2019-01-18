@@ -78,6 +78,8 @@ const sentTransactionsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
       return action.payload.sent_transactions
+    case 'POSTED_TRANSACTION':
+      return [...state, action.payload]
     default:
       return state
   }
@@ -107,6 +109,9 @@ const selectedProfileReducer = (state = [], action) => {
       return [action.payload]
     case "CLEAR_SELECTED_PROFILE":
       return []
+    case 'POSTED_TRANSACTION':
+      let stateCopy = [{...state[0], received_transactions: [...state[0].received_transactions, action.payload]}]
+      return stateCopy
     default:
       return state
   }
