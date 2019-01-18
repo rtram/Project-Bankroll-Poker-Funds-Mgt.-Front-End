@@ -135,13 +135,33 @@ const sessionErrorReducer = (state = [], action) => {
   }
 }
 
+const sentRequestsReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCHED_USER_DATA':
+      return action.payload.sent_requests
+    default:
+      return state
+  }
+}
+
+const receivedRequestsReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCHED_USER_DATA':
+      return action.payload.received_requests
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
+  user: userReducer,
   sessions: sessionsReducer,
   balance: balanceReducer,
-  user: userReducer,
   sent_transactions: sentTransactionsReducer,
   received_transactions: receivedTransactionsReducer,
+  sent_requests: sentRequestsReducer,
+  received_requests: receivedRequestsReducer,
   userList: userListReducer,
   errors: errorsReducer,
   loginError: loginErrorReducer,
