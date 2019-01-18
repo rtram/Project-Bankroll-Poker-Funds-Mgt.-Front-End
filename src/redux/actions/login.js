@@ -8,6 +8,13 @@ const loggedIn = (data) => {
   }
 }
 
+const displayLoginError = data => {
+  return {
+    type:'DISPLAY_LOGIN_ERROR',
+    payload: data
+  }
+}
+
 const loggingIn = (userObject) => {
   return dispatch => {
     fetch(URL, {
@@ -18,7 +25,14 @@ const loggingIn = (userObject) => {
       body: JSON.stringify(userObject)
     })
       .then(res => res.json())
-      .then(data => dispatch(loggedIn(data)))
+      .then(data => {
+        if (data.message) {
+          dispatch(displayLoginError(data))
+        } else {
+          dispatch(loggedIn(data))
+        }
+      }
+    )
   }
 }
 

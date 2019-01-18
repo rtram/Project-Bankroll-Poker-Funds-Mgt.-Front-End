@@ -41,7 +41,14 @@ const postingSession = sessionObject => {
       body: JSON.stringify(sessionObject)
     })
       .then(res => res.json())
-      .then(data => dispatch(postedSession(data)))
+      .then(data => {
+        if (data.errors) {
+          debugger
+        } else {
+          dispatch(postedSession(data))
+        }
+      }
+    )
   }
 }
 

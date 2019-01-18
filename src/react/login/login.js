@@ -53,6 +53,11 @@ class Login extends Component {
             <Header as='h2' color='teal' textAlign='center'>
               <Icon name='sign-in' /> Log-in to your account
             </Header>
+            {this.props.loginError.length > 0 ? <Header as='h4' color='red' textAlign='center'>
+              <Icon name='hand spock outline' /> {this.props.loginError[0].message}
+            </Header>
+            : null
+            }
             <Form size='large'>
               <Segment stacked>
                 <Form.Input
@@ -89,4 +94,10 @@ class Login extends Component {
   }
 }
 
-export default withRouter(connect(null, { loggingIn })(Login));
+const mapStateToProps = state => {
+  return {
+    loginError: state.loginError
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { loggingIn })(Login));

@@ -117,6 +117,15 @@ const selectedProfileReducer = (state = [], action) => {
   }
 }
 
+const loginErrorReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'DISPLAY_LOGIN_ERROR':
+      return [action.payload]
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
   sessions: sessionsReducer,
@@ -126,6 +135,7 @@ const rootReducer = combineReducers({
   received_transactions: receivedTransactionsReducer,
   userList: userListReducer,
   errors: errorsReducer,
+  loginError: loginErrorReducer,
   selectedProfile: selectedProfileReducer
 });
 
