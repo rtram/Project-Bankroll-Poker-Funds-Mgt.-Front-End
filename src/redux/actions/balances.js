@@ -1,7 +1,6 @@
 const URL = 'http://localhost:3001/api/v1/users'
 
 const updatedUserBalance = (data) => {
-  debugger
   return {
     type:"UPDATED_USER_BALANCE",
     payload: data
@@ -24,4 +23,18 @@ const updatingUserBalance = (userObject) => {
   }
 }
 
-export { updatingUserBalance };
+const updatingRecipientBalance = (userObject) => {
+  let token = localStorage.getItem('token')
+  return dispatch => {
+    fetch(`${URL}/${userObject.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authentication" : `Bearer ${token}`
+      },
+      body: JSON.stringify(userObject)
+    })
+  }
+}
+
+export { updatingUserBalance, updatingRecipientBalance };

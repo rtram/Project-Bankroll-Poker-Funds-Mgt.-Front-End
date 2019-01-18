@@ -43,12 +43,12 @@ class NavBar extends Component {
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <Link style={{ color: 'black' }} to='/bank'>
-                    Deposit or Withdraw to Bank
+                    Deposit or Withdraw Funds
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <Link style={{ color: 'black' }} to='/transferform'>
-                    Pay Or Request Money
+                    Pay Or Request Funds
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>

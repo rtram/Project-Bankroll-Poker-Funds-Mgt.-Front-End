@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updatingUserBalance, updatingPayeeBalance } from '../../../redux/actions/balances.js'
+import { updatingUserBalance, updatingRecipientBalance } from '../../../redux/actions/balances.js'
 
 import { Button, Modal, Input } from 'semantic-ui-react'
 
@@ -34,7 +34,7 @@ class PaymentConfirmation extends Component {
     }
 
     this.props.updatingUserBalance(currentUserObject)
-    this.props.updatingUserBalance(recipientObject)
+    this.props.updatingRecipientBalance(recipientObject)
     this.resetState()
     this.handleToggle()
   }
@@ -102,4 +102,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updatingUserBalance })(PaymentConfirmation)
+export default connect(mapStateToProps, { updatingUserBalance, updatingRecipientBalance })(PaymentConfirmation)
