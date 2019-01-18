@@ -49,7 +49,7 @@ export default class WinningPercentage extends Component {
               fontsize: 200
             },
             legend: {
-              display: true,
+              display: false,
               position: "bottom"
             }
           }}

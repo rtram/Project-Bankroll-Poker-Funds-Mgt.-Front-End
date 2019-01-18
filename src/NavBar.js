@@ -55,6 +55,11 @@ class NavBar extends Component {
             </Dropdown>
           </Menu.Item>
           <Menu.Item position='right'>
+            <Link to='/inbox'>
+              Inbox
+            </Link>
+          </Menu.Item>
+          <Menu.Item position='right'>
             <Link to='/login'>
               Login
             </Link>

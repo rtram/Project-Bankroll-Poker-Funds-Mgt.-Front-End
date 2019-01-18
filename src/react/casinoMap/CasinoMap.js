@@ -56,6 +56,21 @@ class CasinoMap extends Component {
            <CasinoCoord lat={39.157256} lng={-76.727377} text={'Live! Casino& Hotel'} />
            <CasinoCoord lat={39.273510} lng={-76.627567} text={'Horseshoe Casino Baltimore'} />
            <CasinoCoord lat={39.297307} lng={-77.851196} text={'Hollywood Casino at Charles Town Races'} />
+           <CasinoCoord lat={39.378436} lng={-74.435501} text={'Borgata Hotel, Casino & Spa'} />
+           <CasinoCoord lat={39.379252} lng={-74.427942} text={'Golden Nugget Atlantic City Hotel'} />
+           <CasinoCoord lat={39.360187} lng={-74.420690} text={'Hard Rock Hotel Casino Atlantic City'} />
+           <CasinoCoord lat={39.355597} lng={-74.434270} text={'Wild Wild West Casino'} />
+           <CasinoCoord lat={39.356751} lng={-74.433217} text={"Bally's Casino"} />
+           <CasinoCoord lat={39.352353} lng={-74.445567} text={'Tropicana Atlantic City'} />
+           <CasinoCoord lat={41.474518} lng={-71.959870} text={'Foxwoods Resort Casino'} />
+           <CasinoCoord lat={41.491167} lng={-72.092382} text={'Mohegan Sun'} />
+           <CasinoCoord lat={36.107338} lng={-115.176293} text={'Aria Resort & Casino'} />
+           <CasinoCoord lat={39.488992} lng={-115.176293} text={'Atlantis Casino Resort Spa'} />
+           <CasinoCoord lat={36.114060} lng={-115.170640} text={"Bally's Las Vegas Hotel & Casino"} />
+           <CasinoCoord lat={30.392523} lng={-88.891415} text={'Beau Rivage Resort & Casino'} />
+           <CasinoCoord lat={36.112418} lng={-115.175259} text={'Bellagio'} />
+           <CasinoCoord lat={36.121457} lng={-115.170321} text={'The Venetian'} />
+           <CasinoCoord lat={36.124661} lng={-115.171544} text={'Treasure Island'} />
          </GoogleMapReact>
        </div>
     )
