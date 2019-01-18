@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Divider } from 'semantic-ui-react'
+import { Container, Divider, Header } from 'semantic-ui-react'
 
 
 class Transfer extends Component {
@@ -12,7 +12,8 @@ class Transfer extends Component {
   render() {
     return(
       <Container>
-        <p>{this.fullNameConverter(this.props.transfer, 'sender')} paid {this.fullNameConverter(this.props.transfer, 'recipient')} ${this.props.transfer.amount} on {this.props.transfer.date}</p>
+        <Header as='h4'>{this.fullNameConverter(this.props.transfer, 'sender')} paid {this.fullNameConverter(this.props.transfer, 'recipient')} ${this.props.transfer.amount} on {this.props.transfer.date}</Header>
+        <p>{this.props.transfer.message}</p>
         <Divider />
       </Container>
     )

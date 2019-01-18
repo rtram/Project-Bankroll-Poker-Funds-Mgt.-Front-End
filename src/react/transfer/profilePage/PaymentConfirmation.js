@@ -10,6 +10,7 @@ class PaymentConfirmation extends Component {
     super()
     this.state = {
       amount: 0,
+      message:'',
       open:false
     }
   }
@@ -17,6 +18,7 @@ class PaymentConfirmation extends Component {
   resetState = () => {
     this.setState({
       amount: 0,
+      message:'',
       open: false
     })
   }
@@ -40,6 +42,7 @@ class PaymentConfirmation extends Component {
     let transactionObject = {
       sender_id: this.props.currentUser,
       recipient_id: this.props.selectedProfile.id,
+      message: this.state.message,
       amount: this.state.amount,
       date: this.formatDate()
     }
@@ -105,6 +108,14 @@ class PaymentConfirmation extends Component {
             step="0.01"
             name='amount'
             value={this.state.amount}
+          />
+          <br/>
+          <Input
+            onChange={this.handleChange}
+            placeholder='Leave a Message'
+            type='textarea'
+            name='message'
+            value={this.state.message}
           />
           Paying {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
         </Modal.Content>
