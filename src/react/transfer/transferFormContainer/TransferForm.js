@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import UserBalance from '../UserBalance'
 import UserList from './UserList'
-import SearchBar from './SearchBar'
 import ProfilePageContainer from '../profilePage/ProfilePageContainer'
 import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
 
@@ -18,7 +17,6 @@ class TransferForm extends Component {
       <div>
         <UserBalance />
         Pay Or Request Money
-        <SearchBar />
         <UserList />
       </div> :
       <div>
