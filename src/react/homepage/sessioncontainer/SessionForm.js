@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { postingSession } from '../../../redux/actions/sessions.js'
 
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Header, Icon } from 'semantic-ui-react'
 
 class SessionForm extends Component {
   constructor() {
@@ -68,6 +68,11 @@ class SessionForm extends Component {
   render() {
     return (
       <Form onSubmit={this.onSubmit}>
+        {this.props.sessionError.length > 0 ? <Header as='h4' color='red' textAlign='center'>
+          <Icon name='bug' /> {this.props.sessionError.map(error => <p>{error}</p>)}
+        </Header>
+        : null
+        }
         <Form.Group>
           <Form.Field width={5}>
             <label>Date</label>
@@ -133,7 +138,8 @@ class SessionForm extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    sessions: state.sessions
+    sessions: state.sessions,
+    sessionError: state.sessionError
   }
 }
 

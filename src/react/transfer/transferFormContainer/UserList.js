@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Container, Search } from 'semantic-ui-react'
+import { Container, Search, Header, Icon } from 'semantic-ui-react'
 import UserCard from './UserCard.js'
 
 class UserList extends Component {
@@ -48,7 +48,12 @@ class UserList extends Component {
         <Container>
           People You Might Know
           <br />
-          {this.state.filteredList.length === 0 && this.state.search.length > 0 ? 'No Person Found With That Username/Name' : null}
+          {this.state.filteredList.length === 0 && this.state.search.length > 0 ?
+            <Header as ='h4' style={{ color: 'red' }}>
+              <Icon name='close'/>
+              No Person Found With That Username/Name'
+            </Header>
+            : null}
           {this.state.filteredList.length > 0 ? this.state.filteredList.map(user => (
             <UserCard user={user} />
           )) : this.props.userList.map(user => (

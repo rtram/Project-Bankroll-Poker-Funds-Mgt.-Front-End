@@ -126,6 +126,15 @@ const loginErrorReducer = (state = [], action) => {
   }
 }
 
+const sessionErrorReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'DISPLAY_SESSION_ERRORS':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
   sessions: sessionsReducer,
@@ -136,6 +145,7 @@ const rootReducer = combineReducers({
   userList: userListReducer,
   errors: errorsReducer,
   loginError: loginErrorReducer,
+  sessionError: sessionErrorReducer,
   selectedProfile: selectedProfileReducer
 });
 

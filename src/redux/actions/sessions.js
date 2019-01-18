@@ -29,6 +29,13 @@ const postedSession = data => {
   };
 }
 
+const displaySessionErrors = data => {
+  return {
+    type: 'DISPLAY_SESSION_ERRORS',
+    payload: data
+  }
+}
+
 const postingSession = sessionObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
@@ -43,7 +50,7 @@ const postingSession = sessionObject => {
       .then(res => res.json())
       .then(data => {
         if (data.errors) {
-          debugger
+          dispatch(displaySessionErrors(data.errors))
         } else {
           dispatch(postedSession(data))
         }
