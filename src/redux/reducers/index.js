@@ -80,6 +80,8 @@ const sentTransactionsReducer = (state = [], action) => {
       return action.payload.sent_transactions
     case 'POSTED_TRANSACTION':
       return [...state, action.payload]
+    case 'COMPLETED_TRANSACTION':
+      return [...state, action.payload]
     default:
       return state
   }

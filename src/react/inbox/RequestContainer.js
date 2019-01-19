@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Container, Header, Grid, Segment } from 'semantic-ui-react'
-import Request from './Request'
+import ReceivedRequest from './ReceivedRequest'
+import SentRequest from './SentRequest'
 
 // CONTAINER IMPORTS
 
@@ -36,13 +37,13 @@ class RequestContainer extends Component {
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
                   SENT REQUESTS
                   {recentSentRequests.length > 0 ? recentSentRequests.map(request => (
-                    <Request request={request}/>)): null
+                    <SentRequest request={request}/>)): null
                   }
                 </Grid.Column>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
                   RECEIVED REQUESTS
                   {recentReceivedRequests.length > 0 ? recentReceivedRequests.map(request => (
-                    <Request request={request}/>)): null
+                    <ReceivedRequest request={request}/>)): null
                   }
                 </Grid.Column>
               </Grid.Row>

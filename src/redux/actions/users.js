@@ -164,4 +164,4 @@ const postingTransaction = (userObject) => {
 }
 
 
-export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile, postingTransaction};
+export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile, postingTransaction };

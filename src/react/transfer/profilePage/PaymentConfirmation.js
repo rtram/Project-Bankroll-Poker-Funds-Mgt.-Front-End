@@ -77,7 +77,7 @@ class PaymentConfirmation extends Component {
     })
   }
 
-  // RETURNS UPDATED BALANCE AS THE DIFF OF OLD BALANCE - WITHDRAWAL
+  // RETURNS UPDATED BALANCE AS THE DIFF OF OLD BALANCE - PAYMENT
   calculateTotal = () => {
     let balance = this.props.balance
     if (isNaN(balance)) {
