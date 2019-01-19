@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Divider, Header, Button } from 'semantic-ui-react'
 
-import { completingTransaction } from '../../redux/actions/requests'
+import { completingTransaction, deletingRequest } from '../../redux/actions/requests'
 import { updatingUserBalance, updatingRecipientBalance } from '../../redux/actions/balances'
 
 class ReceivedRequest extends Component {
@@ -30,8 +30,11 @@ class ReceivedRequest extends Component {
       amount: this.props.request.amount,
       date: this.formatDate()
     }
-    this.props.completingTransaction(transactionObject)
+    this.props.completingTransaction(transactionObject, this.props.request)
+  }
 
+  handleCancel = () => {
+    this.props.deletingRequest(this.props.request)
   }
 
   // RETURNS THE PRESENT DAY IN PROPER FORMAT
@@ -68,6 +71,7 @@ class ReceivedRequest extends Component {
         <Header as='h4'>{this.props.request.amount}</Header>
         <p>{this.props.request.message}</p>
         <Button onClick={this.handleComplete}>Complete</Button>
+        <Button onClick={this.handleCancel}>Reject</Button>
         <Divider />
       </Container>
     )
@@ -81,4 +85,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { completingTransaction, updatingUserBalance, updatingRecipientBalance })(ReceivedRequest)
+export default connect(mapStateToProps, { completingTransaction, updatingUserBalance, updatingRecipientBalance, deletingRequest })(ReceivedRequest)

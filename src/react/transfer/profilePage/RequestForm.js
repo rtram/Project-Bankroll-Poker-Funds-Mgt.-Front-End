@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updatingUserBalance, updatingRecipientBalance } from '../../../redux/actions/balances.js'
-import { postingTransaction } from '../../../redux/actions/users.js'
+
+import { postingRequest } from '../../../redux/actions/requests.js'
 
 import { Button, Modal, Input } from 'semantic-ui-react'
 
-class PaymentConfirmation extends Component {
+class RequestForm extends Component {
   constructor() {
     super()
     this.state = {
@@ -23,31 +23,17 @@ class PaymentConfirmation extends Component {
     })
   }
 
-  handlePayment = () => {
-    let currentUserBalanceObject = {
-      id: this.props.currentUser,
-      balance: this.calculateTotal()
-    }
+  handleRequest = () => {
 
-    let recipientBalance = parseFloat(this.props.selectedProfile.balance) + parseFloat(this.state.amount)
-
-    let recipientBalanceObject = {
-      id: this.props.selectedProfile.id,
-      balance: recipientBalance
-    }
-
-    this.props.updatingUserBalance(currentUserBalanceObject)
-    this.props.updatingRecipientBalance(recipientBalanceObject)
-
-    let transactionObject = {
-      sender_id: this.props.currentUser,
-      recipient_id: this.props.selectedProfile.id,
+    let requestObject = {
+      requestor_id: this.props.currentUser,
+      requestee_id: this.props.selectedProfile.id,
       message: this.state.message,
       amount: this.state.amount,
       date: this.formatDate()
     }
 
-    this.props.postingTransaction(transactionObject)
+    this.props.postingRequest(requestObject)
 
     this.resetState()
     this.handleToggle()
@@ -87,16 +73,16 @@ class PaymentConfirmation extends Component {
     if (isNaN(payment) || payment === '') {
       payment = 0
     }
-    let newTotal = parseFloat(balance) - parseFloat(payment)
+    let newTotal = parseFloat(balance) + parseFloat(payment)
     return newTotal
   }
 
   render() {
     return(
       <Modal open={this.state.open} size='large' trigger={
-        <Button onClick={this.handleToggle}color='blue' style={{width:'200px'}}>Pay</Button>
+        <Button onClick={this.handleToggle}color='blue' style={{width:'200px'}}>Request</Button>
       }>
-        <Modal.Header>Pay {this.props.selectedProfile.first_name}</Modal.Header>
+        <Modal.Header>Request {this.props.selectedProfile.first_name}</Modal.Header>
         <Modal.Content>
           <Input
             onChange={this.handleChange}
@@ -117,10 +103,10 @@ class PaymentConfirmation extends Component {
             name='message'
             value={this.state.message}
           />
-          Paying {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
+          Requesting {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
         </Modal.Content>
         <Modal.Actions>
-          <Button color='green' onClick={this.handlePayment}>Pay</Button>
+          <Button color='green' onClick={this.handleRequest}>Request</Button>
           <Button color='grey' onClick={this.handleToggle}>Cancel</Button>
         </Modal.Actions>
       </Modal>
@@ -136,4 +122,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updatingUserBalance, updatingRecipientBalance, postingTransaction })(PaymentConfirmation)
+export default connect(mapStateToProps, { postingRequest })(RequestForm)

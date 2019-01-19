@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Divider, Header, Button } from 'semantic-ui-react'
 
-import { completingTransaction } from '../../redux/actions/users'
+import { deletingRequest } from '../../redux/actions/requests'
 
 class SentRequest extends Component {
 
   handleCancel = () => {
+    this.props.deletingRequest(this.props.request)
   }
 
   render() {
@@ -30,4 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { })(SentRequest)
+export default connect(mapStateToProps, { deletingRequest })(SentRequest)

@@ -141,6 +141,14 @@ const sentRequestsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
       return action.payload.sent_requests
+    case "POSTED_REQUEST":
+      return [...state, action.payload]
+    case 'DELETED_REQUEST':
+      let originalRequest = state.find(request => request.id === action.payload.id)
+      let index = state.indexOf(originalRequest)
+      let requestCopy = [...state]
+      requestCopy.splice(index, 1)
+      return requestCopy
     default:
       return state
   }
@@ -150,6 +158,12 @@ const receivedRequestsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
       return action.payload.received_requests
+    case 'DELETED_REQUEST':
+      let originalRequest = state.find(request => request.id === action.payload.id)
+      let index = state.indexOf(originalRequest)
+      let requestCopy = [...state]
+      requestCopy.splice(index, 1)
+      return requestCopy
     default:
       return state
   }

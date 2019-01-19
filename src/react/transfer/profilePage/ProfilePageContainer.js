@@ -4,7 +4,8 @@ import { Button } from 'semantic-ui-react'
 import { clearSelectedProfile } from '../../../redux/actions/users.js'
 import TransferHistoryContainer from '../transfercontainer/TransferHistoryContainer.js'
 import ProfileInformation from './ProfileInformation'
-import PaymentConfirmation from './PaymentConfirmation'
+import PayForm from './PayForm'
+import RequestForm from './RequestForm'
 
 class ProfilePageContainer extends Component {
 
@@ -16,7 +17,8 @@ class ProfilePageContainer extends Component {
     return(
       <div>
         <Button onClick={this.handleClear}> Back </Button>
-        <PaymentConfirmation />
+        <PayForm />
+        <RequestForm />
         <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
         <TransferHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
       </div>
