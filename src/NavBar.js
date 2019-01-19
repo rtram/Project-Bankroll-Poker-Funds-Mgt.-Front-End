@@ -5,9 +5,14 @@ import {
   Dropdown,
   Image,
   Menu,
+  Button
 } from 'semantic-ui-react'
 
 class NavBar extends Component {
+
+  handleLogout = () => {
+    localStorage.clear()
+  }
 
   render() {
     return(
@@ -60,9 +65,16 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item position='right'>
+            {localStorage.getItem('token') ?
+            <Link to='/home'>
+              <Button onClick={this.handleLogout}>
+                Logout
+              </Button>
+            </Link>:
             <Link to='/login'>
               Login
             </Link>
+            }
           </Menu.Item>
         </Container>
       </Menu>

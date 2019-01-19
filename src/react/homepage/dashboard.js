@@ -15,7 +15,8 @@ import SessionContainer from './sessioncontainer/SessionContainer'
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.fetchingSessions(this.props.currentUser)
+    this.props.fetchingSessions(localStorage.getItem('currentUser'))
+
   }
 
 
@@ -163,7 +164,6 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser,
     sessions: state.sessions
   }
 }

@@ -27,7 +27,7 @@ class App extends Component {
           <Container text style={{ marginTop: '7em' }}>
           <Switch>
             <Route exact path='/login' render={() => {
-                if (Number.isInteger(this.props.currentUser)) {
+                if (localStorage.getItem('token')) {
                   return <Redirect to='/dashboard' />
                 } else {
                   return <Login />
@@ -37,42 +37,42 @@ class App extends Component {
               return <CasinoMap />
             }} />
             <Route path='/signup' render={props => {
-              if (Number.isInteger(this.props.currentUser)) {
+              if (localStorage.getItem('token')) {
                 return <Redirect to='/dashboard' />
               } else {
               return <SignUp />
               }
             }} />
             <Route exact path='/dashboard' render={() => {
-              if (Number.isInteger(this.props.currentUser)) {
+              if (localStorage.getItem('token')) {
                 return <Dashboard />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
             <Route path='/transferhome' render={() => {
-              if (Number.isInteger(this.props.currentUser)) {
+              if (localStorage.getItem('token')) {
                 return <TransferHome />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
             <Route path='/bank' render={() => {
-              if (Number.isInteger(this.props.currentUser)) {
+              if (localStorage.getItem('token')) {
                 return <Bank />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
             <Route path='/transferform' render={() => {
-              if (Number.isInteger(this.props.currentUser)) {
+              if (localStorage.getItem('token')) {
                 return <TransferForm />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
             <Route path='/inbox' render={() => {
-              if (Number.isInteger(this.props.currentUser)) {
+              if (localStorage.getItem('token')) {
                 return <InboxContainer />
               } else {
                 return <Redirect to='/login' />

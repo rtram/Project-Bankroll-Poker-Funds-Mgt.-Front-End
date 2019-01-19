@@ -6,7 +6,7 @@ import { fetchingUserBalances } from '../../redux/actions/users.js'
 
 class TransferHome extends Component {
   componentDidMount() {
-    this.props.fetchingUserBalances(this.props.currentUser)
+    this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
 
   render() {

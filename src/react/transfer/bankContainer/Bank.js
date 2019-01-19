@@ -7,7 +7,7 @@ import Withdraw from './Withdraw.js'
 
 class Bank extends Component {
   componentDidMount() {
-    this.props.fetchingUserBalances(this.props.currentUser)
+    this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
 
   render() {

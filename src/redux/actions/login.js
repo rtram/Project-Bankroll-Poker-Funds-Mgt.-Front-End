@@ -2,6 +2,7 @@ const URL = 'http://localhost:3001/api/v1/login%20'
 
 const loggedIn = (data) => {
   localStorage.setItem('token', data.jwt)
+  localStorage.setItem('currentUser', data.user)
   return {
     type:"LOGGED_IN",
     payload: data

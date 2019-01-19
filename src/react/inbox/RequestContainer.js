@@ -35,15 +35,17 @@ class RequestContainer extends Component {
             <Grid celled='internally' columns='equal' stackable>
               <Grid.Row textAlign='center'>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
-                  SENT REQUESTS
+                  <Header as='h4'>SENT REQUESTS</Header>
+                  <br />
                   {recentSentRequests.length > 0 ? recentSentRequests.map(request => (
-                    <SentRequest request={request}/>)): null
+                    <SentRequest request={request}/>)): 'Nothing to See Here'
                   }
                 </Grid.Column>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
-                  RECEIVED REQUESTS
+                  <Header as='h4'>RECEIVED REQUESTS</Header>
+                  <br />
                   {recentReceivedRequests.length > 0 ? recentReceivedRequests.map(request => (
-                    <ReceivedRequest request={request}/>)): null
+                    <ReceivedRequest request={request}/>)): 'Nothing to See Here'
                   }
                 </Grid.Column>
               </Grid.Row>

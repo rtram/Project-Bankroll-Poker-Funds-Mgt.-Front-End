@@ -7,7 +7,7 @@ import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/u
 
 class TransferForm extends Component {
   componentDidMount() {
-    this.props.fetchingUserBalances(this.props.currentUser)
+    this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
     this.props.fetchingUserList()
   }
 
