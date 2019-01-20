@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './Dashboard.css';
-import { Container, Grid, Header, Icon } from 'semantic-ui-react'
+import { Container, Grid, Header, Icon, Divider } from 'semantic-ui-react'
 
 import { fetchingSessions } from '../../redux/actions/users.js'
 
@@ -154,47 +154,22 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <Container
-          style={{
-            marginTop: '15em',
-          }}
-        >
+        <Container style={{ marginTop: '15em' }}>
           <Header as='h1'>Welcome Back Container</Header>
         </Container>
-        <Grid
-          style={{
-            marginTop: '5em',
-          }}
-          columns={2}
-        >
+        <Grid style={{ marginTop: '5em' }} columns={2}>
           <Grid.Row>
             <Grid.Column width={8}>
-            <Header
-              style={{
-                textDecoration: 'underline'
-              }}
-              as='h1'
-              icon
-            >
+            <Header style={{}} as='h1' icon >
               <Icon name='chart line'/>
               Performance
             </Header>
             <p>This detailed graph shows how you have been performing over a period time.  Use the buttons beneath to see the peaks and valleys of your poker career!</p>
             {this.props.sessions ? <OverTime labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
             </Grid.Column>
-            <Grid.Column
-              style={{
-                marginRight: '3em'
-              }}
-              width={7}
-            >
-            <Header
-            style={{
-              textDecoration: 'underline'
-            }}
-            as='h1'
-            icon
-            >
+
+            <Grid.Column style={{ marginRight: '3em'}} width={7}>
+            <Header style={{}} as='h1' icon>
               <Icon name='percent' />
               Win Rate
             </Header>
@@ -202,6 +177,7 @@ class Dashboard extends Component {
               <WinningPercentage data={this.winLossPercentage()}/> : null}
             </Grid.Column>
           </Grid.Row>
+          <Divider/>
           <Grid.Row>
             <Container
               style={{
@@ -211,6 +187,7 @@ class Dashboard extends Component {
             {this.props.sessions ? <Hourly data={this.hourlyCalculator()}/> : null}
             </Container>
           </Grid.Row>
+          <Divider/>
           <Grid.Row>
             <SessionContainer />
           </Grid.Row>

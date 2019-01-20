@@ -18,7 +18,7 @@ const HomepageHeading = ({ mobile }) => (
       style={{
         color: 'black',
         fontSize: mobile ? '2em' : '4em',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         marginBottom: 0,
         marginTop: mobile ? '1.5em' : '1.8em',
         paddingTop: '1em'
@@ -26,7 +26,7 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as='h2'
-      content="Started from the Bottom, Now We're Here"
+      content="We are here to help you start from nothing."
       inverted
       style={{
         color: 'black',
@@ -35,7 +35,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
     />
-    <Button size='huge' color='black'>
+    <Button primary size='huge'>
       Get Started
       <Icon name='right arrow' />
     </Button>

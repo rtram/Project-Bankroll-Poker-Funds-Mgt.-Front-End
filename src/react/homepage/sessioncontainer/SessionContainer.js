@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { Header, Grid, Divider, Icon } from 'semantic-ui-react'
+import { Header, Grid, Icon } from 'semantic-ui-react'
 
 // CONTAINER IMPORTS
 import SessionTable from './SessionTable'
@@ -44,7 +44,6 @@ class SessionContainer extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Divider vertical></Divider>
       </Fragment>
     )
   }
