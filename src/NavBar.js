@@ -20,7 +20,7 @@ class NavBar extends Component {
         <Container>
           <Menu.Item header>
             <Link to='/home'>
-              <Image size='tiny' src='https://i.imgur.com/5ZouFQb.png' style={{  marginRight: '1.5em' }}  />
+              <Image size='tiny' src='https://i.imgur.com/Frwwd8f.png' style={{  marginRight: '1.5em' }}  />
             </Link>
           </Menu.Item>
           <Menu.Item >
