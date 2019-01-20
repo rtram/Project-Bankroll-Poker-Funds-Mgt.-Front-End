@@ -19,13 +19,8 @@ class NavBar extends Component {
       <Menu fixed='top' inverted>
         <Container>
           <Menu.Item header>
-            <Link to='/home'>
-              <Image size='tiny' src='https://i.imgur.com/7LjNOYe.png' style={{  marginRight: '1.5em' }}  />
-            </Link>
-          </Menu.Item>
-          <Menu.Item position='left'>
-            <Link to='/home'>
-              Home
+            <Link to='/'>
+              <Image size='tiny' src='https://i.imgur.com/5ZouFQb.png' style={{  marginRight: '1.5em' }}  />
             </Link>
           </Menu.Item>
           <Menu.Item position='right'>

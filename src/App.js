@@ -4,7 +4,7 @@ import './App.css';
 
 import NavBar from './NavBar.js'
 import Footer from './Footer.js'
-// import Home from './react/home/Home.js'
+import Home from './react/home/Home.js'
 import SignUp from './react/login/SignUp.js'
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
@@ -23,6 +23,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+      <Route exact path='/' render={() => {
+        return <Home />
+      }} />
+
+
         <NavBar />
           <Container text style={{ marginTop: '7em' }}>
           <Switch>
