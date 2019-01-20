@@ -24,13 +24,12 @@ class App extends Component {
     return (
       <div className="App">
 
-      <Route exact path='/' render={() => {
-        return <Home />
-      }} />
-
 
         <NavBar />
-          <Container text style={{ marginTop: '7em' }}>
+          <Route exact path='/home' render={() => {
+            return <Home />
+          }} />
+          <Container className='Container-Text-Style'>
           <Switch>
             <Route exact path='/login' render={() => {
                 if (localStorage.getItem('token')) {

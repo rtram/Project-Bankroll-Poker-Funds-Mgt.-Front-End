@@ -19,21 +19,22 @@ class NavBar extends Component {
       <Menu fixed='top' inverted>
         <Container>
           <Menu.Item header>
-            <Link to='/'>
+            <Link to='/home'>
               <Image size='tiny' src='https://i.imgur.com/5ZouFQb.png' style={{  marginRight: '1.5em' }}  />
             </Link>
           </Menu.Item>
-          <Menu.Item position='right'>
-            <Link to='/dashboard'>
-              Poker Dashboard
-            </Link>
-          </Menu.Item>
-          <Menu.Item position='right'>
+          <Menu.Item >
             <Link to='/map'>
               Casino Map
             </Link>
           </Menu.Item>
-          <Menu.Item position='right'>
+          <Menu.Menu position='right'>
+          <Menu.Item >
+            <Link to='/dashboard'>
+              Poker Dashboard
+            </Link>
+          </Menu.Item>
+          <Menu.Item >
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
                 <Dropdown.Item>
@@ -54,12 +55,12 @@ class NavBar extends Component {
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
-          <Menu.Item position='right'>
+          <Menu.Item >
             <Link to='/inbox'>
               Inbox
             </Link>
           </Menu.Item>
-          <Menu.Item position='right'>
+          <Menu.Item >
             {localStorage.getItem('token') ?
             <Link to='/home'>
               <Button onClick={this.handleLogout}>
@@ -71,6 +72,7 @@ class NavBar extends Component {
             </Link>
             }
           </Menu.Item>
+          </Menu.Menu>
         </Container>
       </Menu>
     )
