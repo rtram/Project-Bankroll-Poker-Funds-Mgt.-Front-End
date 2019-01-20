@@ -4,6 +4,7 @@ import {  } from '../../redux/actions/users.js'
 import GoogleMapReact from 'google-map-react';
 import CasinoCoord from './CasinoCoord'
 import UserCoord from './UserCoord'
+import { Container } from 'semantic-ui-react'
 
 
 class CasinoMap extends Component {
@@ -45,7 +46,11 @@ class CasinoMap extends Component {
   render() {
 
     return(
-      <div style={{ height: '100vh', width: '100%' }}>
+      <Container fluid style={{
+        height: '100vh',
+        width: '100%'
+      }}
+      >
          <GoogleMapReact
            bootstrapURLKeys={{ key: 'AIzaSyB6_LVUdciO-J2Dc40hcm-ow3DPgEUyOFE' }}
            defaultCenter={this.props.center}
@@ -72,7 +77,7 @@ class CasinoMap extends Component {
            <CasinoCoord lat={36.121457} lng={-115.170321} text={'The Venetian'} />
            <CasinoCoord lat={36.124661} lng={-115.171544} text={'Treasure Island'} />
          </GoogleMapReact>
-       </div>
+       </Container>
     )
   }
 }

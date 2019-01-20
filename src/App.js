@@ -29,6 +29,9 @@ class App extends Component {
           <Route exact path='/home' render={() => {
             return <Home />
           }} />
+          <Route path='/map' render={props => {
+            return <CasinoMap />
+          }} />
           <Container className='Container-Text-Style'>
           <Switch>
             <Route exact path='/login' render={() => {
@@ -38,9 +41,6 @@ class App extends Component {
                   return <Login />
                 }
               }} />
-            <Route path='/map' render={props => {
-              return <CasinoMap />
-            }} />
             <Route path='/signup' render={props => {
               if (localStorage.getItem('token')) {
                 return <Redirect to='/dashboard' />

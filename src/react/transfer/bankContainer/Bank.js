@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchingUserBalances } from '../../../redux/actions/users.js'
+import { Container } from 'semantic-ui-react'
 import UserBalance from '../UserBalance'
 import Deposit from './Deposit.js'
 import Withdraw from './Withdraw.js'
@@ -12,11 +13,16 @@ class Bank extends Component {
 
   render() {
     return(
-      <div>
+      <Container
+        style={{
+          marginTop: '10em',
+          marginBottom: '10em'
+        }}
+      >
         <UserBalance />
         <Deposit />
         <Withdraw />
-      </div>
+      </Container>
     )
   }
 }

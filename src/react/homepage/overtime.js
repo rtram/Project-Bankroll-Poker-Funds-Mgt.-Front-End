@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Line } from 'react-chartjs-2'
-import { Button } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
 import './Dashboard.css'
 
 export default class OverTime extends Component {
@@ -91,11 +91,11 @@ export default class OverTime extends Component {
     }
 
     return (
-      <div>
+      <Container >
         {this.state.display === '30 days' ?
           <Line
             data={last30Days.data}
-            width={750}
+            width={700}
             height={500}
             options={{
               title: {
@@ -149,7 +149,7 @@ export default class OverTime extends Component {
         <Button onClick={this.toggle30Days}>30 Days</Button>
         <Button onClick={this.toggle12Weeks}>3 Months</Button>
         <Button onClick={this.toggle12Months}>1 Year</Button>
-      </div>
+      </Container>
     )
   }
 }

@@ -10,9 +10,9 @@ import SessionRow from './SessionRow'
 class SessionTable extends Component {
 
   // RETURNS THE MOST RECENT 10 SESSION OBJECTS
-  recent10Sessions = () => {
+  recent5Sessions = () => {
     let sortedSessionsArr;
-    let last10Sessions;
+    let last5Sessions;
 
     sortedSessionsArr = this.props.sessions.sort((a,b) => {
       let sessionA = new Date(a.date)
@@ -20,8 +20,8 @@ class SessionTable extends Component {
       return sessionB - sessionA
     })
 
-    last10Sessions = sortedSessionsArr.slice(0, 10)
-    return last10Sessions
+    last5Sessions = sortedSessionsArr.slice(0, 5)
+    return last5Sessions
   }
 
   render() {
@@ -40,7 +40,7 @@ class SessionTable extends Component {
           </Table.Header>
 
           <Table.Body>
-            {this.props.sessions ? this.recent10Sessions().map(session => {
+            {this.props.sessions ? this.recent5Sessions().map(session => {
               return (
                 <CSSTransition
                   in={true}

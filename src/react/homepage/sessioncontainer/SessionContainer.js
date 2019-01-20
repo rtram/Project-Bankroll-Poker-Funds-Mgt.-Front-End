@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-import { Header, Grid } from 'semantic-ui-react'
+import { Header, Grid, Divider, Icon } from 'semantic-ui-react'
 
 // CONTAINER IMPORTS
 import SessionTable from './SessionTable'
@@ -10,24 +10,42 @@ class SessionContainer extends Component {
 
   render() {
     return (
-      <Grid>
-        <Grid.Row fluid>
-          <Grid.Column
-            floated='left'
-            width={8}
-          >
-            <Header as='h2'>Track Your Latest Session</Header>
-            <SessionForm />
-          </Grid.Column>
-          <Grid.Column
-            floated='right'
-            width={7}
-          >
-            <Header as='h2'>Session History</Header>
-            <SessionTable />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Fragment>
+        <Grid
+          style={{
+            marginBottom: '5em'
+          }}
+        >
+          <Grid.Row fluid>
+            <Grid.Column
+              floated='left'
+              width={8}
+            >
+              <Header as='h1' icon>
+                <Icon name='write square'/>
+                Session Entry
+              </Header>
+              <p>Enter information about your most recent session, or a session you forgot about in the past here.</p>
+              <SessionForm />
+            </Grid.Column>
+            <Grid.Column
+              style={{
+                marginRight: '3em'
+              }}
+              floated='right'
+              width={7}
+            >
+              <Header as='h1' icon>
+                <Icon name='history'/>
+                Session History
+              </Header>
+              <p>How have you performed the last 5 sessions?</p>
+              <SessionTable />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <Divider vertical></Divider>
+      </Fragment>
     )
   }
 

@@ -8,6 +8,7 @@
     "google-map-react": "^1.1.2",
     "moment": "^2.23.0",
     "react": "^16.7.0",
+    "react-bootstrap": "^0.32.4",
     "react-browser-router": "^2.1.2",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.7.0",

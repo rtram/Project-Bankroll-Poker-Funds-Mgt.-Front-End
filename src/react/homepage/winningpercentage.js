@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { Header } from 'semantic-ui-react'
 import './Dashboard.css'
 
 export default class WinningPercentage extends Component {
@@ -38,7 +39,7 @@ export default class WinningPercentage extends Component {
 
     return (
       <div>
-        {this.props.data ? <div>You win {parseInt(winningPercentage * 100)}% of the time</div> : null}
+        {this.props.data ? <Header as='h2'>You win {parseInt(winningPercentage * 100)}% of the sessions you play.</Header> : null}
         <Doughnut
           data={dataObject.data}
           width={300}
@@ -50,7 +51,7 @@ export default class WinningPercentage extends Component {
               fontsize: 200
             },
             legend: {
-              display: false,
+              display: true,
               position: "bottom"
             }
           }}

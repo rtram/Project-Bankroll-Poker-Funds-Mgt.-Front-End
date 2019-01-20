@@ -4,7 +4,7 @@ import Terms from './Terms.js'
 
 import { creatingUser } from '../../redux/actions/users.js'
 
-import { Form, Button, Checkbox, Header } from 'semantic-ui-react'
+import { Form, Button, Checkbox, Header, Container } from 'semantic-ui-react'
 
 class SignUp extends Component {
   constructor() {
@@ -77,6 +77,10 @@ class SignUp extends Component {
 
     return (
       <Fragment>
+        <Container style={{
+          marginTop: '15em'
+          }}
+        >
         <Header as='h1'>Sign Up</Header>
         {this.props.errors ? <p style={{color: 'red'}}>{this.props.errors.errors}</p> : null}
         <Form onSubmit={this.onSubmit}>
@@ -139,6 +143,7 @@ class SignUp extends Component {
           </Form.Field>
           {this.state.signup ? <Button onClick={this.onSubmit}>Sign Up</Button> : <Button disabled>Sign Up</Button>}
         </Form>
+        </Container>
       </Fragment>
     )
   }

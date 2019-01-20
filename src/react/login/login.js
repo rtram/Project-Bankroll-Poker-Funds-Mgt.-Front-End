@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Icon, Message, Segment, Container } from 'semantic-ui-react'
 import { loggingIn } from '../../redux/actions/login.js'
 import { withRouter, Link } from 'react-router-dom'
 
@@ -35,22 +35,15 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='login-form'>
-        {/*
-          Heads up! The styles below are necessary for the correct render of this example.
-          You can do same with CSS, the main idea is that all the elements up to the `Grid`
-          below must have a height of 100%.
-        */}
-        <style>{`
-          body > div,
-          body > div > div,
-          body > div > div > div.login-form {
-            height: 100%;
-          }
-        `}</style>
+      <Container
+        style={{
+          marginTop: '15em',
+          marginBottom: '15em'
+        }}
+      >
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='teal' textAlign='center'>
+            <Header as='h2' color='blue' textAlign='center'>
               <Icon name='sign-in' /> Log-in to your account
             </Header>
             {this.props.loginError.length > 0 ? <Header as='h4' color='red' textAlign='center'>
@@ -79,7 +72,7 @@ class Login extends Component {
                   value={this.state.password}
                 />
 
-                <Button onClick={this.handleLogin} color='teal' fluid size='large'>
+                <Button onClick={this.handleLogin} color='blue' fluid size='large'>
                   Login
                 </Button>
               </Segment>
@@ -89,7 +82,7 @@ class Login extends Component {
             </Message>
           </Grid.Column>
         </Grid>
-      </div>
+      </Container>
     )
   }
 }

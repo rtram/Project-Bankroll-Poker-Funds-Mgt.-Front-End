@@ -23,6 +23,7 @@ const fetchingSessions = (user_id) => {
 }
 
 const postedSession = data => {
+  debugger
   return {
     type: 'POST_SESSION',
     payload: data

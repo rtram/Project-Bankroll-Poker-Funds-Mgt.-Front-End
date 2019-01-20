@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Container } from 'semantic-ui-react'
 import UserBalance from '../UserBalance'
 import UserList from './UserList'
 import ProfilePageContainer from '../profilePage/ProfilePageContainer'
@@ -14,14 +15,24 @@ class TransferForm extends Component {
   render() {
     return(
       this.props.selectedProfile.length === 0 ?
-      <div>
+      <Container
+        style={{
+          marginTop: '10em',
+          marginBottom: '10em'
+        }}
+      >
         <UserBalance />
         Pay Or Request Money
         <UserList />
-      </div> :
-      <div>
+      </Container> :
+      <Container
+        style={{
+          marginTop: '10em',
+          marginBottom: '10em'
+        }}
+      >
         <ProfilePageContainer />
-      </div>
+      </Container>
     )
   }
 }

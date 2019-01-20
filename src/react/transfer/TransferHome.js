@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import TransferHistoryContainer from './transfercontainer/TransferHistoryContainer.js'
 import UserBalance from './UserBalance'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
+import { Grid } from 'semantic-ui-react'
 
 class TransferHome extends Component {
   componentDidMount() {
@@ -11,10 +12,15 @@ class TransferHome extends Component {
 
   render() {
     return(
-      <div>
+      <Grid
+        style={{
+          marginTop: '10em',
+          marginBottom: '10em'
+        }}
+      >
         <UserBalance />
         <TransferHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
-      </div>
+      </Grid>
     )
   }
 }
