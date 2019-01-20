@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import './Dashboard.css'
 
 export default class WinningPercentage extends Component {
 
@@ -40,8 +41,8 @@ export default class WinningPercentage extends Component {
         {this.props.data ? <div>You win {parseInt(winningPercentage * 100)}% of the time</div> : null}
         <Doughnut
           data={dataObject.data}
-          width={750}
-          height={500}
+          width={300}
+          height={200}
           options={{
             title: {
               text: 'Session Winning Percentage',

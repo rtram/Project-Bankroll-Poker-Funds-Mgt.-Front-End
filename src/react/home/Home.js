@@ -5,18 +5,9 @@ import {
   Container,
   Header,
   Icon,
-  Image,
-  Responsive,
-  Segment
 } from 'semantic-ui-react'
 
 import './Home.css'
-
-const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
-
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
 
 const HomepageHeading = ({ mobile }) => (
   <Container >
@@ -44,7 +35,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
     />
-    <Button size='huge' color='teal'>
+    <Button size='huge' color='black'>
       Get Started
       <Icon name='right arrow' />
     </Button>

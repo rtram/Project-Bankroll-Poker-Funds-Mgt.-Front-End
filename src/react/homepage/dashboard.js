@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './Dashboard.css';
+import { Container, Grid } from 'semantic-ui-react'
 
 import { fetchingSessions } from '../../redux/actions/users.js'
 
@@ -153,10 +154,30 @@ class Dashboard extends Component {
 
     return (
       <div>
-        {this.props.sessions ? <OverTime labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
-        {this.props.sessions ? <WinningPercentage data={this.winLossPercentage()}/> : null}
-        {this.props.sessions ? <Hourly data={this.hourlyCalculator()}/> : null}
-        <SessionContainer />
+        <Container className='welcome-container'>
+          Welcome Back Container
+        </Container >
+        <Grid
+          style={{
+            marginTop: '5em'
+          }}
+          columns={2}
+        >
+          <Grid.Row>
+            <Grid.Column>
+            {this.props.sessions ? <OverTime labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
+            </Grid.Column>
+            <Grid.Column>
+            {this.props.sessions ? <WinningPercentage data={this.winLossPercentage()}/> : null}
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            {this.props.sessions ? <Hourly data={this.hourlyCalculator()}/> : null}
+          </Grid.Row>
+          <Grid.Row>
+            <SessionContainer />
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }

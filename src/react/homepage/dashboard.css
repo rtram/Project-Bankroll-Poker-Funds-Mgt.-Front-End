@@ -1,3 +1,30 @@
+.welcome-container {
+  margin-top: 15em;
+}
+
+.graph-container {
+  width: 75%;
+  margin-top: 15em;
+  margin: auto;
+}
+
+
+.line-graph {
+  float: left;
+  margin-top: 15em;
+}
+
+.doughnut-graph {
+  float: right;
+  margin-top: 15em;
+}
+
+
+
+
+
+
+
 .fade-appear {
   opacity: 0;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container, Header } from 'semantic-ui-react'
+import { Header, Grid } from 'semantic-ui-react'
 
 // CONTAINER IMPORTS
 import SessionTable from './SessionTable'
@@ -10,13 +10,24 @@ class SessionContainer extends Component {
 
   render() {
     return (
-      <div>
-        <Container fluid>
-        <Header as='h2'>Sessions History</Header>
-          <SessionForm />
-          <SessionTable />
-        </Container>
-      </div>
+      <Grid>
+        <Grid.Row fluid>
+          <Grid.Column
+            floated='left'
+            width={8}
+          >
+            <Header as='h2'>Track Your Latest Session</Header>
+            <SessionForm />
+          </Grid.Column>
+          <Grid.Column
+            floated='right'
+            width={7}
+          >
+            <Header as='h2'>Session History</Header>
+            <SessionTable />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
 
