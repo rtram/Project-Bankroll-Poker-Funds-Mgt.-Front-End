@@ -22,7 +22,6 @@ class TransferHistoryContainer extends Component {
   }
 
   render() {
-
     return (
       <div >
         <Container fluid>

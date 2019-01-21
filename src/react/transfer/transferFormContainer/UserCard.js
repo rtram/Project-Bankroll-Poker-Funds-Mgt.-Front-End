@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Card, Icon, Button, Grid, Image } from 'semantic-ui-react'
-import { fetchingSelectedProfile } from '../../../redux/actions/users.js'
 
 class UserCard extends Component {
-
-  handleClick = () => {
-    this.props.fetchingSelectedProfile(this.props.user)
-  }
 
   render() {
     return(
@@ -28,7 +24,9 @@ class UserCard extends Component {
             <Card.Description></Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <Button onClick={this.handleClick}>Profile</Button>
+            <Link to={`/user/${this.props.user.id}`}>
+              <Button onClick={this.handleClick}>Profile</Button>
+            </Link>
           </Card.Content>
         </Card>
       </Grid.Column>
@@ -36,4 +34,4 @@ class UserCard extends Component {
   }
 }
 
-export default connect(null, { fetchingSelectedProfile })(UserCard);
+export default connect(null, { })(UserCard);

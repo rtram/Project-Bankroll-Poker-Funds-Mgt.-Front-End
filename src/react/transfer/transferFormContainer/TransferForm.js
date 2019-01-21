@@ -14,7 +14,6 @@ class TransferForm extends Component {
 
   render() {
     return(
-      this.props.selectedProfile.length === 0 ?
       <Container
         style={{
           marginTop: '10em',
@@ -23,24 +22,9 @@ class TransferForm extends Component {
       >
         <UserBalance />
         <UserList />
-      </Container> :
-      <Container
-        style={{
-          marginTop: '10em',
-          marginBottom: '10em'
-        }}
-      >
-        <ProfilePageContainer />
       </Container>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.currentUser,
-    selectedProfile: state.selectedProfile
-  }
-}
-
-export default connect(mapStateToProps, { fetchingUserList, fetchingUserBalances })(TransferForm);
+export default connect(null, { fetchingUserList, fetchingUserBalances })(TransferForm);

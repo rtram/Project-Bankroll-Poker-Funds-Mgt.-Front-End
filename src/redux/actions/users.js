@@ -114,14 +114,14 @@ const fetchedSelectedProfile = (data) => {
   }
 }
 
-const fetchingSelectedProfile = (userObject) => {
+const fetchingSelectedProfile = (id) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch(`${URL}/${userObject.id}`, {
+    fetch(`${URL}/${id}`, {
       method: 'GET',
       headers: {
         "Authentication" : `Bearer ${token}`,
-        "selectedProfile": `${userObject.id}`
+        "selectedProfile": `${id}`
       }
     })
     .then(res => res.json())
@@ -158,6 +158,7 @@ const postingTransaction = (userObject) => {
     })
     .then(res => res.json())
     .then(data => {
+      debugger
       dispatch(postedTransaction(data))
     })
   }

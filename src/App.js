@@ -13,6 +13,7 @@ import Bank from './react/transfer/bankContainer/Bank.js'
 import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 import InboxContainer from './react/inbox/InboxContainer.js'
+import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
@@ -72,6 +73,14 @@ class App extends Component {
             <Route path='/transferform' render={() => {
               if (localStorage.getItem('token')) {
                 return <TransferForm />
+              } else {
+                return <Redirect to='/login' />
+              }
+            }}/>
+            <Route path='/user/:id' render={props => {
+              let id = props.match.params.id
+              if (localStorage.getItem('token')) {
+                return <ProfilePageContainer id={id}/>
               } else {
                 return <Redirect to='/login' />
               }

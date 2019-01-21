@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-import { clearSelectedProfile } from '../../../redux/actions/users.js'
+import { fetchingSelectedProfile, fetchingUserBalances } from '../../../redux/actions/users.js'
 import TransferHistoryContainer from '../transfercontainer/TransferHistoryContainer.js'
 import ProfileInformation from './ProfileInformation'
 import PayForm from './PayForm'
 import RequestForm from './RequestForm'
+import { Container } from 'semantic-ui-react'
 
 class ProfilePageContainer extends Component {
-
-  handleClear = () =>{
-    this.props.clearSelectedProfile()
+  componentDidMount() {
+    this.props.fetchingSelectedProfile(this.props.id)
+    this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
 
   render() {
     return(
-      <div>
+      this.props.selectedProfile ?
+      <Container
+        style={{
+          marginTop: '15em'
+        }}
+      >
         <Button onClick={this.handleClear}> Back </Button>
         <PayForm />
         <RequestForm />
         <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
-        <TransferHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
-      </div>
+        <TransferHistoryContainer sent_transactions={this.props.selectedProfile.sent_transactions} received_transactions={this.props.selectedProfile.received_transactions} />
+      </Container>:
+      null
     )
   }
 }
@@ -29,10 +36,8 @@ class ProfilePageContainer extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    sent_transactions: state.selectedProfile[0].sent_transactions,
-    received_transactions: state.selectedProfile[0].received_transactions,
     selectedProfile: state.selectedProfile[0]
   }
 }
 
-export default connect(mapStateToProps, { clearSelectedProfile })(ProfilePageContainer);
+export default connect(mapStateToProps, { fetchingSelectedProfile, fetchingUserBalances })(ProfilePageContainer);

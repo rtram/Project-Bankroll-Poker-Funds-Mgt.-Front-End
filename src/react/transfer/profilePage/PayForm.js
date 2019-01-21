@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updatingUserBalance, updatingRecipientBalance } from '../../../redux/actions/balances.js'
+import { updatingUserBalance, updatingRecipientBalance} from '../../../redux/actions/balances.js'
 import { postingTransaction } from '../../../redux/actions/users.js'
 
 import { Button, Modal, Input } from 'semantic-ui-react'
@@ -25,7 +25,7 @@ class PayForm extends Component {
 
   handlePayment = () => {
     let currentUserBalanceObject = {
-      id: this.props.currentUser,
+      id: localStorage.getItem('currentUser'),
       balance: this.calculateTotal()
     }
 
@@ -40,7 +40,7 @@ class PayForm extends Component {
     this.props.updatingRecipientBalance(recipientBalanceObject)
 
     let transactionObject = {
-      sender_id: this.props.currentUser,
+      sender_id: localStorage.getItem('currentUser'),
       recipient_id: this.props.selectedProfile.id,
       message: this.state.message,
       amount: this.state.amount,
