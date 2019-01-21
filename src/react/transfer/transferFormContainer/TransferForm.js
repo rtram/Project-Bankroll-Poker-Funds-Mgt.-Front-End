@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 import UserBalance from '../UserBalance'
 import UserList from './UserList'
-import ProfilePageContainer from '../profilePage/ProfilePageContainer'
 import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
 
 class TransferForm extends Component {

@@ -5,7 +5,6 @@ import {
   Divider,
   Header,
   Image,
-  List,
   Segment,
 } from 'semantic-ui-react'
 

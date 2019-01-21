@@ -29,7 +29,7 @@ class UserList extends Component {
     let filteredList;
 
     filteredList = this.props.userList.filter(userObject => {
-      if (userObject.username.toLowerCase().includes(this.state.search) || userObject.first_name.toLowerCase().includes(this.state.search) || userObject.last_name.toLowerCase().includes(this.state.search)) {
+      if (userObject.username.toLowerCase().includes(this.state.search.toLowerCase()) || userObject.first_name.toLowerCase().includes(this.state.search.toLowerCase()) || userObject.last_name.toLowerCase().includes(this.state.search.toLowerCase())) {
         return true
       } else {
         return false

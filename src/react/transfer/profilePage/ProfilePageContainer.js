@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { fetchingSelectedProfile, fetchingUserBalances } from '../../../redux/actions/users.js'
@@ -19,14 +20,21 @@ class ProfilePageContainer extends Component {
       this.props.selectedProfile ?
       <Container
         style={{
-          marginTop: '15em'
+          marginTop: '10em'
         }}
       >
-        <Button onClick={this.handleClear}> Back </Button>
+        <Button
+          style={{
+            marginBottom: '5em'
+          }}
+        >
+          <Link to='/transferform'>Back to User List</Link>
+        </Button>
+        <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
         <PayForm />
         <RequestForm />
-        <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
-        <TransferHistoryContainer sent_transactions={this.props.selectedProfile.sent_transactions} received_transactions={this.props.selectedProfile.received_transactions} />
+        <TransferHistoryContainer
+         sent_transactions={this.props.selectedProfile.sent_transactions} received_transactions={this.props.selectedProfile.received_transactions} />
       </Container>:
       null
     )
