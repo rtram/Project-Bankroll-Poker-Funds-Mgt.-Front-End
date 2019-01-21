@@ -155,7 +155,7 @@ class Dashboard extends Component {
     return (
       <div>
         <Container style={{ marginTop: '15em' }}>
-          <Header as='h1'>Welcome Back Container</Header>
+          <Header as='h1'>Welcome Back!</Header>
         </Container>
         <Grid style={{ marginTop: '5em' }} columns={2}>
           <Grid.Row>

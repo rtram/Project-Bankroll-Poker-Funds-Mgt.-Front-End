@@ -76,6 +76,25 @@ class CasinoMap extends Component {
            <CasinoCoord lat={36.112418} lng={-115.175259} text={'Bellagio'} />
            <CasinoCoord lat={36.121457} lng={-115.170321} text={'The Venetian'} />
            <CasinoCoord lat={36.124661} lng={-115.171544} text={'Treasure Island'} />
+           <CasinoCoord lat={36.051977} lng={-114.994780} text={"Joker's Wild Casino"} />
+           <CasinoCoord lat={36.102634} lng={-115.171986} text={"MGM Grand"} />
+           <CasinoCoord lat={36.116099} lng={-115.174316} text={"Caesar's Palace"} />
+           <CasinoCoord lat={36.171064} lng={-115.142809} text={"Fremont Hotel & Casino"} />
+           <CasinoCoord lat={36.116451} lng={-115.187549} text={"Rio All-Suites Hotel and Casino"} />
+           <CasinoCoord lat={36.111915} lng={-115.171310} text={"Paris Las Vegas Casino"} />
+           <CasinoCoord lat={36.099522} lng={-115.171490} text={"Tropicana Las Vegas"} />
+           <CasinoCoord lat={36.101603} lng={-115.174486} text={"New York New York Casino"} />
+           <CasinoCoord lat={36.126654} lng={-115.165964} text={"The Wynn"} />
+           <CasinoCoord lat={36.147022} lng={-115.155816} text={"Stratosphere"} />
+           <CasinoCoord lat={36.110040} lng={-115.172512} text={"Planet Hollywood"} />
+           <CasinoCoord lat={36.121003} lng={-115.173552} text={"Mirage"} />
+           <CasinoCoord lat={36.092285} lng={-115.174505} text={"Mandalay Bay"} />
+           <CasinoCoord lat={36.095536} lng={-115.174758} text={"Luxor"} />
+           <CasinoCoord lat={36.118519} lng={-115.171442} text={"Linq"} />
+           <CasinoCoord lat={36.119863} lng={-115.171124} text={"Harrah's"} />
+           <CasinoCoord lat={36.115570} lng={-115.171321} text={"Flamingo"} />
+           <CasinoCoord lat={36.099526} lng={-115.174550} text={"Excalibur"} />
+
          </GoogleMapReact>
        </Container>
     )

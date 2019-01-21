@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Container, Search, Header, Icon } from 'semantic-ui-react'
+import { Grid, Search, Header, Icon, Container } from 'semantic-ui-react'
 import UserCard from './UserCard.js'
 
 class UserList extends Component {
@@ -44,21 +44,41 @@ class UserList extends Component {
   render() {
     return(
       <Fragment>
-        <Search onSearchChange={this.handleChange} open={false} loading={this.state.loading} onKeyDown={this.toggleLoading} onKeyUp={this.toggleLoading}/>
-        <Container>
-          People You Might Know
-          <br />
+        <Container
+          style={{
+            marginTop: '5em'
+          }}
+        >
           {this.state.filteredList.length === 0 && this.state.search.length > 0 ?
             <Header as ='h4' style={{ color: 'red' }}>
               <Icon name='close'/>
               No Person Found With That Username/Name'
             </Header>
             : null}
-          {this.state.filteredList.length > 0 ? this.state.filteredList.map(user => (
-            <UserCard user={user} />
-          )) : this.props.userList.map(user => (
-            <UserCard user={user} />
-          ))}
+          <Search
+            onSearchChange={this.handleChange}
+            open={false}
+            loading={this.state.loading}
+            onKeyDown={this.toggleLoading}
+            onKeyUp={this.toggleLoading}
+            placeholder='Search People'
+          />
+        </Container>
+        <Container
+          style={{
+            marginTop: '5em'
+          }}
+        >
+          <Header as ='h2'>People You Might Know</Header>
+          <Grid
+            columns={4}
+          >
+            {this.state.filteredList.length > 0 ? this.state.filteredList.map(user => (
+              <UserCard user={user} />
+            )) : this.props.userList.map(user => (
+              <UserCard user={user} />
+            ))}
+          </Grid>
         </Container>
       </Fragment>
     )

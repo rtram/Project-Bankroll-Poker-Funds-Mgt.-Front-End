@@ -26,7 +26,7 @@ class RequestForm extends Component {
   handleRequest = () => {
 
     let requestObject = {
-      requestor_id: this.props.currentUser,
+      requestor_id: localStorage.getItem('currentUser'),
       requestee_id: this.props.selectedProfile.id,
       message: this.state.message,
       amount: this.state.amount,
@@ -116,7 +116,6 @@ class RequestForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser,
     balance: state.balance,
     selectedProfile: state.selectedProfile[0]
   }

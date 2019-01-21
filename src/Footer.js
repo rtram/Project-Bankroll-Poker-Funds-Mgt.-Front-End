@@ -3,7 +3,6 @@ import { } from 'react-router-dom'
 import {
   Container,
   Divider,
-  Grid,
   Header,
   Image,
   List,
@@ -17,21 +16,8 @@ class Footer extends Component {
       <Segment inverted style={{ margin: '0px'}}>
         <Container textAlign='center'>
           <Divider inverted section />
-          <Image centered size='mini' src='/logo.png' />
-          <List horizontal inverted divided link size='small'>
-            <List.Item as='a' href='#'>
-              Site Map
-            </List.Item>
-            <List.Item as='a' href='#'>
-              Contact Us
-            </List.Item>
-            <List.Item as='a' href='#'>
-              Terms and Conditions
-            </List.Item>
-            <List.Item as='a' href='#'>
-              Privacy Policy
-            </List.Item>
-          </List>
+          <Image centered size='mini' src='https://i.imgur.com/Frwwd8f.png' />
+          <Header as='h5' style={{ color:'white'}}>This Application Was Made By Robin Tram</Header>
         </Container>
       </Segment>
     )

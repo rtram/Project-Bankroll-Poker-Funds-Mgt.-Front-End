@@ -22,7 +22,6 @@ class TransferForm extends Component {
         }}
       >
         <UserBalance />
-        Pay Or Request Money
         <UserList />
       </Container> :
       <Container
