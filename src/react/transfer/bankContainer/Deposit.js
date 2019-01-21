@@ -31,37 +31,40 @@ export default class Deposit extends Component {
 
   render() {
     return(
-      <Container>
-        <Segment>
-          <Grid columns={2} relaxed='very'>
-            <Grid.Column>
-              <Header>Account</Header>
-              <Input
-                onChange={this.handleChange}
-                action={{ color: 'green', labelPosition: 'left', icon: 'plus', content: 'Amount' }}
-                actionPosition='left'
-                placeholder='$'
-                type='number'
-                min="0.01"
-                step="0.01"
-                name='deposit'
-                value={this.state.deposit}
-              />
-              <DepositConfirmation
-                deposit={this.state.deposit}
-                clearDepositState={this.clearDepositState}
-              >
-                Deposit
-              </DepositConfirmation>
-            </Grid.Column>
-            <Grid.Column>
-              <Header>Bank</Header>
-            </Grid.Column>
-          </Grid>
+      <Segment
+        style={{
+          marginTop: '5em',
+          height: '15em'
+        }}
+      >
+        <Grid columns={2} relaxed='very'>
+          <Grid.Column>
+            <Header>Account</Header>
+            <Input
+              onChange={this.handleChange}
+              action={{ color: 'green', labelPosition: 'left', icon: 'plus', content: 'Amount' }}
+              actionPosition='left'
+              placeholder='$'
+              type='number'
+              min="0.01"
+              step="0.01"
+              name='deposit'
+              value={this.state.deposit}
+            />
+            <DepositConfirmation
+              deposit={this.state.deposit}
+              clearDepositState={this.clearDepositState}
+            >
+              Deposit
+            </DepositConfirmation>
+          </Grid.Column>
+          <Grid.Column>
+            <Header>Bank</Header>
+          </Grid.Column>
+        </Grid>
 
-          <Divider vertical>Make A Deposit</Divider>
-        </Segment>
-      </Container>
+        <Divider vertical>Make A Deposit</Divider>
+      </Segment>
     )
   }
 }

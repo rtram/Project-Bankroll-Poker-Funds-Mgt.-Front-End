@@ -31,36 +31,38 @@ export default class Withdraw extends Component {
 
   render() {
     return(
-      <Container>
-        <Segment>
-          <Grid columns={2} relaxed='very'>
-            <Grid.Column>
-              <Header>Account</Header>
-                <Input
-                  onChange={this.handleChange}
-                  action={{ color: 'red', labelPosition: 'left', icon: 'minus', content: 'Amount' }}
-                  actionPosition='left'
-                  placeholder='$'
-                  type='number'
-                  min="0.01"
-                  step="0.01"
-                  name='withdraw'
-                  value={this.state.withdraw}
-                />
-                <WithdrawConfirmation
-                  withdraw={this.state.withdraw}
-                  clearWithdrawState={this.clearWithdrawState}
-                >
-                  Withdraw
-                </WithdrawConfirmation>
-            </Grid.Column>
-            <Grid.Column>
-              <Header>Bank</Header>
-            </Grid.Column>
-          </Grid>
-          <Divider vertical>Withdraw</Divider>
-        </Segment>
-      </Container>
+      <Segment
+        style={{
+          height: '15em'
+        }}
+      >
+        <Grid columns={2} relaxed='very'>
+          <Grid.Column>
+            <Header>Account</Header>
+              <Input
+                onChange={this.handleChange}
+                action={{ color: 'red', labelPosition: 'left', icon: 'minus', content: 'Amount' }}
+                actionPosition='left'
+                placeholder='$'
+                type='number'
+                min="0.01"
+                step="0.01"
+                name='withdraw'
+                value={this.state.withdraw}
+              />
+              <WithdrawConfirmation
+                withdraw={this.state.withdraw}
+                clearWithdrawState={this.clearWithdrawState}
+              >
+                Withdraw
+              </WithdrawConfirmation>
+          </Grid.Column>
+          <Grid.Column>
+            <Header>Bank</Header>
+          </Grid.Column>
+        </Grid>
+        <Divider vertical>Withdraw</Divider>
+      </Segment>
     )
   }
 }

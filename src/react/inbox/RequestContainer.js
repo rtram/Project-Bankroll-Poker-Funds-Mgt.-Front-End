@@ -30,31 +30,33 @@ class RequestContainer extends Component {
     let recentSentRequests = this.last25Requests(this.props.sent_requests)
     let recentReceivedRequests = this.last25Requests(this.props.received_requests)
     return (
-      <div >
-        <Container fluid>
-          <Header as='h2'>Request Inbox</Header>
-          <Segment style={{ padding: '0em' }} vertical>
-            <Grid celled='internally' columns='equal' stackable>
-              <Grid.Row textAlign='center'>
-                <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
-                  <Header as='h4'>SENT REQUESTS</Header>
-                  <br />
-                  {recentSentRequests.length > 0 ? recentSentRequests.map(request => (
-                    <SentRequest request={request}/>)): 'Nothing to See Here'
-                  }
-                </Grid.Column>
-                <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
-                  <Header as='h4'>RECEIVED REQUESTS</Header>
-                  <br />
-                  {recentReceivedRequests.length > 0 ? recentReceivedRequests.map(request => (
-                    <ReceivedRequest request={request}/>)): 'Nothing to See Here'
-                  }
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Segment>
-        </Container>
-      </div>
+      <Container fluid
+        style={{
+          marginTop: '5em'
+        }}
+      >
+        <Header as='h2'>Request Inbox</Header>
+        <Segment style={{ padding: '0em' }} vertical>
+          <Grid celled='internally' columns='equal' stackable>
+            <Grid.Row textAlign='center'>
+              <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
+                <Header as='h4'>SENT REQUESTS</Header>
+                <br />
+                {recentSentRequests.length > 0 ? recentSentRequests.map(request => (
+                  <SentRequest request={request}/>)): 'Nothing to See Here'
+                }
+              </Grid.Column>
+              <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
+                <Header as='h4'>RECEIVED REQUESTS</Header>
+                <br />
+                {recentReceivedRequests.length > 0 ? recentReceivedRequests.map(request => (
+                  <ReceivedRequest request={request}/>)): 'Nothing to See Here'
+                }
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </Container>
     )
   }
 }
