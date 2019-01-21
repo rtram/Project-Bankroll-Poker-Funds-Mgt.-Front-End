@@ -16,3 +16,15 @@
 .Container-Text-Style {
   text-align: center;
 }
+
+.inbox-badge {
+  background-color: #fa3e3e;
+  border-radius: 2px;
+  color: white;
+  width: 1em;
+  padding: 1px 3px;
+  font-size: 1em;
+  position: absolute; /* Position the badge within the relatively positioned button */
+  top: 2.3em;
+  left: .5em;
+}

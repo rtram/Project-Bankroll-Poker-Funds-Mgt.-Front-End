@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DepositConfirmation from './DepositConfirmation.js'
 import {
-  Container,
   Segment,
   Header,
   Divider,

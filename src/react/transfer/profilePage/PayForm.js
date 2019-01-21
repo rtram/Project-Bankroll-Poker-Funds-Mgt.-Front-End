@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updatingUserBalance, updatingRecipientBalance} from '../../../redux/actions/balances.js'
 import { postingTransaction } from '../../../redux/actions/users.js'
 
-import { Button, Modal, Input } from 'semantic-ui-react'
+import { Button, Modal, Input, Container, Header } from 'semantic-ui-react'
 
 class PayForm extends Component {
   constructor() {
@@ -93,7 +93,7 @@ class PayForm extends Component {
 
   render() {
     return(
-      <Modal open={this.state.open} size='large' trigger={
+      <Modal open={this.state.open} size='large' style={{ height: '20em'}} trigger={
         <Button onClick={this.handleToggle}color='blue' style={{width:'200px'}}>Pay</Button>
       }>
         <Modal.Header>Pay {this.props.selectedProfile.first_name}</Modal.Header>
@@ -109,17 +109,29 @@ class PayForm extends Component {
             name='amount'
             value={this.state.amount}
           />
-          <br/>
           <Input
+            style={{
+              marginTop: '2em',
+              width:'50em'
+            }}
             onChange={this.handleChange}
             placeholder='Leave a Message'
             type='textarea'
             name='message'
             value={this.state.message}
           />
-          Paying {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
+          <Container
+            style={{
+              marginTop:'2em',
+              textAlign: 'center'
+            }}
+          >
+            <Header as='h3'>
+              Paying {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
+            </Header>
+          </Container>
         </Modal.Content>
-        <Modal.Actions>
+        <Modal.Actions style={{}}>
           <Button color='green' onClick={this.handlePayment}>Pay</Button>
           <Button color='grey' onClick={this.handleToggle}>Cancel</Button>
         </Modal.Actions>

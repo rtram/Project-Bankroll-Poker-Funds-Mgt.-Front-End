@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {
+  Icon,
   Container,
   Dropdown,
   Image,
   Menu,
-  Button
+  Button,
+  Search
 } from 'semantic-ui-react'
+import './App.css'
+import { fetchingUserBalances } from './redux/actions/users.js'
+import { userLogout } from './redux/actions/login.js'
 
 class NavBar extends Component {
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if (token) {
+      this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
+    }
+  }
 
   handleLogout = () => {
-    localStorage.clear()
+    this.props.userLogout()
   }
 
   render() {
@@ -25,16 +37,28 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Item >
             <Link to='/map'>
+            <Icon name='map marker alternate'/>
               Casino Map
             </Link>
+          </Menu.Item>
+          <Menu.Item>
+          <Search
+            style={{
+              width:'15em'
+            }}
+            placeholder='Search for Poker Players'
+            fluid
+            />
           </Menu.Item>
           <Menu.Menu position='right'>
           <Menu.Item >
             <Link to='/dashboard'>
+            <Icon name='dashboard'/>
               Poker Dashboard
             </Link>
           </Menu.Item>
           <Menu.Item >
+            <Icon name='dollar sign'/>
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
                 <Dropdown.Item>
@@ -57,6 +81,13 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Item >
             <Link to='/inbox'>
+              <Icon name='mail'>
+                {this.props.received_requests && this.props.received_requests.length > 0?
+                  <span className='inbox-badge'>
+                    {this.props.received_requests.length}
+                  </span>
+                  : null}
+              </Icon>
               Inbox
             </Link>
           </Menu.Item>
@@ -68,6 +99,7 @@ class NavBar extends Component {
               </Button>
             </Link>:
             <Link to='/login'>
+              <Icon name='sign-in' />
               Login
             </Link>
             }
@@ -79,5 +111,10 @@ class NavBar extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    received_requests: state.received_requests
+  }
+}
 
-export default NavBar
+export default connect(mapStateToProps, { fetchingUserBalances, userLogout })(NavBar)

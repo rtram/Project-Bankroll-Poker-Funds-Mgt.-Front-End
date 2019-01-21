@@ -23,13 +23,15 @@ class ProfilePageContainer extends Component {
           marginTop: '10em'
         }}
       >
-        <Button
-          style={{
-            marginBottom: '5em'
-          }}
-        >
-          <Link to='/transferform'>Back to User List</Link>
-        </Button>
+        <Link to='/transferform'>
+          <Button
+            style={{
+              marginBottom: '5em'
+            }}
+          >
+            Back to User List
+          </Button>
+        </Link>
         <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
         <PayForm />
         <RequestForm />

@@ -158,6 +158,8 @@ const receivedRequestsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
       return action.payload.received_requests
+    case 'FETCHED_USER_INBOX':
+      return action.payload
     case 'DELETED_REQUEST':
       let originalRequest = state.find(request => request.id === action.payload.id)
       let index = state.indexOf(originalRequest)
@@ -169,7 +171,7 @@ const receivedRequestsReducer = (state = [], action) => {
   }
 }
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   currentUser: currentUserReducer,
   user: userReducer,
   sessions: sessionsReducer,
@@ -184,5 +186,14 @@ const rootReducer = combineReducers({
   sessionError: sessionErrorReducer,
   selectedProfile: selectedProfileReducer
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOGOUT'){
+    localStorage.clear()
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
 
 export default rootReducer;

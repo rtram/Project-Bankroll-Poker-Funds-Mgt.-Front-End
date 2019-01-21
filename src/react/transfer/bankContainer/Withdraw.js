@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import WithdrawConfirmation from './WithdrawConfirmation.js'
 import {
-  Container,
   Segment,
   Header,
   Divider,

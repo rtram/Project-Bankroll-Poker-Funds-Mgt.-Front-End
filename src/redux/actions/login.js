@@ -31,10 +31,41 @@ const loggingIn = (userObject) => {
           dispatch(displayLoginError(data))
         } else {
           dispatch(loggedIn(data))
+          dispatch(fetchingUserInbox(data.user))
         }
       }
     )
   }
 }
 
-export { loggingIn };
+const fetchedUserInbox = (data) => {
+  return {
+    type:"FETCHED_USER_INBOX",
+    payload: data
+  }
+}
+
+const fetchingUserInbox = (user_id) => {
+  let token = localStorage.getItem('token')
+  return (dispatch) => {
+    fetch(`http://localhost:3001/api/v1/users/${user_id}`, {
+      method: 'GET',
+      headers: {
+        "Authentication" : `Bearer ${token}`,
+        "userInbox": true
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(fetchedUserInbox(data))
+    })
+  }
+}
+
+const userLogout = () => {
+  return {
+    type: 'USER_LOGOUT'
+  }
+}
+
+export { loggingIn, userLogout };

@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Container, Header, Grid, Segment } from 'semantic-ui-react'
-import { fetchingUserBalances } from '../../redux/actions/users.js'
 import ReceivedRequest from './ReceivedRequest'
 import SentRequest from './SentRequest'
 
 class RequestContainer extends Component {
-  componentDidMount() {
-    this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
-  }
 
   // RETURNS THE MOST RECENT 25 TRANSFER OBJECTS
   last25Requests = (arr) => {
@@ -35,7 +31,7 @@ class RequestContainer extends Component {
           marginTop: '5em'
         }}
       >
-        <Header as='h2'>Request Inbox</Header>
+        <Header as='h2'>Inbox</Header>
         <Segment style={{ padding: '0em' }} vertical>
           <Grid celled='internally' columns='equal' stackable>
             <Grid.Row textAlign='center'>
@@ -68,4 +64,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { fetchingUserBalances })(RequestContainer));
+export default withRouter(connect(mapStateToProps, { })(RequestContainer));

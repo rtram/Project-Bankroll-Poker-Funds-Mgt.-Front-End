@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { postingRequest } from '../../../redux/actions/requests.js'
 
-import { Button, Modal, Input } from 'semantic-ui-react'
+import { Button, Modal, Input, Container, Header } from 'semantic-ui-react'
 
 class RequestForm extends Component {
   constructor() {
@@ -97,13 +97,26 @@ class RequestForm extends Component {
           />
           <br/>
           <Input
+            style={{
+              marginTop: '2em',
+              width:'50em'
+            }}
             onChange={this.handleChange}
             placeholder='Leave a Message'
             type='textarea'
             name='message'
             value={this.state.message}
           />
-          Requesting {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
+          <Container
+            style={{
+              marginTop:'2em',
+              textAlign: 'center'
+            }}
+          >
+            <Header as='h3'>
+              Requesting ${this.state.amount} from {this.props.selectedProfile.first_name} will bring Your Account Balance to ${this.calculateTotal()}
+            </Header>
+          </Container>
         </Modal.Content>
         <Modal.Actions>
           <Button color='green' onClick={this.handleRequest}>Request</Button>
