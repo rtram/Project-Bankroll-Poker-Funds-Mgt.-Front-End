@@ -7,7 +7,6 @@ import {
   Dropdown,
   Image,
   Menu,
-  Button,
   Search
 } from 'semantic-ui-react'
 import './App.css'
@@ -37,7 +36,7 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Item >
             <Link to='/map'>
-            <Icon name='map marker alternate'/>
+            <Icon name='map marker alternate' color='red'/>
               Casino Map
             </Link>
           </Menu.Item>
@@ -58,7 +57,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item >
-            <Icon name='dollar sign'/>
+            <Icon name='dollar sign' color='green'/>
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
                 <Dropdown.Item>
@@ -81,7 +80,7 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Item >
             <Link to='/inbox'>
-              <Icon name='mail'>
+              <Icon name='mail' color='brown'>
                 {this.props.received_requests && this.props.received_requests.length > 0?
                   <span className='inbox-badge'>
                     {this.props.received_requests.length}
@@ -94,12 +93,11 @@ class NavBar extends Component {
           <Menu.Item >
             {localStorage.getItem('token') ?
             <Link to='/home'>
-              <Button onClick={this.handleLogout}>
+              <Icon onClick={this.handleLogout} name='sign-out' color='blue'/>
                 Logout
-              </Button>
             </Link>:
             <Link to='/login'>
-              <Icon name='sign-in' />
+              <Icon name='sign-in' color='blue'/>
               Login
             </Link>
             }

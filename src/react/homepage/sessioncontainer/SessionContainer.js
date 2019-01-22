@@ -22,7 +22,7 @@ class SessionContainer extends Component {
               width={8}
             >
               <Header as='h1' icon>
-                <Icon name='write square'/>
+                <Icon name='write square' circular={true}  color='blue'/>
                 Session Entry
               </Header>
               <p>Enter information about your most recent session, or a session you forgot about in the past here.</p>
@@ -36,7 +36,7 @@ class SessionContainer extends Component {
               width={7}
             >
               <Header as='h1' icon>
-                <Icon name='history'/>
+                <Icon name='history' circular={true} color='brown'/>
                 Session History
               </Header>
               <p>How have you performed the last 5 sessions?</p>

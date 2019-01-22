@@ -15,7 +15,7 @@ class SentRequest extends Component {
       <Container>
         <Header as='h3'>{this.props.request.requestee.first_name} {this.props.request.requestee.last_name}</Header>
         <Header as='h4'>{this.props.request.date}</Header>
-        <Header as='h4'>{this.props.request.amount}</Header>
+        <Header as='h4'>Amount: {this.props.request.amount}</Header>
         <p>{this.props.request.message}</p>
         <Button onClick={this.handleCancel}>Cancel</Button>
         <Divider />

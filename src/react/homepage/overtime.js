@@ -146,9 +146,9 @@ export default class OverTime extends Component {
             }
           }}
         /> : null}
-        <Button onClick={this.toggle30Days}>30 Days</Button>
-        <Button onClick={this.toggle12Weeks}>3 Months</Button>
-        <Button onClick={this.toggle12Months}>1 Year</Button>
+        <Button onClick={this.toggle30Days} color='blue'>30 Days</Button>
+        <Button onClick={this.toggle12Weeks} color='blue'>3 Months</Button>
+        <Button onClick={this.toggle12Months} color='blue'>1 Year</Button>
       </Container>
     )
   }

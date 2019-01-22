@@ -16,11 +16,13 @@
   margin-top: 15em;
 }
 
+.positive-hourly {
+  color: green;
+}
 
-
-
-
-
+.negative-hourly {
+  color: red;
+}
 
 .fade-appear {
   opacity: 0;

@@ -68,10 +68,10 @@ class ReceivedRequest extends Component {
       <Container>
         <Header as='h3'>{this.props.request.requestor.first_name} {this.props.request.requestor.last_name}</Header>
         <Header as='h4'>{this.props.request.date}</Header>
-        <Header as='h4'>{this.props.request.amount}</Header>
+        <Header as='h4'>Amount: {this.props.request.amount}</Header>
         <p>{this.props.request.message}</p>
-        <Button onClick={this.handleComplete}>Complete</Button>
-        <Button onClick={this.handleCancel}>Reject</Button>
+        <Button onClick={this.handleComplete} color='green'>Complete</Button>
+        <Button onClick={this.handleCancel} color='red'>Reject</Button>
         <Divider />
       </Container>
     )

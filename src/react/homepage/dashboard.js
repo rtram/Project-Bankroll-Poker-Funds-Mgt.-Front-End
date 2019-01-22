@@ -155,13 +155,13 @@ class Dashboard extends Component {
     return (
       <div>
         <Container style={{ marginTop: '15em' }}>
-          <Header style={{ fontSize:'4em' }}>Welcome Back!</Header>
+          <Header style={{ fontSize:'4em' }}>Welcome Back</Header>
         </Container>
         <Grid style={{ marginTop: '5em' }} columns={2}>
           <Grid.Row>
             <Grid.Column width={8}>
             <Header style={{}} as='h1' icon >
-              <Icon name='chart line'/>
+              <Icon name='chart line' circular={true} color='red'/>
               Performance
             </Header>
             <p>This detailed graph shows how you have been performing over a period time.  Use the buttons beneath to see the peaks and valleys of your poker career!</p>
@@ -170,7 +170,7 @@ class Dashboard extends Component {
 
             <Grid.Column style={{ marginRight: '3em'}} width={7}>
             <Header style={{}} as='h1' icon>
-              <Icon name='percent' />
+              <Icon name='percent' circular={true} color='green'/>
               Win Rate
             </Header>
             {this.props.sessions ?

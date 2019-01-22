@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Grid, Segment } from 'semantic-ui-react'
+import { Container, Header, Grid, Segment, Icon } from 'semantic-ui-react'
 
 // CONTAINER IMPORTS
 import Transfer from './Transfer.js'
@@ -30,6 +30,7 @@ class TransferHistoryContainer extends Component {
             <Grid celled='internally' columns='equal' stackable>
               <Grid.Row textAlign='center'>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
+                  <Icon name='minus'/>
                   <Header as='h4'>SENT TRANSFERS</Header>
                   <br />
                   {this.props.sent_transactions.length > 0 ? this.last25Transfers(this.props.sent_transactions).map(transfer => (
@@ -37,6 +38,7 @@ class TransferHistoryContainer extends Component {
                   }
                 </Grid.Column>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
+                  <Icon name='plus'/>
                   <Header as='h4'>RECEIVED TRANSFERS</Header>
                   <br />
                   {this.props.received_transactions.length > 0 ? this.last25Transfers(this.props.received_transactions).map(transfer => (

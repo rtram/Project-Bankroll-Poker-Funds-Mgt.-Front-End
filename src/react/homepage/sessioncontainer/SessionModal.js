@@ -55,7 +55,7 @@ class SessionModal extends Component {
 
   render() {
     return(
-      <Modal open={this.state.open} size='large' trigger={<Button onClick={this.handleToggle}>Edit</Button>}>
+      <Modal open={this.state.open} size='large' trigger={<Button onClick={this.handleToggle} color='blue'>Edit</Button>}>
         <Modal.Header>Edit Transaction</Modal.Header>
         <Modal.Content>
           <Form onSubmit={this.onSubmit}>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { postingSession } from '../../../redux/actions/sessions.js'
 
-import { Form, Button, Header, Icon } from 'semantic-ui-react'
+import { Form, Button, Header } from 'semantic-ui-react'
 
 class SessionForm extends Component {
   constructor() {
@@ -69,7 +69,7 @@ class SessionForm extends Component {
     return (
       <Form onSubmit={this.onSubmit}>
         {this.props.sessionError.length > 0 ? <Header as='h4' color='red' textAlign='center'>
-          <Icon name='bug' /> {this.props.sessionError.map(error => <p>{error}</p>)}
+          {this.props.sessionError.map(error => <p>{error}</p>)}
         </Header>
         : null
         }
@@ -129,7 +129,7 @@ class SessionForm extends Component {
             />
           </Form.Field>
         </Form.Group>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' color='blue'>Submit</Button>
       </Form>
     )
   }
