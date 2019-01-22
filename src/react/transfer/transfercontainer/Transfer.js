@@ -36,6 +36,8 @@ class Transfer extends Component {
       userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
     }
 
+    let copyState = this.state.likes
+
     if (this.state.likes.length > 0 && userIdArray.includes(currentUserId)) {
       let index = userIdArray.indexOf(currentUserId)
       let originalLike = this.state.likes[index]
@@ -43,7 +45,7 @@ class Transfer extends Component {
       if ('id' in originalLike) {
         this.props.deletingLike(originalLike)
       }
-      let copyState = this.state.likes.slice()
+      copyState = copyState.slice()
       copyState.splice(index, 1)
       this.setState({
         likes: copyState,
@@ -55,16 +57,18 @@ class Transfer extends Component {
         user_id: currentUserId,
       }
       this.props.postingLike(likeObject)
-      let copyState = this.state.likes
       if (copyState.length === 0 ) {
-        copyState = copyState.push(likeObject)
+        this.setState({
+          likes: [likeObject],
+          likeCount: this.state.likeCount + 1,
+        })
       } else {
         copyState = copyState.push(likeObject)
+        this.setState({
+          likes: copyState,
+          likeCount: this.state.likeCount + 1,
+        })
       }
-      this.setState({
-        likes: copyState,
-        likeCount: this.state.likeCount + 1,
-      })
     }
   }
 
