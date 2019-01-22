@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
+  Button,
   Icon,
   Container,
   Dropdown,
@@ -22,6 +23,7 @@ class NavBar extends Component {
   }
 
   handleLogout = () => {
+    debugger
     this.props.userLogout()
   }
 
@@ -93,12 +95,18 @@ class NavBar extends Component {
           <Menu.Item >
             {localStorage.getItem('token') ?
             <Link to='/home'>
-              <Icon onClick={this.handleLogout} name='sign-out' color='blue'/>
-                Logout
-            </Link>:
+              <Button onClick={this.handleLogout}>
+                <Icon name='sign-out' color='blue'/>
+                  Logout
+
+              </Button>
+            </Link>
+            :
             <Link to='/login'>
-              <Icon name='sign-in' color='blue'/>
-              Login
+              <Button>
+                <Icon name='sign-in' color='blue'/>
+                Login
+              </Button>
             </Link>
             }
           </Menu.Item>

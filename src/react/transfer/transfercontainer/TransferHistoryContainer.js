@@ -6,10 +6,10 @@ import Transfer from './Transfer.js'
 
 class TransferHistoryContainer extends Component {
 
-  // RETURNS THE MOST RECENT 25 TRANSFER OBJECTS
-  last25Transfers = (arr) => {
+  // RETURNS THE MOST RECENT 10 TRANSFER OBJECTS
+  last10Transfers = (arr) => {
     let sortedTransactions;
-    let last25Transfers;
+    let last10Transfers;
 
     sortedTransactions = arr.sort((a,b) => {
       let sessionA = new Date(a.date)
@@ -17,8 +17,8 @@ class TransferHistoryContainer extends Component {
       return sessionB - sessionA
     })
 
-    last25Transfers = sortedTransactions.slice(0, 25)
-    return last25Transfers
+    last10Transfers = sortedTransactions.slice(0, 10)
+    return last10Transfers
   }
 
   render() {
@@ -33,7 +33,7 @@ class TransferHistoryContainer extends Component {
                   <Icon name='minus'/>
                   <Header as='h4'>SENT TRANSFERS</Header>
                   <br />
-                  {this.props.sent_transactions.length > 0 ? this.last25Transfers(this.props.sent_transactions).map(transfer => (
+                  {this.props.sent_transactions.length > 0 ? this.last10Transfers(this.props.sent_transactions).map(transfer => (
                     <Transfer transfer={transfer}/>)): 'Nothing to See Here'
                   }
                 </Grid.Column>
@@ -41,7 +41,7 @@ class TransferHistoryContainer extends Component {
                   <Icon name='plus'/>
                   <Header as='h4'>RECEIVED TRANSFERS</Header>
                   <br />
-                  {this.props.received_transactions.length > 0 ? this.last25Transfers(this.props.received_transactions).map(transfer => (
+                  {this.props.received_transactions.length > 0 ? this.last10Transfers(this.props.received_transactions).map(transfer => (
                     <Transfer transfer={transfer}/>)): 'Nothing to See Here'
                   }
                 </Grid.Column>

@@ -27,6 +27,7 @@ const loggingIn = (userObject) => {
     })
       .then(res => res.json())
       .then(data => {
+        debugger
         if (data.message) {
           dispatch(displayLoginError(data))
         } else {

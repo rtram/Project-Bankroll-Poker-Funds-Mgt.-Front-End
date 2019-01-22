@@ -11,7 +11,9 @@ import { Container } from 'semantic-ui-react'
 
 class ProfilePageContainer extends Component {
   componentDidMount() {
+    // FETCHES NON-CURRENT USER PROFILE OBJECT
     this.props.fetchingSelectedProfile(this.props.id)
+    // FETCHES CURRENT USER OBJECT
     this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
 
