@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Divider, Header, Icon, Button, Grid } from 'semantic-ui-react'
+import { Container, Divider, Header, Icon, Button, Grid, Label } from 'semantic-ui-react'
 import { postingLike, deletingLike } from '../../../redux/actions/like'
 
 
@@ -77,32 +77,59 @@ class Transfer extends Component {
     }
   }
 
+  shortenedLikeList = () => {
+    return this.state.likes.slice(0, 2)
+  }
+
   render() {
     return(
       <Container>
 
-        <Header as='h4'>
+        <Header as='h3'>
           {this.fullNameConverter(this.props.transfer, 'sender')} paid {this.fullNameConverter(this.props.transfer, 'recipient')} ${this.props.transfer.amount} on {this.props.transfer.date}
         </Header>
 
+        <p>{this.props.transfer.message}</p>
+
         <Grid columns={2}>
-          <Grid.Column>
+          <Grid.Column
+            style={{
+              textAlign: 'right'
+            }}
+            width={6}
+          >
             <Button color='white' onClick={this.handleClick}>
               <Icon name='like' color='red'/>
               {this.state.likeCount}
             </Button>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column
+            width={10}
+            style={{
+              margin:'auto',
+              textAlign: 'left'
+            }}
+          >
             <Container>
-              {this.state.likes.map(userObject => (
-                <p>{userObject.first_name + ' ' +userObject.last_name}</p>
+              {this.shortenedLikeList().length === 0 ?
+                <Label color='grey'>
+                  Be the first to like this.
+                </Label>:
+                null
+              }
+              {this.shortenedLikeList().map(userObject => (
+                <Label color='green' >
+                  {userObject.first_name + ' ' +userObject.last_name}
+                </Label>
               ))}
+              {this.state.likeCount > 2 ?
+                <Label color='green'>
+                  ...
+                </Label>
+                : null}
             </Container>
           </Grid.Column>
         </Grid>
-
-        <p>{this.props.transfer.message}</p>
-
         <Divider />
       </Container>
     )

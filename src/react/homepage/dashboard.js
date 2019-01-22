@@ -151,11 +151,16 @@ class Dashboard extends Component {
   }
 
   render() {
+    let currentUserFirstName;
+
+    if (this.props.sessions.length > 0) {
+      currentUserFirstName = this.props.sessions[0].user.first_name
+    }
 
     return (
       <div>
         <Container style={{ marginTop: '15em' }}>
-          <Header style={{ fontSize:'4em' }}>Welcome Back</Header>
+          <Header style={{ fontSize:'4em' }}>Welcome Back, {currentUserFirstName}</Header>
         </Container>
         <Grid style={{ marginTop: '5em' }} columns={2}>
           <Grid.Row>
