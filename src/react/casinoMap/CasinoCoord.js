@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
-import { casinoCoordStyle } from './CasinoCoordStyle.js';
+import { Icon } from 'semantic-ui-react'
 
 export default class CasinoCoord extends Component {
 
   render() {
     return (
-       <div style={casinoCoordStyle}>
+       <div >
+        <Icon style={{width:'auto' }} size='huge' color='red' name='map marker alternate'/>
           {this.props.text}
        </div>
     );

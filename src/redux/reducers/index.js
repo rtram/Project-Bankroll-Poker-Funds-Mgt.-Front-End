@@ -171,7 +171,19 @@ const receivedRequestsReducer = (state = [], action) => {
   }
 }
 
+const loadingReducer = (state = false, action) => {
+  switch (action.type) {
+    case "LOADING":
+      return true
+    case "FETCHED_SESSIONS":
+      return true;
+    default:
+      return state
+  }
+}
+
 const appReducer = combineReducers({
+  loading: loadingReducer,
   currentUser: currentUserReducer,
   user: userReducer,
   sessions: sessionsReducer,

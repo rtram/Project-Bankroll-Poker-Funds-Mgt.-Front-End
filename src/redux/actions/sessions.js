@@ -1,5 +1,9 @@
 const URL = 'http://localhost:3001/api/v1/sessions'
 
+const loading = () => {
+  return {type: "LOADING"}
+}
+
 const fetchedSessions = (data) => {
   return {
     type:"FETCHED_SESSIONS",
@@ -9,6 +13,7 @@ const fetchedSessions = (data) => {
 const fetchingSessions = (user_id) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
+    dispatch(loading())
     fetch(`${URL}/${user_id}`, {
       method: 'GET',
       headers: {

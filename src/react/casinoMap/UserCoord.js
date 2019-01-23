@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
-import { userCoordStyle } from './UserCoordStyle.js';
+import { Icon } from 'semantic-ui-react'
 
 export default class UserCoord extends Component {
 
   render() {
     return (
-       <div style={userCoordStyle}>
+       <div>
+        <Icon style={{width:'auto' }} name='male' color='orange' size='huge'/>
           {this.props.text}
        </div>
     );
