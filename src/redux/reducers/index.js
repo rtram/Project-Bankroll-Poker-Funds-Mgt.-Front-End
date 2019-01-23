@@ -176,7 +176,7 @@ const loadingReducer = (state = false, action) => {
     case "LOADING":
       return true
     case "FETCHED_SESSIONS":
-      return true;
+      return false;
     default:
       return state
   }

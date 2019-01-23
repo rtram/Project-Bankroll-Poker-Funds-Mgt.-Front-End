@@ -14,10 +14,11 @@ import TransferForm from './react/transfer/transferFormContainer/TransferForm.js
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 import InboxContainer from './react/inbox/InboxContainer.js'
 import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer'
+import Loading from './Loading.js'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
-import { Container } from 'semantic-ui-react'
+import { Container, Dimmer, Loader, } from 'semantic-ui-react'
 
 class App extends Component {
 
@@ -27,6 +28,10 @@ class App extends Component {
 
 
         <NavBar />
+
+        <Dimmer active={this.props.loading}>
+          <Loader size='massive' active={this.props.loading}>Loading</Loader>
+        </Dimmer>
           <Route exact path='/home' render={() => {
             return <Home />
           }} />
@@ -94,6 +99,7 @@ class App extends Component {
             }}/>
           </Switch>
           </Container>
+
         <Footer />
       </div>
     );
@@ -102,7 +108,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    loading: state.loading
   }
 }
 

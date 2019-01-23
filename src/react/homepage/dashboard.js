@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './Dashboard.css';
 import { Container, Grid, Header, Icon, Divider } from 'semantic-ui-react'
-import Loading from '../Loading.js'
 import { fetchingSessions } from '../../redux/actions/users.js'
 
 // GRAPH IMPORTS
@@ -205,7 +204,6 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return {
     sessions: state.sessions,
-    loading: state.loading
   }
 }
 

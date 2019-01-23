@@ -30,7 +30,7 @@ class TransferHistoryContainer extends Component {
             <Grid celled='internally' columns='equal' stackable>
               <Grid.Row textAlign='center'>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
-                  <Icon name='minus'/>
+                  <Icon name='minus' color='red' size='huge'/>
                   <Header as='h4'>SENT TRANSFERS</Header>
                   <br />
                   {this.props.sent_transactions.length > 0 ? this.last10Transfers(this.props.sent_transactions).map(transfer => (
@@ -38,7 +38,7 @@ class TransferHistoryContainer extends Component {
                   }
                 </Grid.Column>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>
-                  <Icon name='plus'/>
+                  <Icon name='plus' color='green' size='huge'/>
                   <Header as='h4'>RECEIVED TRANSFERS</Header>
                   <br />
                   {this.props.received_transactions.length > 0 ? this.last10Transfers(this.props.received_transactions).map(transfer => (

@@ -81,6 +81,23 @@ class Transfer extends Component {
     return this.state.likes.slice(0, 2)
   }
 
+  // IF CURRENT USER HAS ALREADY LIKED THE TRANSACTION, THE LIKE BUTTON WILL BE A DIFFERENT COLOR.
+  conditionalLikeButton = () => {
+    let currentUserId = parseInt(localStorage.getItem('currentUser'))
+    let userIdArray;
+
+    // RETURNS USER IDS THAT HAVE LIKED TRANSACTION
+    if (this.state.likes.length > 0) {
+      userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
+    }
+
+    if (this.state.likes.length > 0 && userIdArray.includes(currentUserId)){
+      return true
+    } else {
+      return false
+    }
+  }
+
   render() {
     return(
       <Container>
@@ -98,10 +115,16 @@ class Transfer extends Component {
             }}
             width={6}
           >
-            <Button color='white' onClick={this.handleClick}>
-              <Icon name='like' color='red'/>
-              {this.state.likeCount}
-            </Button>
+            {this.conditionalLikeButton() ?
+              <Button color='blue' onClick={this.handleClick}>
+                <Icon name='like' color='red'/>
+                {this.state.likeCount}
+              </Button> :
+              <Button color='white' onClick={this.handleClick}>
+                <Icon name='like' color='red'/>
+                {this.state.likeCount}
+              </Button>
+            }
           </Grid.Column>
           <Grid.Column
             width={10}
