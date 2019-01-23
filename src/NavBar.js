@@ -11,23 +11,47 @@ import {
   Search
 } from 'semantic-ui-react'
 import './App.css'
-import { fetchingUserBalances } from './redux/actions/users.js'
+import { fetchingUserBalances, fetchingUserList } from './redux/actions/users.js'
 import { userLogout } from './redux/actions/login.js'
+import NavBarSearchBar from './NavBarSearchBar'
 
 class NavBar extends Component {
+  constructor() {
+    super()
+    this.state={
+      isLoading: false,
+      value: '',
+      results: []
+    }
+  }
+
   componentDidMount() {
     let token = localStorage.getItem('token')
     if (token) {
       this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
     }
+    this.props.fetchingUserList()
+
   }
 
+
   handleLogout = () => {
-    debugger
     this.props.userLogout()
   }
 
   render() {
+    let source = []
+    if (this.props.userList.length > 0) {
+      this.props.userList.map(userObject => {
+        let object = {
+          username: userObject.username,
+          first_name: userObject.first_name,
+          last_name: userObject.last_name
+        }
+        source.push(object)
+      })
+    }
+
     return(
       <Menu fixed='top' inverted>
         <Container>
@@ -43,12 +67,11 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item>
-          <Search
-            style={{
-              width:'15em'
-            }}
-            placeholder='Search for Poker Players'
-            fluid
+            <NavBarSearchBar
+              style={{
+                width:'15em'
+              }}
+              source={source}
             />
           </Menu.Item>
           <Menu.Menu position='right'>
@@ -93,6 +116,12 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item >
+            <Link to='/myprofile'>
+              <Icon name='user outline' color='yellow'/>
+              My Profile
+            </Link>
+          </Menu.Item>
+          <Menu.Item >
             {localStorage.getItem('token') ?
             <Link to='/home'>
               <Button onClick={this.handleLogout}>
@@ -119,8 +148,9 @@ class NavBar extends Component {
 
 const mapStateToProps = state => {
   return {
-    received_requests: state.received_requests
+    received_requests: state.received_requests,
+    userList: state.userList
   }
 }
 
-export default connect(mapStateToProps, { fetchingUserBalances, userLogout })(NavBar)
+export default connect(mapStateToProps, { fetchingUserBalances, userLogout, fetchingUserList })(NavBar)

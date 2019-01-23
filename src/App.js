@@ -14,6 +14,7 @@ import TransferForm from './react/transfer/transferFormContainer/TransferForm.js
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 import InboxContainer from './react/inbox/InboxContainer.js'
 import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer'
+import UserProfileContainer from './react/profile/UserProfileContainer'
 import Loading from './Loading.js'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
@@ -21,17 +22,18 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { Container, Dimmer, Loader, } from 'semantic-ui-react'
 
 class App extends Component {
-
+  debugger
   render() {
+
     return (
       <div className="App">
 
 
         <NavBar />
 
-        <Dimmer active={this.props.loading}>
-          <Loader size='massive' active={this.props.loading}>Loading</Loader>
-        </Dimmer>
+          <Route exact path='/' render={() => {
+            return <Home />
+          }} />
           <Route exact path='/home' render={() => {
             return <Home />
           }} />
@@ -97,10 +99,19 @@ class App extends Component {
                 return <Redirect to='/login' />
               }
             }}/>
+            <Route path='/myprofile' render={() => {
+              if (localStorage.getItem('token')) {
+                return <UserProfileContainer />
+              } else {
+                return <Redirect to='/login' />
+              }
+            }}/>
           </Switch>
           </Container>
 
         <Footer />
+
+
       </div>
     );
   }

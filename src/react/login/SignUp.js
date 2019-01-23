@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Terms from './Terms.js'
+import '../home/Home.css'
 
 import { creatingUser } from '../../redux/actions/users.js'
 
@@ -76,11 +77,11 @@ class SignUp extends Component {
   render() {
 
     return (
-      <Fragment>
-        <Container style={{
-          marginTop: '15em'
-          }}
-        >
+      <Container style={{
+        marginTop: '15em',
+        width: '25vw'
+        }}
+      >
         <Header as='h1'>Sign Up</Header>
         {this.props.errors ? <p style={{color: 'red'}}>{this.props.errors.errors}</p> : null}
         <Form onSubmit={this.onSubmit}>
@@ -143,8 +144,7 @@ class SignUp extends Component {
           </Form.Field>
           {this.state.signup ? <Button onClick={this.onSubmit}>Sign Up</Button> : <Button disabled>Sign Up</Button>}
         </Form>
-        </Container>
-      </Fragment>
+      </Container>
     )
   }
 }

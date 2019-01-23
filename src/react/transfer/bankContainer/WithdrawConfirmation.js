@@ -14,7 +14,7 @@ class WithdrawConfirmation extends Component {
 
   handleWithdraw = () => {
     let updateObject = {
-      id: this.props.currentUser,
+      id: localStorage.getItem('currentUser'),
       balance: this.calculateTotal()
     }
 
@@ -64,7 +64,6 @@ class WithdrawConfirmation extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser,
     balance: state.balance
   }
 }
