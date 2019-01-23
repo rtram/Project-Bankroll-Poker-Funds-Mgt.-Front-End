@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import { Container, Header } from 'semantic-ui-react'
@@ -19,14 +19,14 @@ class UserBalance extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         {this.props ?
-          <Container>
+          <Container className='userInfo' style={{ width: '50vh' }}>
             <Header as='h1'>{this.fullNameConverter()}</Header>
             <Header as='h2'>Username: {this.props.username}</Header>
             <Header as='h2'>Account Balance: ${this.integerToFloat(this.props.balance)}</Header>
           </Container> : null}
-      </div>
+      </Fragment>
     )
   }
 }

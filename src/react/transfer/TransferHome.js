@@ -14,8 +14,8 @@ class TransferHome extends Component {
     return(
       <Grid
         style={{
-          marginTop: '10em',
-          marginBottom: '10em'
+          marginTop: '9.8em',
+          marginBottom: '5em'
         }}
       >
         <UserBalance />

@@ -19,7 +19,7 @@ class UserCard extends Component {
             />
             <Card.Header><Icon name='user' /> {this.props.user.first_name} {this.props.user.last_name}</Card.Header>
             <Card.Meta>
-              <span>Username: {this.props.user.username}</span>
+              <span class='cardUserName'>Username: {this.props.user.username}</span>
             </Card.Meta>
             <Card.Description></Card.Description>
           </Card.Content>

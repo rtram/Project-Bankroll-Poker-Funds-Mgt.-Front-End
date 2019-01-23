@@ -158,8 +158,8 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <Container style={{ marginTop: '13em' }}>
-          <Header style={{ fontSize:'4em' }}>Welcome Back, {currentUserFirstName}</Header>
+        <Container style={{ marginTop: '10em' }}>
+          <Header style={{ fontSize:'4em', color:'white'}}>Welcome Back, {currentUserFirstName}</Header>
         </Container>
         <Grid style={{ marginTop: '3em' }} columns={2}>
           <Grid.Row>

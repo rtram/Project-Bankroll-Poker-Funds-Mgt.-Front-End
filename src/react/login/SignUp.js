@@ -140,7 +140,14 @@ class SignUp extends Component {
           {this.state.termsAndCondition ? <Terms onClick={this.toggleTerms} />: <Button onClick={this.toggleTerms}>Click Here to See Terms & Conditions</Button>}
           <br/><br/>
 
-          <Checkbox label='I agree to the Terms and Conditions' checked={this.state.agree} onChange={this.toggleAgree} />
+          <Checkbox
+            style={{
+              color:'white'
+            }}
+            label='I agree to the Terms and Conditions'
+            checked={this.state.agree}
+            onChange={this.toggleAgree}
+          />
           </Form.Field>
           {this.state.signup ? <Button onClick={this.onSubmit}>Sign Up</Button> : <Button disabled>Sign Up</Button>}
         </Form>

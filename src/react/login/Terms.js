@@ -5,7 +5,7 @@ export default class termsAndCondition extends Component {
 
   render() {
     return (
-      <Container tiny>
+      <Container tiny style={{ color: 'white'}}>
         <h2>Terms and Conditions</h2>
       	<p>These terms and conditions outline the rules and regulations for the use of Project Bankroll's Website.</p> <br />
       	<span> Project Bankroll</span> is located at:<br />

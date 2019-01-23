@@ -34,7 +34,8 @@ export default class Withdraw extends Component {
     return(
       <Segment
         style={{
-          height: '15em'
+          height: '15em',
+          backgroundColor: 'gainsboro'
         }}
       >
         <Grid columns={2} relaxed='very'>
@@ -65,7 +66,7 @@ export default class Withdraw extends Component {
           <Grid.Column>
             <Header>Bank</Header>
             <Icon name='cogs' size='huge'/>
-            <Header as='h3'>
+            <Header as='h3' style={{ color:'black'}}>
               Under Construction Come Back Later!
             </Header>
           </Grid.Column>
