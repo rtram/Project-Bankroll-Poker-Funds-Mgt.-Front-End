@@ -28,7 +28,8 @@ class RequestContainer extends Component {
     return (
       <Container fluid
         style={{
-          marginTop: '5em'
+          marginTop: '5em',
+          height: '100%'
         }}
       >
         <Header as='h2'>Inbox</Header>

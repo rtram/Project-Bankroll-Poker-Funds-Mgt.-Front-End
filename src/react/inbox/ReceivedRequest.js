@@ -30,6 +30,7 @@ class ReceivedRequest extends Component {
       amount: this.props.request.amount,
       date: this.formatDate()
     }
+
     this.props.completingTransaction(transactionObject, this.props.request)
   }
 
@@ -80,7 +81,6 @@ class ReceivedRequest extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser,
     balance: state.balance,
   }
 }

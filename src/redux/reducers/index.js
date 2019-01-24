@@ -147,10 +147,14 @@ const sentRequestsReducer = (state = [], action) => {
       return [...state, action.payload]
     case 'DELETED_REQUEST':
       let originalRequest = state.find(request => request.id === action.payload.id)
-      let index = state.indexOf(originalRequest)
-      let requestCopy = [...state]
-      requestCopy.splice(index, 1)
-      return requestCopy
+      if (originalRequest !== undefined) {
+        let index = state.indexOf(originalRequest)
+        let requestCopy = [...state]
+        requestCopy.splice(index, 1)
+        return requestCopy
+      } else {
+        return state
+      }
     default:
       return state
   }
@@ -164,10 +168,14 @@ const receivedRequestsReducer = (state = [], action) => {
       return action.payload
     case 'DELETED_REQUEST':
       let originalRequest = state.find(request => request.id === action.payload.id)
-      let index = state.indexOf(originalRequest)
-      let requestCopy = [...state]
-      requestCopy.splice(index, 1)
-      return requestCopy
+      if (originalRequest !== undefined) {
+        let index = state.indexOf(originalRequest)
+        let requestCopy = [...state]
+        requestCopy.splice(index, 1)
+        return requestCopy
+      } else {
+        return state
+      }
     default:
       return state
   }

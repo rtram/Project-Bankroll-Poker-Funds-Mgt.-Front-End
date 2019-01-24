@@ -14,7 +14,7 @@ class UserProfileBankInfo extends Component {
       <Container
         style={{
           marginTop: '5em',
-          marginBottom: '5em',
+          marginBottom: '25vh',
         }}
       >
         <Header as='h2'>

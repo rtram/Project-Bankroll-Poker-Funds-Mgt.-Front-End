@@ -24,7 +24,7 @@ class TransferHistoryContainer extends Component {
   render() {
     return (
       <div >
-        <Container style={{ marginTop: '5em'}} fluid>
+        <Container style={{ marginTop: '5em', marginBottom: '25vh'}} fluid>
           <Header as='h2'>Transfer History</Header>
           <Segment style={{ padding: '0em' }} vertical>
             <Grid celled='internally' columns='equal' stackable>

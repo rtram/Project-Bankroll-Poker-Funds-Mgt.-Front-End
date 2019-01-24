@@ -22,7 +22,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 class App extends Component {
-  debugger
+
   render() {
 
     return (
@@ -109,7 +109,7 @@ class App extends Component {
           </Switch>
           </Container>
 
-        <Footer />
+        <Footer className='footer'/>
 
 
       </div>
