@@ -19,7 +19,7 @@ import Loading from './Loading.js'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
-import { Container, Dimmer, Loader, } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 class App extends Component {
   debugger

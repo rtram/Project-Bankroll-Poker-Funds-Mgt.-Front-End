@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Header } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
 import UserProfile from './UserProfile'
 import UserProfileBankInfo from './UserProfileBankInfo'

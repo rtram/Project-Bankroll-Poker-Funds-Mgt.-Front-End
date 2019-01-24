@@ -85,21 +85,21 @@ class NavBar extends Component {
             <Icon name='dollar sign' color='green'/>
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link style={{ color: 'black' }} to='/transferhome'>
+                <Link to='/transferhome'>
+                  <Dropdown.Item>
                     Transfer Dashboard
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link style={{ color: 'black' }} to='/bank'>
+                  </Dropdown.Item>
+                </Link>
+                <Link to='/bank'>
+                  <Dropdown.Item>
                     Deposit or Withdraw Funds
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link style={{ color: 'black' }} to='/transferform'>
+                  </Dropdown.Item>
+                </Link>
+                <Link to='/transferform'>
+                  <Dropdown.Item>
                     Pay Or Request Funds
-                  </Link>
-                </Dropdown.Item>
+                  </Dropdown.Item>
+                </Link>
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
@@ -124,7 +124,7 @@ class NavBar extends Component {
           <Menu.Item >
             {localStorage.getItem('token') ?
             <Link to='/home'>
-              <Button onClick={this.handleLogout}>
+              <Button onClick={this.handleLogout} className='loginlogout'>
                 <Icon name='sign-out' color='blue'/>
                   Logout
 
@@ -132,7 +132,7 @@ class NavBar extends Component {
             </Link>
             :
             <Link to='/login'>
-              <Button>
+              <Button className='loginlogout'>
                 <Icon name='sign-in' color='blue'/>
                 Login
               </Button>

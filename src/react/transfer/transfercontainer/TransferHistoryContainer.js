@@ -34,7 +34,8 @@ class TransferHistoryContainer extends Component {
                   <Header as='h4'>SENT TRANSFERS</Header>
                   <br />
                   {this.props.sent_transactions.length > 0 ? this.last10Transfers(this.props.sent_transactions).map(transfer => (
-                    <Transfer transfer={transfer}/>)): 'Nothing to See Here'
+                    <Transfer transfer={transfer}/>)):
+                      'Nothing to See Here'
                   }
                 </Grid.Column>
                 <Grid.Column style={{ paddingBottom: '2em', paddingTop: '2em' }}>

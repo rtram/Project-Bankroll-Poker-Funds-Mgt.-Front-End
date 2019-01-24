@@ -106,7 +106,14 @@ background-color: #343846;
     opacity: 1;
 }
 
-.ui segment bankDepositWithdraw {
+.ui.segment.bankDepositWithdraw, ui.blue.center.aligned.header {
   color: white;
+}
 
+.ui[class*="internally celled"].grid>.row>.column:first-child, .ui.grid>[class*="equal width"].row>.column, .ui[class*="equal width"].grid>.column:not(.row), .ui[class*="equal width"].grid>.row>.column {
+  color: white;
+}
+
+.ui.menu .ui.dropdown.item .menu .item {
+  color: black;
 }

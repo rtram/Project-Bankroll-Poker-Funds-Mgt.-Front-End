@@ -43,7 +43,7 @@ class Login extends Component {
       >
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='blue' textAlign='center'>
+            <Header as='h2' color='white' textAlign='center'>
               <Icon name='sign-in' /> Log-in to your account
             </Header>
             {this.props.loginError.length > 0 ? <Header as='h4' color='red' textAlign='center'>
