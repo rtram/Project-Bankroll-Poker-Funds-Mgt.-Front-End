@@ -6,12 +6,13 @@ import { Card, Icon, Button, Grid, Image } from 'semantic-ui-react'
 class UserCard extends Component {
 
   render() {
+    console.log(this.props.user)
     return(
       <Grid.Column>
         <Card>
           <Card.Content>
             <Image
-              src='https://www.aminz.org.nz/themes/portal/uploads/profile-default-large.jpg'
+              src={this.props.user.url ? this.props.user.url :'https://www.aminz.org.nz/themes/portal/uploads/profile-default-large.jpg'}
               size='small'
               style={{
                 marginBottom: '2em'

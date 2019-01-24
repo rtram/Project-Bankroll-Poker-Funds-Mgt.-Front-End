@@ -12,7 +12,7 @@ class Footer extends Component {
 
   render() {
     return(
-      <Segment inverted style={{ margin: '0px'}}>
+      <Segment inverted style={{ margin: '0px', height: '25vh'}}>
         <Container textAlign='center'>
           <Divider inverted section />
           <Image centered size='mini' src='https://i.imgur.com/Frwwd8f.png' />

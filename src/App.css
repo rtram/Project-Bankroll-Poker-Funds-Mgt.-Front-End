@@ -1,3 +1,7 @@
+.App {
+  height: 100vh;
+}
+
 .App-header {
   background-color: WHITE;
   min-height: 100vh;
@@ -49,7 +53,7 @@ background-color: #343846;
   /* background-color: #bfbfbf; */
 }
 
-.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url],.ui.table  {
+.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url],.ui.table, .ui.input>input  {
   background-color: #292938;
   color: grey;
 }
@@ -114,6 +118,6 @@ background-color: #343846;
   color: white;
 }
 
-.ui.menu .ui.dropdown.item .menu .item {
+.ui.menu .ui.dropdown.item .menu .item, ui header {
   color: black;
 }

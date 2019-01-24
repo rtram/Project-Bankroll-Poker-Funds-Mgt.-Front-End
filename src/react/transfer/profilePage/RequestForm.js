@@ -113,7 +113,7 @@ class RequestForm extends Component {
               textAlign: 'center'
             }}
           >
-            <Header as='h3'>
+            <Header as='h3' style={{color: 'black'}}>
               Requesting ${this.state.amount} from {this.props.selectedProfile.first_name} will bring Your Account Balance to ${this.calculateTotal()}
             </Header>
           </Container>

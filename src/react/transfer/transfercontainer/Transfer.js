@@ -103,7 +103,7 @@ class Transfer extends Component {
       <Container>
 
         <Header as='h3'>
-          {this.fullNameConverter(this.props.transfer, 'sender')} paid {this.fullNameConverter(this.props.transfer, 'recipient')} ${this.props.transfer.amount} on {this.props.transfer.date}
+          {this.props.transfer.sender ? this.fullNameConverter(this.props.transfer, 'sender') : 'Somebody'} paid {this.props.transfer.recipient ? this.fullNameConverter(this.props.transfer, 'recipient') : 'Somebody' } ${this.props.transfer.amount} on {this.props.transfer.date}
         </Header>
 
         <p>{this.props.transfer.message}</p>

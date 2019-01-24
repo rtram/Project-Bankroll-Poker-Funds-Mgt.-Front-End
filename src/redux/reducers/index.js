@@ -59,14 +59,16 @@ const userReducer = (state = {}, action) => {
        userObject= {
         username: action.payload.username,
         first_name: action.payload.first_name,
-        last_name: action.payload.last_name
+        last_name: action.payload.last_name,
+        url: action.payload.url
       }
       return userObject
     case 'FETCHED_USER_DATA':
       userObject = {
         username: action.payload.username,
         first_name: action.payload.first_name,
-        last_name: action.payload.last_name
+        last_name: action.payload.last_name,
+        url: action.payload.url
       }
       return userObject
     default:

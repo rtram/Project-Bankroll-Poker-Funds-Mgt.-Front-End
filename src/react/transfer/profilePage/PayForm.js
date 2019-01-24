@@ -126,7 +126,7 @@ class PayForm extends Component {
               textAlign: 'center'
             }}
           >
-            <Header as='h3'>
+            <Header as='h3' style={{color: 'black'}}>
               Paying {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
             </Header>
           </Container>

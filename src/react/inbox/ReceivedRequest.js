@@ -9,7 +9,7 @@ class ReceivedRequest extends Component {
 
   handleComplete = () => {
     let currentUserBalanceObject = {
-      id: this.props.currentUser,
+      id: localStorage.getItem('currentUser'),
       balance: this.calculateTotal()
     }
 
