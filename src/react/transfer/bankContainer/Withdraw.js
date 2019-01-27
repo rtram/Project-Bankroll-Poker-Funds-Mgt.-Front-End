@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WithdrawConfirmation from './WithdrawConfirmation.js'
+import WithdrawModal from './WithdrawModal.js'
 import {
   Container,
   Segment,
@@ -55,12 +55,12 @@ export default class Withdraw extends Component {
               />
             </Container>
             <Container style={{marginTop:'1em'}}>
-              <WithdrawConfirmation
+              <WithdrawModal
                 withdraw={this.state.withdraw}
                 clearWithdrawState={this.clearWithdrawState}
               >
                 Withdraw
-              </WithdrawConfirmation>
+              </WithdrawModal>
             </Container>
           </Grid.Column>
           <Grid.Column>

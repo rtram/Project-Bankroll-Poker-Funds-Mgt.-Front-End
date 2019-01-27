@@ -6,7 +6,7 @@ import UserBalance from '../UserBalance'
 import Deposit from './Deposit.js'
 import Withdraw from './Withdraw.js'
 
-class Bank extends Component {
+class BankTransfer extends Component {
   componentDidMount() {
     this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
@@ -33,4 +33,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchingUserBalances })(Bank);
+export default connect(mapStateToProps, { fetchingUserBalances })(BankTransfer);

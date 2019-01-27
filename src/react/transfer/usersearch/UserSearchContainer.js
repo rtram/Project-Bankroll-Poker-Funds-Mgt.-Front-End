@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 import UserBalance from '../UserBalance'
-import UserList from './UserList'
+import UserSearchList from './UserSearchList'
 import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
 
 class UserSearchContainer extends Component {
@@ -20,7 +20,7 @@ class UserSearchContainer extends Component {
         }}
       >
         <UserBalance />
-        <UserList />
+        <UserSearchList />
       </Container>
     )
   }

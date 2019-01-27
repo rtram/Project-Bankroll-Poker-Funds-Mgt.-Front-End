@@ -4,7 +4,7 @@ import { updatingUserBalance } from '../../../redux/actions/balances.js'
 
 import { Button, Modal } from 'semantic-ui-react'
 
-class DepositConfirmation extends Component {
+class DepositModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -70,4 +70,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updatingUserBalance })(DepositConfirmation)
+export default connect(mapStateToProps, { updatingUserBalance })(DepositModal)

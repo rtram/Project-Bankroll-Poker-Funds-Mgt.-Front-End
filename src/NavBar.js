@@ -90,7 +90,7 @@ class NavBar extends Component {
                     Transaction Dashboard
                   </Dropdown.Item>
                 </Link>
-                <Link to='/bank'>
+                <Link to='/banktransfer'>
                   <Dropdown.Item>
                     Deposit or Withdraw Funds
                   </Dropdown.Item>

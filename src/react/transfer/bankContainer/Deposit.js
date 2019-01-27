@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DepositConfirmation from './DepositConfirmation.js'
+import DepositModal from './DepositModal.js'
 import {
   Container,
   Segment,
@@ -56,12 +56,12 @@ export default class Deposit extends Component {
               />
             </Container>
             <Container style={{marginTop: '1em'}}>
-            <DepositConfirmation
+            <DepositModal
               deposit={this.state.deposit}
               clearDepositState={this.clearDepositState}
             >
               Deposit
-            </DepositConfirmation>
+            </DepositModal>
             </Container>
           </Grid.Column>
           <Grid.Column>

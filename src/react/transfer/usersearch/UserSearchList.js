@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Grid, Search, Header, Icon, Container } from 'semantic-ui-react'
 import UserCard from './UserCard.js'
 
-class UserList extends Component {
+class UserSearchList extends Component {
   constructor() {
     super()
     this.state={
@@ -91,4 +91,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { })(UserList);
+export default connect(mapStateToProps, { })(UserSearchList);

@@ -25,7 +25,7 @@ class UserCard extends Component {
           </Card.Content>
           <Card.Content extra>
             <Link to={`/user/${this.props.user.id}`}>
-              <Button onClick={this.handleClick}>Profile</Button>
+              <Button>Profile</Button>
             </Link>
           </Card.Content>
         </Card>

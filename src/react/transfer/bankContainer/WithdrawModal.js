@@ -4,7 +4,7 @@ import { updatingUserBalance } from '../../../redux/actions/balances.js'
 
 import { Button, Modal } from 'semantic-ui-react'
 
-class WithdrawConfirmation extends Component {
+class WithdrawModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -68,4 +68,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updatingUserBalance })(WithdrawConfirmation)
+export default connect(mapStateToProps, { updatingUserBalance })(WithdrawModal)

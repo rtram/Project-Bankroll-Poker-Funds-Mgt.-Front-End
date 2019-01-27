@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-import { postingRequest } from '../../../redux/actions/requests.js'
+import { updatingUserBalance, updatingRecipientBalance} from '../../../redux/actions/balances.js'
+import { postingTransaction } from '../../../redux/actions/users.js'
 
 import { Button, Modal, Input, Container, Header } from 'semantic-ui-react'
 
-class RequestForm extends Component {
+class PayModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -23,17 +23,31 @@ class RequestForm extends Component {
     })
   }
 
-  handleRequest = () => {
+  handlePayment = () => {
+    let currentUserBalanceObject = {
+      id: localStorage.getItem('currentUser'),
+      balance: this.calculateTotal()
+    }
 
-    let requestObject = {
-      requestor_id: localStorage.getItem('currentUser'),
-      requestee_id: this.props.selectedProfile.id,
+    let recipientBalance = parseFloat(this.props.selectedProfile.balance) + parseFloat(this.state.amount)
+
+    let recipientBalanceObject = {
+      id: this.props.selectedProfile.id,
+      balance: recipientBalance
+    }
+
+    this.props.updatingUserBalance(currentUserBalanceObject)
+    this.props.updatingRecipientBalance(recipientBalanceObject)
+
+    let transactionObject = {
+      sender_id: localStorage.getItem('currentUser'),
+      recipient_id: this.props.selectedProfile.id,
       message: this.state.message,
       amount: this.state.amount,
       date: this.formatDate()
     }
 
-    this.props.postingRequest(requestObject)
+    this.props.postingTransaction(transactionObject)
 
     this.resetState()
     this.handleToggle()
@@ -73,16 +87,16 @@ class RequestForm extends Component {
     if (isNaN(payment) || payment === '') {
       payment = 0
     }
-    let newTotal = parseFloat(balance) + parseFloat(payment)
+    let newTotal = parseFloat(balance) - parseFloat(payment)
     return newTotal
   }
 
   render() {
     return(
-      <Modal open={this.state.open} size='large' trigger={
-        <Button onClick={this.handleToggle}color='blue' style={{width:'200px'}}>Request</Button>
+      <Modal open={this.state.open} size='large' style={{ height: '20em'}} trigger={
+        <Button onClick={this.handleToggle}color='blue' style={{width:'200px'}}>Pay</Button>
       }>
-        <Modal.Header>Request {this.props.selectedProfile.first_name}</Modal.Header>
+        <Modal.Header>Pay {this.props.selectedProfile.first_name}</Modal.Header>
         <Modal.Content>
           <Input
             onChange={this.handleChange}
@@ -95,7 +109,6 @@ class RequestForm extends Component {
             name='amount'
             value={this.state.amount}
           />
-          <br/>
           <Input
             style={{
               marginTop: '2em',
@@ -114,12 +127,12 @@ class RequestForm extends Component {
             }}
           >
             <Header as='h3' style={{color: 'black'}}>
-              Requesting ${this.state.amount} from {this.props.selectedProfile.first_name} will bring Your Account Balance to ${this.calculateTotal()}
+              Paying {this.props.selectedProfile.first_name} ${this.state.amount} will bring Your Account Balance to ${this.calculateTotal()}
             </Header>
           </Container>
         </Modal.Content>
-        <Modal.Actions>
-          <Button color='green' onClick={this.handleRequest}>Request</Button>
+        <Modal.Actions style={{}}>
+          <Button color='green' onClick={this.handlePayment}>Pay</Button>
           <Button color='grey' onClick={this.handleToggle}>Cancel</Button>
         </Modal.Actions>
       </Modal>
@@ -129,9 +142,10 @@ class RequestForm extends Component {
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.currentUser,
     balance: state.balance,
     selectedProfile: state.selectedProfile[0]
   }
 }
 
-export default connect(mapStateToProps, { postingRequest })(RequestForm)
+export default connect(mapStateToProps, { updatingUserBalance, updatingRecipientBalance, postingTransaction })(PayModal)

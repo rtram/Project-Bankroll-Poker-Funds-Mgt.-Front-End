@@ -5,8 +5,8 @@ import { Button } from 'semantic-ui-react'
 import { fetchingSelectedProfile, fetchingUserBalances } from '../../../redux/actions/users.js'
 import TransactionHistoryContainer from '../transactioncontainer/TransactionHistoryContainer.js'
 import ProfileInformation from './ProfileInformation'
-import PayForm from './PayForm'
-import RequestForm from './RequestForm'
+import PayModal from './PayModal'
+import RequestModal from './RequestModal'
 import { Container } from 'semantic-ui-react'
 
 class ProfilePageContainer extends Component {
@@ -25,7 +25,7 @@ class ProfilePageContainer extends Component {
           marginTop: '10em'
         }}
       >
-        <Link to='/transferform'>
+        <Link to='/usersearch'>
           <Button
             style={{
               marginBottom: '5em'
@@ -35,8 +35,8 @@ class ProfilePageContainer extends Component {
           </Button>
         </Link>
         <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
-        <PayForm />
-        <RequestForm />
+        <PayModal />
+        <RequestModal />
         <TransactionHistoryContainer
          sent_transactions={this.props.selectedProfile.sent_transactions} received_transactions={this.props.selectedProfile.received_transactions} />
       </Container>:
