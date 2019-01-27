@@ -85,9 +85,9 @@ class NavBar extends Component {
             <Icon name='dollar sign' color='green'/>
             <Dropdown item text='Transfers'>
               <Dropdown.Menu>
-                <Link to='/transferhome'>
+                <Link to='/transactiondashboard'>
                   <Dropdown.Item>
-                    Transfer Dashboard
+                    Transaction Dashboard
                   </Dropdown.Item>
                 </Link>
                 <Link to='/bank'>
@@ -95,7 +95,7 @@ class NavBar extends Component {
                     Deposit or Withdraw Funds
                   </Dropdown.Item>
                 </Link>
-                <Link to='/transferform'>
+                <Link to='/usersearch'>
                   <Dropdown.Item>
                     Pay Or Request Funds
                   </Dropdown.Item>

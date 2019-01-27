@@ -5,7 +5,7 @@ import UserBalance from '../UserBalance'
 import UserList from './UserList'
 import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
 
-class TransferForm extends Component {
+class UserSearchContainer extends Component {
   componentDidMount() {
     this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
     this.props.fetchingUserList()
@@ -26,4 +26,4 @@ class TransferForm extends Component {
   }
 }
 
-export default connect(null, { fetchingUserList, fetchingUserBalances })(TransferForm);
+export default connect(null, { fetchingUserList, fetchingUserBalances })(UserSearchContainer);

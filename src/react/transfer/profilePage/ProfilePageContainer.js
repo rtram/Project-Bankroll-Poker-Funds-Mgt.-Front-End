@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { fetchingSelectedProfile, fetchingUserBalances } from '../../../redux/actions/users.js'
-import TransferHistoryContainer from '../transfercontainer/TransferHistoryContainer.js'
+import TransactionHistoryContainer from '../transactioncontainer/TransactionHistoryContainer.js'
 import ProfileInformation from './ProfileInformation'
 import PayForm from './PayForm'
 import RequestForm from './RequestForm'
@@ -37,7 +37,7 @@ class ProfilePageContainer extends Component {
         <ProfileInformation username={this.props.selectedProfile.username} first_name={this.props.selectedProfile.first_name} last_name={this.props.selectedProfile.last_name}/>
         <PayForm />
         <RequestForm />
-        <TransferHistoryContainer
+        <TransactionHistoryContainer
          sent_transactions={this.props.selectedProfile.sent_transactions} received_transactions={this.props.selectedProfile.received_transactions} />
       </Container>:
       null

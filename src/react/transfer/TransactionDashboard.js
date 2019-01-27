@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import TransferHistoryContainer from './transfercontainer/TransferHistoryContainer.js'
+import TransactionHistoryContainer from './transactioncontainer/TransactionHistoryContainer.js'
 import UserBalance from './UserBalance'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
 import { Grid } from 'semantic-ui-react'
 
-class TransferHome extends Component {
+class TransactionDashboard extends Component {
   componentDidMount() {
     this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
@@ -19,7 +19,7 @@ class TransferHome extends Component {
         }}
       >
         <UserBalance />
-        <TransferHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
+        <TransactionHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
       </Grid>
     )
   }
@@ -33,4 +33,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchingUserBalances })(TransferHome);
+export default connect(mapStateToProps, { fetchingUserBalances })(TransactionDashboard);

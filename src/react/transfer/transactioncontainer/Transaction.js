@@ -5,7 +5,7 @@ import { postingLike, deletingLike } from '../../../redux/actions/like'
 
 
 
-class Transfer extends Component {
+class Transaction extends Component {
   constructor() {
     super()
     this.state={
@@ -86,15 +86,13 @@ class Transfer extends Component {
     let currentUserId = parseInt(localStorage.getItem('currentUser'))
     let userIdArray;
 
-    // RETURNS USER IDS THAT HAVE LIKED TRANSACTION
     if (this.state.likes.length > 0) {
       userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
-    }
-
-    if (this.state.likes.length > 0 && userIdArray.includes(currentUserId)){
-      return true
-    } else {
-      return false
+      if (userIdArray.includes(currentUserId)) {
+        return true
+      } else {
+        return false
+      }
     }
   }
 
@@ -165,4 +163,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { postingLike, deletingLike })(Transfer)
+export default connect(mapStateToProps, { postingLike, deletingLike })(Transaction)

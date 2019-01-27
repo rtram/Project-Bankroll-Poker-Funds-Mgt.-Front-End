@@ -8,9 +8,9 @@ import Home from './react/home/Home.js'
 import SignUp from './react/login/SignUp.js'
 import Login from './react/login/Login.js'
 import Dashboard from './react/homepage/Dashboard.js'
-import TransferHome from './react/transfer/TransferHome.js'
+import TransactionDashboard from './react/transfer/TransactionDashboard.js'
 import Bank from './react/transfer/bankContainer/Bank.js'
-import TransferForm from './react/transfer/transferFormContainer/TransferForm.js'
+import UserSearchContainer from './react/transfer/usersearch/UserSearchContainer.js'
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 import InboxContainer from './react/inbox/InboxContainer.js'
 import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer'
@@ -63,9 +63,9 @@ class App extends Component {
                 return <Redirect to='/login' />
               }
             }}/>
-            <Route path='/transferhome' render={() => {
+            <Route path='/TransactionDashboard' render={() => {
               if (localStorage.getItem('token')) {
-                return <TransferHome />
+                return <TransactionDashboard />
               } else {
                 return <Redirect to='/login' />
               }
@@ -77,9 +77,9 @@ class App extends Component {
                 return <Redirect to='/login' />
               }
             }}/>
-            <Route path='/transferform' render={() => {
+            <Route path='/usersearch' render={() => {
               if (localStorage.getItem('token')) {
-                return <TransferForm />
+                return <UserSearchContainer />
               } else {
                 return <Redirect to='/login' />
               }

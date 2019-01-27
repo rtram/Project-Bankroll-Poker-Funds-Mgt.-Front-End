@@ -6,7 +6,6 @@ import { Card, Icon, Button, Grid, Image } from 'semantic-ui-react'
 class UserCard extends Component {
 
   render() {
-    console.log(this.props.user)
     return(
       <Grid.Column>
         <Card>
