@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-const userListReducer = (state = [], action) => {
-  switch(action.type) {
-    case 'FETCHED_USER_LIST':
-      return action.payload
+const loadingReducer = (state = false, action) => {
+  switch (action.type) {
+    case "LOADING":
+      return true
+    case "FETCHED_SESSIONS":
+      return false;
     default:
       return state
   }
@@ -13,6 +15,30 @@ const currentUserReducer = (state = [], action) => {
   switch(action.type) {
     case 'LOGGED_IN':
       return action.payload.user
+    default:
+      return state
+  }
+}
+
+const userReducer = (state = {}, action) => {
+  let userObject;
+  switch(action.type) {
+    case 'CREATED_USER':
+       userObject= {
+        username: action.payload.username,
+        first_name: action.payload.first_name,
+        last_name: action.payload.last_name,
+        url: action.payload.url
+      }
+      return userObject
+    case 'FETCHED_USER_DATA':
+      userObject = {
+        username: action.payload.username,
+        first_name: action.payload.first_name,
+        last_name: action.payload.last_name,
+        url: action.payload.url
+      }
+      return userObject
     default:
       return state
   }
@@ -52,30 +78,6 @@ const balanceReducer = (state = 0, action) => {
   }
 }
 
-const userReducer = (state = {}, action) => {
-  let userObject;
-  switch(action.type) {
-    case 'CREATED_USER':
-       userObject= {
-        username: action.payload.username,
-        first_name: action.payload.first_name,
-        last_name: action.payload.last_name,
-        url: action.payload.url
-      }
-      return userObject
-    case 'FETCHED_USER_DATA':
-      userObject = {
-        username: action.payload.username,
-        first_name: action.payload.first_name,
-        last_name: action.payload.last_name,
-        url: action.payload.url
-      }
-      return userObject
-    default:
-      return state
-  }
-}
-
 const sentTransactionsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
@@ -93,47 +95,6 @@ const receivedTransactionsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
       return action.payload.received_transactions
-    default:
-      return state
-  }
-}
-
-const errorsReducer = (state = {}, action) => {
-  switch(action.type) {
-    case 'DISPLAY_ERRORS':
-      return action.payload
-    default:
-      return state
-  }
-}
-
-const selectedProfileReducer = (state = [], action) => {
-  switch(action.type) {
-    case "FETCHED_SELECTED_PROFILE":
-      return [action.payload]
-    case "CLEAR_SELECTED_PROFILE":
-      return []
-    case 'POSTED_TRANSACTION':
-      let stateCopy = [{...state[0], received_transactions: [...state[0].received_transactions, action.payload]}]
-      return stateCopy
-    default:
-      return state
-  }
-}
-
-const loginErrorReducer = (state = [], action) => {
-  switch(action.type) {
-    case 'DISPLAY_LOGIN_ERROR':
-      return [action.payload]
-    default:
-      return state
-  }
-}
-
-const sessionErrorReducer = (state = [], action) => {
-  switch(action.type) {
-    case 'DISPLAY_SESSION_ERRORS':
-      return action.payload
     default:
       return state
   }
@@ -181,12 +142,51 @@ const receivedRequestsReducer = (state = [], action) => {
   }
 }
 
-const loadingReducer = (state = false, action) => {
-  switch (action.type) {
-    case "LOADING":
-      return true
-    case "FETCHED_SESSIONS":
-      return false;
+const userListReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCHED_USER_LIST':
+      return action.payload
+    default:
+      return state
+  }
+}
+
+const errorsReducer = (state = {}, action) => {
+  switch(action.type) {
+    case 'DISPLAY_ERRORS':
+      return action.payload
+    default:
+      return state
+  }
+}
+
+const loginErrorReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'DISPLAY_LOGIN_ERROR':
+      return [action.payload]
+    default:
+      return state
+  }
+}
+
+const sessionErrorReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'DISPLAY_SESSION_ERRORS':
+      return action.payload
+    default:
+      return state
+  }
+}
+
+const selectedProfileReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_SELECTED_PROFILE":
+      return [action.payload]
+    case "CLEAR_SELECTED_PROFILE":
+      return []
+    case 'POSTED_TRANSACTION':
+      let stateCopy = [{...state[0], received_transactions: [...state[0].received_transactions, action.payload]}]
+      return stateCopy
     default:
       return state
   }
