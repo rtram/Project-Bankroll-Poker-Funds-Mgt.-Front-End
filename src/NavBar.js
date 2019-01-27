@@ -76,7 +76,7 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Menu position='right'>
           <Menu.Item >
-            <Link to='/dashboard'>
+            <Link to='/pokerdashboard'>
             <Icon name='dashboard'/>
               Poker Dashboard
             </Link>

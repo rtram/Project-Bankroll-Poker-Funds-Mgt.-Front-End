@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Header, Image } from 'semantic-ui-react'
 
-class UserProfile extends Component {
+class MyProfileInfo extends Component {
 
   // RETURNS OBJECT'S FULL NAME STRING
   fullNameConverter = (object) => {
@@ -46,4 +46,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(UserProfile)
+export default connect(mapStateToProps)(MyProfileInfo)

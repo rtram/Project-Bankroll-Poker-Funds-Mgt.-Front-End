@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
-import UserProfile from './UserProfile'
-import UserProfileBankInfo from './UserProfileBankInfo'
+import MyProfileInfo from './MyProfileInfo'
+import MyProfileBankInfo from './MyProfileBankInfo'
 
-class UserProfileContainer extends Component {
+class MyProfileContainer extends Component {
   componentDidMount() {
     // FETCHES CURRENT USER OBJECT
     this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
@@ -18,8 +18,8 @@ class UserProfileContainer extends Component {
           marginTop: '10em'
         }}
       >
-        <UserProfile />
-        <UserProfileBankInfo />
+        <MyProfileInfo />
+        <MyProfileBankInfo />
       </Container>
     )
   }
@@ -31,4 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchingUserBalances })(UserProfileContainer)
+export default connect(mapStateToProps, { fetchingUserBalances })(MyProfileContainer)

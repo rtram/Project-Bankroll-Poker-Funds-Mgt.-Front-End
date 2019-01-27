@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2'
 import { Button, Container } from 'semantic-ui-react'
 import './Dashboard.css'
 
-export default class OverTime extends Component {
+export default class OverTimeLineGraph extends Component {
   constructor() {
     super()
     this.state = {

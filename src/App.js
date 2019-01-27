@@ -7,14 +7,14 @@ import Footer from './Footer.js'
 import Home from './react/home/Home.js'
 import SignUp from './react/login/SignUp.js'
 import Login from './react/login/Login.js'
-import Dashboard from './react/homepage/Dashboard.js'
+import PokerDashboard from './react/pokerdashboard/PokerDashboard.js'
 import TransactionDashboard from './react/transfer/TransactionDashboard.js'
-import BankTransfer from './react/transfer/bankContainer/BankTransfer.js'
+import BankTransfer from './react/transfer/bankTransfer/BankTransfer.js'
 import UserSearchContainer from './react/transfer/usersearch/UserSearchContainer.js'
 import CasinoMap from './react/casinoMap/CasinoMap.js'
 import InboxContainer from './react/inbox/InboxContainer.js'
 import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer'
-import UserProfileContainer from './react/profile/UserProfileContainer'
+import MyProfileContainer from './react/myProfile/MyProfileContainer'
 import Loading from './Loading.js'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
@@ -56,15 +56,15 @@ class App extends Component {
               return <SignUp />
               }
             }} />
-            <Route exact path='/dashboard' render={() => {
+            <Route exact path='/pokerdashboard' render={() => {
               if (localStorage.getItem('token')) {
-                return <Dashboard />
+                return <PokerDashboard />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
 
-{// VENMO DROPDOWN------------------------------------------------------
+{// TRANSFER DROPDOWN------------------------------------------------------
 }
             <Route path='/transactiondashboard' render={() => {
               if (localStorage.getItem('token')) {
@@ -106,7 +106,7 @@ class App extends Component {
             }}/>
             <Route path='/myprofile' render={() => {
               if (localStorage.getItem('token')) {
-                return <UserProfileContainer />
+                return <MyProfileContainer />
               } else {
                 return <Redirect to='/login' />
               }

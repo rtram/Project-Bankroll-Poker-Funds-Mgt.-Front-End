@@ -3,7 +3,7 @@ import { Doughnut } from 'react-chartjs-2'
 import { Header } from 'semantic-ui-react'
 import './Dashboard.css'
 
-export default class WinningPercentage extends Component {
+export default class WinningPercentageDoughnutGraph extends Component {
 
   render() {
 

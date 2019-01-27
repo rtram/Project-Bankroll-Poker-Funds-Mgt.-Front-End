@@ -5,15 +5,15 @@ import { Container, Grid, Header, Icon, Divider } from 'semantic-ui-react'
 import { fetchingSessions } from '../../redux/actions/users.js'
 
 // GRAPH IMPORTS
-import WinningPercentage from './WinningPercentage'
-import OverTime from './OverTime'
+import WinningPercentageDoughnutGraph from './WinningPercentageDoughnutGraph'
+import OverTimeLineGraph from './OverTimeLineGraph'
 import Hourly from './Hourly'
 
 // SESSION PANE IMPORT
 import SessionContainer from './sessioncontainer/SessionContainer'
 
 
-class Dashboard extends Component {
+class PokerDashboard extends Component {
   componentDidMount() {
     this.props.fetchingSessions(localStorage.getItem('currentUser'))
 
@@ -169,7 +169,7 @@ class Dashboard extends Component {
               Performance
             </Header>
             <p>This detailed graph shows how you have been performing over a period time.  Use the buttons beneath to see the peaks and valleys of your poker career!</p>
-            {this.props.sessions ? <OverTime labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
+            {this.props.sessions ? <OverTimeLineGraph labels={this.createOverTimeLabels()} data={this.overTimeDataPoints()}/> : null}
             </Grid.Column>
 
             <Grid.Column style={{ marginRight: '3em'}} width={7}>
@@ -178,7 +178,7 @@ class Dashboard extends Component {
               Win Rate
             </Header>
             {this.props.sessions ?
-              <WinningPercentage data={this.winLossPercentage()}/> : null}
+              <WinningPercentageDoughnutGraph data={this.winLossPercentage()}/> : null}
             </Grid.Column>
           </Grid.Row>
           <Divider/>
@@ -207,4 +207,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchingSessions })(Dashboard);
+export default connect(mapStateToProps, { fetchingSessions })(PokerDashboard);
