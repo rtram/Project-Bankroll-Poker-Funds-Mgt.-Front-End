@@ -1,5 +1,12 @@
 const URL = 'http://localhost:3001/api/v1/likes'
 
+const postedLike = data => {
+  return {
+    type:"POSTED_LIKE",
+    payload: data
+  }
+}
+
 const postingLike = likeObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
@@ -11,6 +18,10 @@ const postingLike = likeObject => {
       },
       body: JSON.stringify(likeObject)
     })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(postedLike(data))
+      })
   }
 }
 

@@ -86,6 +86,12 @@ const sentTransactionsReducer = (state = [], action) => {
       return [...state, action.payload]
     case 'COMPLETED_TRANSACTION':
       return [...state, action.payload]
+    case 'POSTED_LIKE':
+      let originalTransaction = state.filter(transactionObject => transactionObject.id === action.payload.id)
+      let index = state.indexOf(originalTransaction[0])
+      let copyState = state.slice()
+      copyState.splice(index, 1, action.payload)
+      return copyState
     default:
       return state
   }
@@ -95,6 +101,12 @@ const receivedTransactionsReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER_DATA':
       return action.payload.received_transactions
+    case 'POSTED_LIKE':
+      let originalTransaction = state.filter(transactionObject => transactionObject.id === action.payload.id)
+      let index = state.indexOf(originalTransaction[0])
+      let copyState = state.slice()
+      copyState.splice(index, 1, action.payload)
+      return copyState
     default:
       return state
   }
@@ -187,6 +199,8 @@ const selectedProfileReducer = (state = [], action) => {
     case 'POSTED_TRANSACTION':
       let stateCopy = [{...state[0], received_transactions: [...state[0].received_transactions, action.payload]}]
       return stateCopy
+    case 'POSTED_LIKE':
+      // debugger
     default:
       return state
   }
