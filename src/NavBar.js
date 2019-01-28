@@ -45,8 +45,7 @@ class NavBar extends Component {
       this.props.userList.map(userObject => {
         let object = {
           username: userObject.username,
-          first_name: userObject.first_name,
-          last_name: userObject.last_name
+          title: `${userObject.first_name} ${userObject.last_name}`
         }
         source.push(object)
       })

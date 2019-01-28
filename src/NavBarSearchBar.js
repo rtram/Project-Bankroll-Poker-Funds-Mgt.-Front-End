@@ -18,7 +18,7 @@ export default class NavBarSearchBar extends Component {
 
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-  handleResultSelect = (e, { result }) => this.setState({ value: result.username })
+  handleResultSelect = (e, { result }) => this.setState({ value: result.title })
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
@@ -50,7 +50,6 @@ export default class NavBarSearchBar extends Component {
             results={this.state.results}
             value={this.state.value}
             placeholder='Search for Players'
-            // {...this.props}
           />
         </Grid.Column>
       </Grid>
