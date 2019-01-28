@@ -16,14 +16,6 @@ import { userLogout } from './redux/actions/login.js'
 import NavBarSearchBar from './NavBarSearchBar'
 
 class NavBar extends Component {
-  constructor() {
-    super()
-    this.state={
-      isLoading: false,
-      value: '',
-      results: []
-    }
-  }
 
   componentDidMount() {
     let token = localStorage.getItem('token')
@@ -44,6 +36,7 @@ class NavBar extends Component {
     if (this.props.userList.length > 0) {
       this.props.userList.map(userObject => {
         let object = {
+          id: userObject.id,
           username: userObject.username,
           title: `${userObject.first_name} ${userObject.last_name}`
         }

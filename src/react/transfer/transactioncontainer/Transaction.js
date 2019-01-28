@@ -22,10 +22,7 @@ class Transaction extends Component {
     if (this.props.transfer.likes.length > 0 && userIdArray.includes(currentUserId)) {
       let index = userIdArray.indexOf(currentUserId)
       let originalLike = this.props.transfer.likes[index]
-      // debugger
-      if ('id' in originalLike) {
-        this.props.deletingLike(originalLike)
-      }
+      this.props.deletingLike(originalLike)
     } else {
       let likeObject = {
         transaction_id: this.props.transfer.id,
