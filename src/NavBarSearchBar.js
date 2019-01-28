@@ -1,9 +1,10 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search, Grid, Container } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Search, Grid } from 'semantic-ui-react'
+import { searchBarRedirect } from './redux/actions/searchbar.js'
 
-export default class NavBarSearchBar extends Component {
+class NavBarSearchBar extends Component {
   constructor() {
     super()
     this.state={
@@ -20,11 +21,7 @@ export default class NavBarSearchBar extends Component {
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
   handleResultSelect = (e, { result }) => {
-    this.setState({
-      value: result.title,
-      idSelected: result.id,
-      redirect: true
-    })
+    this.props.searchBarRedirect(result.id)
   }
 
   handleSearchChange = (e, { value }) => {
@@ -63,3 +60,5 @@ export default class NavBarSearchBar extends Component {
     )
   }
 }
+
+export default connect(null, { searchBarRedirect })(NavBarSearchBar)

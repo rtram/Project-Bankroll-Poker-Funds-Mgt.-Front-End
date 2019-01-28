@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import '../../App.css'
 import './Dashboard.css';
 import { Container, Grid, Header, Icon, Divider } from 'semantic-ui-react'
 import { fetchingSessions } from '../../redux/actions/users.js'
@@ -157,10 +158,10 @@ class PokerDashboard extends Component {
     }
 
     return (
-      <div>
-        <Container style={{ marginTop: '10em' }}>
-          <Header style={{ fontSize:'4em', color:'white'}}>Welcome Back, {currentUserFirstName}</Header>
-        </Container>
+      <div class='body'>
+        <Header style={{ fontSize:'4em', color:'white'}}>
+          Welcome Back, {currentUserFirstName}
+        </Header>
         <Grid style={{ marginTop: '3em' }} columns={2}>
           <Grid.Row>
             <Grid.Column width={8}>

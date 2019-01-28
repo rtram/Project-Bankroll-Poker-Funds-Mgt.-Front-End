@@ -20,7 +20,6 @@ const HomepageHeading = ({ mobile }) => (
         fontSize: mobile ? '2em' : '4em',
         fontWeight: 'bold',
         marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '1.8em',
         paddingTop: '1em'
       }}
     />
@@ -32,7 +31,6 @@ const HomepageHeading = ({ mobile }) => (
         color: 'black',
         fontSize: mobile ? '1.5em' : '1.7em',
         fontWeight: 'normal',
-        marginTop: mobile ? '0.5em' : '1.5em',
       }}
     />
     <Link to='/signup'>

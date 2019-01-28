@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { } from 'react-router-dom'
 import {
   Container,
   Divider,
@@ -11,8 +10,14 @@ import {
 class Footer extends Component {
 
   render() {
+    let css = {
+      position: 'relative',
+      height: '25vh',
+      clear: 'both'
+    }
+
     return(
-      <Segment inverted style={{ margin: '0px', height: '25vh'}}>
+      <Segment inverted style={css}>
         <Container textAlign='center'>
           <Divider inverted section />
           <Image centered size='mini' src='https://i.imgur.com/Frwwd8f.png' />

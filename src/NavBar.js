@@ -7,8 +7,7 @@ import {
   Container,
   Dropdown,
   Image,
-  Menu,
-  Search
+  Menu
 } from 'semantic-ui-react'
 import './App.css'
 import { fetchingUserBalances, fetchingUserList } from './redux/actions/users.js'
@@ -45,7 +44,7 @@ class NavBar extends Component {
     }
 
     return(
-      <Menu fixed='top' inverted>
+      <Menu inverted>
         <Container>
           <Menu.Item header>
             <Link to='/home'>

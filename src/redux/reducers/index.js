@@ -1,5 +1,23 @@
 import { combineReducers } from 'redux'
 
+// const searchBarRedirectReducer = (state = false, action) => {
+//   switch (action.type) {
+//     case "SEARCH_REQUEST":
+//       return true
+//     default:
+//       return state
+//   }
+// }
+//
+// const redirectIDReducer = (state = '', action) => {
+//   switch (action.type) {
+//     case "SEARCH_REQUEST":
+//       return action.payload
+//     default:
+//       return state
+//   }
+// }
+
 const loadingReducer = (state = false, action) => {
   switch (action.type) {
     case "LOADING":
@@ -273,6 +291,8 @@ const selectedProfileReducer = (state = [], action) => {
 }
 
 const appReducer = combineReducers({
+  // searchBarRedirect: searchBarRedirectReducer,
+  // redirectID: redirectIDReducer,
   loading: loadingReducer,
   currentUser: currentUserReducer,
   user: userReducer,

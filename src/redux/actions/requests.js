@@ -1,5 +1,4 @@
 const postedRequest = (data) => {
-  debugger
   return {
     type:"POSTED_REQUEST",
     payload: data

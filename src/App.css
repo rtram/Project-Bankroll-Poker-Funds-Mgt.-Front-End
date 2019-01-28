@@ -1,5 +1,10 @@
 .App {
-  height: 100vh;
+  min-height: 100%;
+}
+
+.main {
+  height: 100%;
+  text-align: center;
 }
 
 .ui.inverted.segment, .ui.primary.inverted.segment {
@@ -11,10 +16,6 @@
 
 .Link-color {
   color: black;
-}
-
-.Container-Text-Style {
-  text-align: center;
 }
 
 .inbox-badge {
@@ -38,10 +39,6 @@ ui header, h1.ui.header, h2.ui.header, h3.ui.header, h4.ui.header, h5.ui.header{
   color: white;
 font-family: 'Open Sans Condensed', sans-serif;
 font-weight: 300;
-}
-
-body{
-background-color: #343846;
 }
 
 .ui[class*="top fixed"].menu {

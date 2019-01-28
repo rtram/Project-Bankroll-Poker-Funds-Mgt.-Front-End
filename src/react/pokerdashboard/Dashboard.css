@@ -1,6 +1,7 @@
- 
-
-/* Up is deletable*/
+.body {
+  width: 80%;
+    display: inline-block;
+}
 
 
 .graph-container {

@@ -4,8 +4,13 @@ body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #343846;
 }
 
 code {
   font-family: sans-serif;
+}
+
+html {
+  height: 100%;
 }

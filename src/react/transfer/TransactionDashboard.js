@@ -12,12 +12,7 @@ class TransactionDashboard extends Component {
 
   render() {
     return(
-      <Grid
-        style={{
-          marginTop: '9.8em',
-          marginBottom: '5em'
-        }}
-      >
+      <Grid>
         <UserBalance />
         <TransactionHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
       </Grid>
