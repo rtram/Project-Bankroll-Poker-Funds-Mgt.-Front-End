@@ -3,57 +3,29 @@ import { connect } from 'react-redux'
 import { Container, Divider, Header, Icon, Button, Grid, Label } from 'semantic-ui-react'
 import { postingLike, deletingLike } from '../../../redux/actions/like'
 
-
-
 class Transaction extends Component {
-  constructor() {
-    super()
-    this.state={
-      likes:[],
-      likeCount: 0
-    }
-  }
-
-  componentDidMount() {
-    let likeArray = this.props.transfer.likes
-
-    this.setState({
-      likes: likeArray,
-      likeCount: likeArray.length
-    })
-  }
 
   // RETURNS OBJECT SENDER/RECIPIENT'S FULL NAME STRING
   fullNameConverter = (object, type) => {
     return object[type].first_name + ' ' + object[type].last_name
   }
 
-  // IN PROGRESS
-  // FUNCTION ALLOWS USER A MAX OF 1 CLICK PER TRANSACTION
-  // AS IS, THE FUNCTION PERMITS MULTIPLE LIKES IF THE USER CLICKS MULTIPLE TIMES BEFORE THE INITIAL LIKE PERSISTS.
   handleClick = () => {
     let currentUserId = parseInt(localStorage.getItem('currentUser'))
     let userIdArray;
 
     // RETURNS USER IDS THAT HAVE LIKED TRANSACTION
-    if (this.state.likes.length > 0) {
-      userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
+    if (this.props.transfer.likes.length > 0) {
+      userIdArray = this.props.transfer.likes.map(transferObject => transferObject.user_id)
     }
 
-    let copyState = this.state.likes
-
-    if (this.state.likes.length > 0 && userIdArray.includes(currentUserId)) {
+    if (this.props.transfer.likes.length > 0 && userIdArray.includes(currentUserId)) {
       let index = userIdArray.indexOf(currentUserId)
-      let originalLike = this.state.likes[index]
-
+      let originalLike = this.props.transfer.likes[index]
+      // debugger
       if ('id' in originalLike) {
         this.props.deletingLike(originalLike)
       }
-      copyState.splice(index, 1)
-      this.setState({
-        likes: copyState,
-        likeCount: this.state.likeCount - 1,
-      })
     } else {
       let likeObject = {
         transaction_id: this.props.transfer.id,
@@ -62,39 +34,27 @@ class Transaction extends Component {
         last_name: this.props.user.last_name
       }
       this.props.postingLike(likeObject)
-      if (copyState.length === 0 ) {
-        this.setState({
-          likes: [likeObject],
-          likeCount: this.state.likeCount + 1,
-        })
-      } else {
-        copyState.push(likeObject)
-        this.setState({
-          likes: copyState,
-          likeCount: this.state.likeCount + 1,
-        })
-      }
     }
   }
 
   shortenedLikeList = () => {
-    return this.state.likes.slice(0, 2)
+    return this.props.transfer.likes.slice(0, 2)
   }
 
   // IF CURRENT USER HAS ALREADY LIKED THE TRANSACTION, THE LIKE BUTTON WILL BE A DIFFERENT COLOR.
-  conditionalLikeButton = () => {
-    let currentUserId = parseInt(localStorage.getItem('currentUser'))
-    let userIdArray;
-
-    if (this.state.likes.length > 0) {
-      userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
-      if (userIdArray.includes(currentUserId)) {
-        return true
-      } else {
-        return false
-      }
-    }
-  }
+  // conditionalLikeButton = () => {
+  //   let currentUserId = parseInt(localStorage.getItem('currentUser'))
+  //   let userIdArray;
+  //
+  //   if (this.state.likes.length > 0) {
+  //     userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
+  //     if (userIdArray.includes(currentUserId)) {
+  //       return true
+  //     } else {
+  //       return false
+  //     }
+  //   }
+  // }
 
   render() {
     return(
@@ -113,16 +73,10 @@ class Transaction extends Component {
             }}
             width={6}
           >
-            {this.conditionalLikeButton() ?
-              <Button color='blue' onClick={this.handleClick}>
-                <Icon name='like' color='red'/>
-                {this.state.likeCount}
-              </Button> :
-              <Button color='white' onClick={this.handleClick}>
-                <Icon name='like' color='red'/>
-                {this.state.likeCount}
-              </Button>
-            }
+          <Button color='blue' onClick={this.handleClick}>
+            <Icon name='like' color='red'/>
+            {this.props.transfer.likes.length}
+          </Button>
           </Grid.Column>
           <Grid.Column
             width={10}
@@ -143,7 +97,7 @@ class Transaction extends Component {
                   {userObject.first_name + ' ' +userObject.last_name}
                 </Label>
               ))}
-              {this.state.likeCount > 2 ?
+              {this.props.transfer.likes.length > 2 ?
                 <Label color='green'>
                   ...
                 </Label>

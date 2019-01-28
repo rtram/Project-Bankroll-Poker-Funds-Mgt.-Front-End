@@ -92,6 +92,12 @@ const sentTransactionsReducer = (state = [], action) => {
       let copyState = state.slice()
       copyState.splice(index, 1, action.payload)
       return copyState
+    case 'DELETED_LIKE':
+      originalTransaction = state.filter(transactionObject => transactionObject.id === action.payload.id)
+      index = state.indexOf(originalTransaction[0])
+      copyState = state.slice()
+      copyState.splice(index, 1, action.payload)
+      return copyState
     default:
       return state
   }
@@ -105,6 +111,12 @@ const receivedTransactionsReducer = (state = [], action) => {
       let originalTransaction = state.filter(transactionObject => transactionObject.id === action.payload.id)
       let index = state.indexOf(originalTransaction[0])
       let copyState = state.slice()
+      copyState.splice(index, 1, action.payload)
+      return copyState
+    case 'DELETED_LIKE':
+      originalTransaction = state.filter(transactionObject => transactionObject.id === action.payload.id)
+      index = state.indexOf(originalTransaction[0])
+      copyState = state.slice()
       copyState.splice(index, 1, action.payload)
       return copyState
     default:
@@ -200,7 +212,37 @@ const selectedProfileReducer = (state = [], action) => {
       let stateCopy = [{...state[0], received_transactions: [...state[0].received_transactions, action.payload]}]
       return stateCopy
     case 'POSTED_LIKE':
-      // debugger
+      let originalReceivedTransaction = state[0].received_transactions.filter(transactionObject => transactionObject.id === action.payload.id)
+      let originalSentTransaction = state[0].sent_transactions.filter(transactionObject => transactionObject.id === action.payload.id)
+
+      if (originalReceivedTransaction.length > 0) {
+        let index = state[0].received_transactions.indexOf(originalReceivedTransaction[0])
+        let copyReceivedTransactionState = state[0].received_transactions.slice()
+        copyReceivedTransactionState.splice(index, 1, action.payload)
+        stateCopy = [{...state[0], received_transactions: [...copyReceivedTransactionState]}]
+      } else {
+        let index = state[0].sent_transactions.indexOf(originalSentTransaction[0])
+        let copySentTransactionState = state[0].sent_transactions.slice()
+        copySentTransactionState.splice(index, 1, action.payload)
+        stateCopy = [{...state[0], sent_transactions: [...copySentTransactionState]}]
+      }
+      return stateCopy
+    case 'DELETED_LIKE':
+      originalReceivedTransaction = state[0].received_transactions.filter(transactionObject => transactionObject.id === action.payload.id)
+      originalSentTransaction = state[0].sent_transactions.filter(transactionObject => transactionObject.id === action.payload.id)
+
+      if (originalReceivedTransaction.length > 0) {
+        let index = state[0].received_transactions.indexOf(originalReceivedTransaction[0])
+        let copyReceivedTransactionState = state[0].received_transactions.slice()
+        copyReceivedTransactionState.splice(index, 1, action.payload)
+        stateCopy = [{...state[0], received_transactions: [...copyReceivedTransactionState]}]
+      } else {
+        let index = state[0].sent_transactions.indexOf(originalSentTransaction[0])
+        let copySentTransactionState = state[0].sent_transactions.slice()
+        copySentTransactionState.splice(index, 1, action.payload)
+        stateCopy = [{...state[0], sent_transactions: [...copySentTransactionState]}]
+      }
+      return stateCopy
     default:
       return state
   }

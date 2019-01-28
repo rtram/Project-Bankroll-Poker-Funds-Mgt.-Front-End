@@ -25,6 +25,13 @@ const postingLike = likeObject => {
   }
 }
 
+const deletedLike = data => {
+  return {
+    type:"DELETED_LIKE",
+    payload: data
+  }
+}
+
 const deletingLike = likeObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
@@ -34,6 +41,10 @@ const deletingLike = likeObject => {
         "Authentication" : `Bearer ${token}`
       }
     })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(deletedLike(data))
+      })
   }
 }
 
