@@ -42,19 +42,19 @@ class Transaction extends Component {
   }
 
   // IF CURRENT USER HAS ALREADY LIKED THE TRANSACTION, THE LIKE BUTTON WILL BE A DIFFERENT COLOR.
-  // conditionalLikeButton = () => {
-  //   let currentUserId = parseInt(localStorage.getItem('currentUser'))
-  //   let userIdArray;
-  //
-  //   if (this.state.likes.length > 0) {
-  //     userIdArray = this.state.likes.map(transferObject => transferObject.user_id)
-  //     if (userIdArray.includes(currentUserId)) {
-  //       return true
-  //     } else {
-  //       return false
-  //     }
-  //   }
-  // }
+  conditionalLikeButton = () => {
+    let currentUserId = parseInt(localStorage.getItem('currentUser'))
+    let userIdArray;
+
+    if (this.props.transfer.likes.length > 0) {
+      userIdArray = this.props.transfer.likes.map(transferObject => transferObject.user_id)
+      if (userIdArray.includes(currentUserId)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
 
   render() {
     return(
@@ -73,10 +73,17 @@ class Transaction extends Component {
             }}
             width={6}
           >
-          <Button color='blue' onClick={this.handleClick}>
-            <Icon name='like' color='red'/>
-            {this.props.transfer.likes.length}
-          </Button>
+          { this.conditionalLikeButton() ?
+            <Button color='blue' onClick={this.handleClick}>
+              <Icon name='like' color='red'/>
+              {this.props.transfer.likes.length}
+            </Button>
+            :
+            <Button color='grey' onClick={this.handleClick}>
+              <Icon name='like' color='red'/>
+              {this.props.transfer.likes.length}
+            </Button>
+          }
           </Grid.Column>
           <Grid.Column
             width={10}
