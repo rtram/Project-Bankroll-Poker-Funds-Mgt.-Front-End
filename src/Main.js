@@ -38,7 +38,7 @@ class Body extends Component {
             <Route exact path='/home' render={() => {
               return <Home />
             }} />
-            <Route path='/map' render={props => {
+            <Route exact path='/map' render={props => {
               return <CasinoMap />
             }} />
             <Route exact path='/login' render={() => {
@@ -48,7 +48,7 @@ class Body extends Component {
                   return <Login />
                 }
               }} />
-            <Route path='/signup' render={props => {
+            <Route exact path='/signup' render={props => {
               if (localStorage.getItem('token')) {
                 return <Redirect to='/dashboard' />
               } else {
@@ -65,28 +65,28 @@ class Body extends Component {
 
   {// TRANSFER DROPDOWN------------------------------------------------------
   }
-            <Route path='/transactiondashboard' render={() => {
+            <Route exact path='/transactiondashboard' render={() => {
               if (localStorage.getItem('token')) {
                 return <TransactionDashboard />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
-            <Route path='/banktransfer' render={() => {
+            <Route exact path='/banktransfer' render={() => {
               if (localStorage.getItem('token')) {
                 return <BankTransfer />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
-            <Route path='/usersearch' render={() => {
+            <Route exact path='/usersearch' render={() => {
               if (localStorage.getItem('token')) {
                 return <UserSearchContainer />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
-            <Route path='/user/:id' render={props => {
+            <Route exact path='/user/:id' render={props => {
               let id = props.match.params.id
               if (localStorage.getItem('token')) {
                 return <ProfilePageContainer id={id}/>
@@ -96,20 +96,21 @@ class Body extends Component {
             }}/>
   {// ---------------------------------------------------------------
   }
-            <Route path='/inbox' render={() => {
+            <Route exact path='/inbox' render={() => {
               if (localStorage.getItem('token')) {
                 return <InboxContainer />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
-            <Route path='/myprofile' render={() => {
+            <Route exact path='/myprofile' render={() => {
               if (localStorage.getItem('token')) {
                 return <MyProfileContainer />
               } else {
                 return <Redirect to='/login' />
               }
             }}/>
+            <Route component={Home} />
           </Switch>
         </div>
       </>
