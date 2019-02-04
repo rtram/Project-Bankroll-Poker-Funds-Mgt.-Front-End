@@ -21,7 +21,7 @@ class Footer extends Component {
         <Container textAlign='center'>
           <Divider inverted section />
           <Image centered size='mini' src='https://i.imgur.com/Frwwd8f.png' />
-          <Header as='h5' style={{ color:'white'}}>This Application Was Made By Robin Tram</Header>
+          <Header as='h5' style={{ color:'white'}}>This Application Was Made By Robin Tram.</Header>
         </Container>
       </Segment>
     )
