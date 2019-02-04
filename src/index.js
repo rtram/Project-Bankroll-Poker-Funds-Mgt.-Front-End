@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import {StripeProvider} from 'react-stripe-elements';
 
 import App from './App';
 import rootReducer from './redux/reducers/index'
@@ -16,7 +17,9 @@ let store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <StripeProvider apiKey="pk_test_kdJTk5Y6r1LvdclCjnKtvf5M">
+        <App/>
+      </StripeProvider>
     </Router>
   </Provider>,
   document.getElementById('root')

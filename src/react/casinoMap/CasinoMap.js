@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {  } from '../../redux/actions/users.js'
 import GoogleMapReact from 'google-map-react';
 import CasinoCoord from './CasinoCoord'
 import UserCoord from './UserCoord'
