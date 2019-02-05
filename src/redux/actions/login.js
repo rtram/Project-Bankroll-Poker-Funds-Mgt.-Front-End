@@ -1,4 +1,5 @@
-const URL = 'http://localhost:3001/api/v1/login%20'
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const loggedIn = (data) => {
   localStorage.setItem('token', data.jwt)
@@ -18,7 +19,7 @@ const displayLoginError = data => {
 
 const loggingIn = (userObject) => {
   return dispatch => {
-    fetch(URL, {
+    fetch(`${URL}/login%20`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -48,7 +49,7 @@ const fetchedUserInbox = (data) => {
 const fetchingUserInbox = (user_id) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch(`http://localhost:3001/api/v1/users/${user_id}`, {
+    fetch(`${URL}/users/${user_id}`, {
       method: 'GET',
       headers: {
         "Authentication" : `Bearer ${token}`,

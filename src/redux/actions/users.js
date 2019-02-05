@@ -1,4 +1,5 @@
-const URL = 'http://localhost:3001/api/v1/users'
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const displayErrors = (data) => {
   return {
@@ -17,7 +18,7 @@ const createdUser = (data) => {
 
 const creatingUser = (userObject) => {
   return dispatch => {
-    fetch(URL, {
+    fetch(`${URL}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ const fetchedSessions = (data) => {
 const fetchingSessions = (user_id) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch(`${URL}/${user_id}`, {
+    fetch(`${URL}/users/${user_id}`, {
       method: 'GET',
       headers: {
         "Authentication" : `Bearer ${token}`,
@@ -69,8 +70,9 @@ const fetchedUserBalances = (data) => {
 
 const fetchingUserBalances = (user_id) => {
   let token = localStorage.getItem('token')
+  debugger
   return (dispatch) => {
-    fetch(`${URL}/${user_id}`, {
+    fetch(`${URL}/users/${user_id}`, {
       method: 'GET',
       headers: {
         "Authentication" : `Bearer ${token}`,
@@ -94,7 +96,7 @@ const fetchedUserList= (data) => {
 const fetchingUserList = () => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch(URL, {
+    fetch(`${URL}/users`, {
       method: 'GET',
       headers: {
         "Authentication" : `Bearer ${token}`
@@ -117,7 +119,7 @@ const fetchedSelectedProfile = (data) => {
 const fetchingSelectedProfile = (id) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch(`${URL}/${id}`, {
+    fetch(`${URL}/users/${id}`, {
       method: 'GET',
       headers: {
         "Authentication" : `Bearer ${token}`,
@@ -138,31 +140,4 @@ const clearSelectedProfile = (data) => {
   }
 }
 
-const postedTransaction = (data) => {
-  return {
-    type:"POSTED_TRANSACTION",
-    payload: data
-  }
-}
-
-const postingTransaction = (userObject) => {
-  let token = localStorage.getItem('token')
-  return (dispatch) => {
-    fetch("http://localhost:3001/api/v1/transactions", {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Authentication" : `Bearer ${token}`
-      },
-      body: JSON.stringify(userObject)
-    })
-    .then(res => res.json())
-    .then(data => {
-      debugger
-      dispatch(postedTransaction(data))
-    })
-  }
-}
-
-
-export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile, postingTransaction };
+export { fetchingSessions, fetchingUserList, fetchingUserBalances, creatingUser, fetchingSelectedProfile, clearSelectedProfile };

@@ -1,4 +1,5 @@
-const URL = 'http://localhost:3001/api/v1/users'
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const updatedUserBalance = (data) => {
   return {
@@ -10,7 +11,7 @@ const updatedUserBalance = (data) => {
 const updatingUserBalance = (userObject) => {
   let token = localStorage.getItem('token')
   return dispatch => {
-    fetch(`${URL}/${userObject.id}`, {
+    fetch(`${URL}/users/${userObject.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +27,7 @@ const updatingUserBalance = (userObject) => {
 const updatingRecipientBalance = (userObject) => {
   let token = localStorage.getItem('token')
   return dispatch => {
-    fetch(`${URL}/${userObject.id}`, {
+    fetch(`${URL}/users/${userObject.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatingUserBalance, updatingRecipientBalance} from '../../../redux/actions/balances.js'
-import { postingTransaction } from '../../../redux/actions/users.js'
+import { postingTransaction } from '../../../redux/actions/transactions.js'
 
 import { Button, Modal, Input, Container, Header } from 'semantic-ui-react'
 

@@ -1,34 +1,11 @@
-const URL = 'http://localhost:3001/api/v1/sessions'
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const loading = () => {
   return {type: "LOADING"}
 }
 
-const fetchedSessions = (data) => {
-  return {
-    type:"FETCHED_SESSIONS",
-    payload: data}
-}
-
-const fetchingSessions = (user_id) => {
-  let token = localStorage.getItem('token')
-  return (dispatch) => {
-    dispatch(loading())
-    fetch(`${URL}/${user_id}`, {
-      method: 'GET',
-      headers: {
-        "Authentication" : `Bearer ${token}`
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      dispatch(fetchedSessions(data))
-    })
-  }
-}
-
 const postedSession = data => {
-  debugger
   return {
     type: 'POST_SESSION',
     payload: data
@@ -45,7 +22,7 @@ const displaySessionErrors = data => {
 const postingSession = sessionObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
-    fetch(URL, {
+    fetch(`${URL}/sessions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +52,7 @@ const updatedSession = data => {
 const updatingSession = sessionObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
-    fetch(`${URL}/${sessionObject.id}`, {
+    fetch(`${URL}/sessions/${sessionObject.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +76,7 @@ const deletingSession = sessionObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
     dispatch(deletedSession(sessionObject))
-    fetch(`${URL}/${sessionObject.id}`, {
+    fetch(`${URL}/sessions/${sessionObject.id}`, {
       method: "DELETE",
       headers: {
         "Authentication" : `Bearer ${token}`
@@ -108,4 +85,4 @@ const deletingSession = sessionObject => {
   }
 }
 
-export { postingSession, updatingSession, deletingSession, fetchingSessions };
+export { postingSession, updatingSession, deletingSession };

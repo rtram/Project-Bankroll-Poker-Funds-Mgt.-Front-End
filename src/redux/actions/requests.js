@@ -1,3 +1,6 @@
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
+
 const postedRequest = (data) => {
   return {
     type:"POSTED_REQUEST",
@@ -8,7 +11,7 @@ const postedRequest = (data) => {
 const postingRequest = (requestObject) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch("http://localhost:3001/api/v1/requests", {
+    fetch(`${URL}/requests`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +36,7 @@ const completedTransaction = (data) => {
 const completingTransaction = (transactionObject, requestObject) => {
   let token = localStorage.getItem('token')
   return (dispatch) => {
-    fetch("http://localhost:3001/api/v1/transactions", {
+    fetch(`${URL}/transactions`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +63,7 @@ const deletingRequest = requestObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
     dispatch(deletedRequest(requestObject))
-    fetch(`http://localhost:3001/api/v1/requests/${requestObject.id}`, {
+    fetch(`${URL}/requests/${requestObject.id}`, {
       method: "DELETE",
       headers: {
         "Authentication" : `Bearer ${token}`

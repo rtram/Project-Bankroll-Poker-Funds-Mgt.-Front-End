@@ -1,4 +1,5 @@
-const URL = 'http://localhost:3001/api/v1/likes'
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const postedLike = data => {
   return {
@@ -10,7 +11,7 @@ const postedLike = data => {
 const postingLike = likeObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
-    fetch(URL, {
+    fetch(`${URL}/likes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +36,7 @@ const deletedLike = data => {
 const deletingLike = likeObject => {
   let token = localStorage.getItem('token')
   return dispatch => {
-    fetch(`${URL}/${likeObject.id}`, {
+    fetch(`${URL}/likes/${likeObject.id}`, {
       method: "DELETE",
       headers: {
         "Authentication" : `Bearer ${token}`
