@@ -23,7 +23,7 @@ class TransactionHistoryContainer extends Component {
 
   render() {
     return (
-      <Container style={{ marginTop: '5em', marginBottom: '25vh'}} fluid>
+      <Container style={{ marginTop: '5em'}} fluid>
         <Header as='h2'>Transfer History</Header>
         <Segment style={{ padding: '0em' }} vertical>
           <Grid celled='internally' columns='equal' stackable>

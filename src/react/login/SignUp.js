@@ -78,7 +78,6 @@ class SignUp extends Component {
 
     return (
       <Container style={{
-        marginTop: '15em',
         width: '25vw'
         }}
       >

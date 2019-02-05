@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
-
 import Home from './react/home/Home.js'
 import SignUp from './react/login/SignUp.js'
 import Login from './react/login/Login.js'
@@ -13,11 +12,8 @@ import CasinoMap from './react/casinoMap/CasinoMap.js'
 import InboxContainer from './react/inbox/InboxContainer.js'
 import ProfilePageContainer from './react/transfer/profilePage/ProfilePageContainer'
 import MyProfileContainer from './react/myProfile/MyProfileContainer'
-// import Loading from './Loading.js'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
-
-import { Header } from 'semantic-ui-react'
 
 class Body extends Component {
 

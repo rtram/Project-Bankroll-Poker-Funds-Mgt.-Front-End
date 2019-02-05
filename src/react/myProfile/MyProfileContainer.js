@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container } from 'semantic-ui-react'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
 import MyProfileInfo from './MyProfileInfo'
 import MyProfileBankInfo from './MyProfileBankInfo'
@@ -13,14 +12,10 @@ class MyProfileContainer extends Component {
 
   render() {
     return (
-      <Container
-        style={{
-          marginTop: '10em'
-        }}
-      >
+      <div>
         <MyProfileInfo />
         <MyProfileBankInfo />
-      </Container>
+      </div>
     )
   }
 }

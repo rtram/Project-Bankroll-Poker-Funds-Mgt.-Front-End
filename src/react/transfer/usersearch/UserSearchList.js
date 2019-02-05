@@ -91,4 +91,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { })(UserSearchList);
+export default connect(mapStateToProps)(UserSearchList);
