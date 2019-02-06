@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Form, Grid, Header, Icon, Message, Segment, Container } from 'semantic-ui-react'
 import { loggingIn } from '../../redux/actions/login.js'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
   constructor() {
@@ -93,4 +93,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { loggingIn })(Login));
+export default connect(mapStateToProps, { loggingIn })(Login);
