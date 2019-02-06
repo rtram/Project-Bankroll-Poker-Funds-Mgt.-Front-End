@@ -1,9 +1,9 @@
 // const URL = 'http://localhost:3001/api/v1'
 const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
-const loading = () => {
-  return {type: "LOADING"}
-}
+// const loading = () => {
+//   return {type: "LOADING"}
+// }
 
 const postedSession = data => {
   return {

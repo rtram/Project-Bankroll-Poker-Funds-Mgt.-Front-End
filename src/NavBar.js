@@ -30,7 +30,7 @@ class NavBar extends Component {
     this.props.userLogout()
   }
 
-  render() {
+  generateSource = () => {
     let source = []
     if (this.props.userList.length > 0) {
       this.props.userList.map(userObject => {
@@ -42,6 +42,10 @@ class NavBar extends Component {
         source.push(object)
       })
     }
+    return source
+  }
+
+  render() {
 
     return(
       <Menu inverted>
@@ -62,7 +66,7 @@ class NavBar extends Component {
               style={{
                 width:'15em'
               }}
-              source={source}
+              source={this.generateSource()}
             />
           </Menu.Item>
           <Menu.Menu position='right'>
