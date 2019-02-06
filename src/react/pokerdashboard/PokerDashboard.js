@@ -123,7 +123,6 @@ class PokerDashboard extends Component {
 
   // RETURNS AN OBJECT W/ ARRAYS TRACKING THE TOTAL FOR THE 30, 90, 365 DAYS
   overTimeDataPoints = () => {
-    let overTimeDataPoints;
     let overTimeLabels = this.createOverTimeLabels()
 
     let monthDates = overTimeLabels['30days']
@@ -134,7 +133,7 @@ class PokerDashboard extends Component {
     let quarterValues = this.getRunningTotal(quarterDates)
     let yearValues = this.getRunningTotal(yearDates)
 
-    overTimeDataPoints={
+    let overTimeDataPoints = {
       '30days': monthValues,
       '12weeks': quarterValues,
       '12months': yearValues
@@ -142,18 +141,20 @@ class PokerDashboard extends Component {
     return overTimeDataPoints
   }
 
+  calculateHourlyAmountTotal = () => {
+    let amountObjectArr = this.props.sessions.map(session => session.amount)
+    return this.arrayReducer(amountObjectArr)
+  }
+
+  calculateHourlyHourTotal = () => {
+    let hourObjectArr = this.props.sessions.map(session => session.hours)
+    return this.arrayReducer(hourObjectArr)
+  }
+
   // RETURNS HOURLY FLOAT ROUNDED TO THE NEAREST TWO DECIMAL PLACE
   hourlyCalculator = () => {
-    const sessionsArr = this.props.sessions
-    let totalAmount;
-    let totalHours;
-
-    let amountObjectArr = sessionsArr.map(session => session.amount)
-    let hourObjectArr = sessionsArr.map(session => session.hours)
-
-    const reducer = (sum, currentValue) => sum + currentValue
-    totalAmount = amountObjectArr.reduce(reducer, 0)
-    totalHours = hourObjectArr.reduce(reducer, 0)
+    let totalAmount = this.calculateHourlyAmountTotal()
+    let totalHours = this.calculateHourlyHourTotal()
 
     let hourly = totalAmount/totalHours
     let twoDecimalHourly = Math.round(hourly * 100) / 100
