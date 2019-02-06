@@ -4,6 +4,7 @@ import '../../App.css'
 import './Dashboard.css';
 import { Container, Grid, Header, Icon, Divider } from 'semantic-ui-react'
 import { fetchingSessions } from '../../redux/actions/users.js'
+import { fetchingUserBalances } from '../../redux/actions/users.js'
 
 // GRAPH IMPORTS
 import WinningPercentageDoughnutGraph from './WinningPercentageDoughnutGraph'
@@ -13,13 +14,11 @@ import Hourly from './Hourly'
 // SESSION PANE IMPORT
 import SessionContainer from './sessioncontainer/SessionContainer'
 
-
 class PokerDashboard extends Component {
   componentDidMount() {
     this.props.fetchingSessions(localStorage.getItem('currentUser'))
-
+    this.props.fetchingUserBalances(localStorage.getItem('currentUser'))
   }
-
 
   // RETURNS AN ARRAY OF WINNING SESSION COUNT AND LOSING SESSIONS COUNT
   winLossPercentage = () => {
@@ -151,16 +150,11 @@ class PokerDashboard extends Component {
   }
 
   render() {
-    let currentUserFirstName;
-
-    if (this.props.sessions.length > 0) {
-      currentUserFirstName = this.props.sessions[0].user.first_name
-    }
 
     return (
       <div class='body'>
         <Header style={{ fontSize:'4em', color:'white'}}>
-          Welcome Back, {currentUserFirstName}
+          Welcome Back, {this.props.user.first_name}
         </Header>
         <Grid style={{ marginTop: '3em' }} columns={2}>
           <Grid.Row>
@@ -205,7 +199,8 @@ class PokerDashboard extends Component {
 const mapStateToProps = state => {
   return {
     sessions: state.sessions,
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { fetchingSessions })(PokerDashboard);
+export default connect(mapStateToProps, { fetchingSessions, fetchingUserBalances })(PokerDashboard);
