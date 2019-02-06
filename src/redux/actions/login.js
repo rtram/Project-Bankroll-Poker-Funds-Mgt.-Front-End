@@ -1,5 +1,5 @@
-const URL = 'http://localhost:3001/api/v1'
-// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
+// const URL = 'http://localhost:3001/api/v1'
+const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const loggedIn = (data) => {
   localStorage.setItem('token', data.jwt)
