@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './App.css';
 import Home from './react/home/Home.js'
 import SignUp from './react/login/SignUp.js'
-// import Login from './react/login/Login.js'
+import Login from './react/login/Login.js'
 import PokerDashboard from './react/pokerdashboard/PokerDashboard.js'
 import TransactionDashboard from './react/transfer/TransactionDashboard.js'
 import BankTransfer from './react/transfer/bankTransfer/BankTransfer.js'
@@ -37,6 +37,13 @@ class Body extends Component {
             <Route exact path='/map' render={props => {
               return <CasinoMap />
             }} />
+            <Route exact path='/login' render={() => {
+                if (localStorage.getItem('token')) {
+                  return <Redirect to='/dashboard' />
+                } else {
+                  return <Login />
+                }
+              }} />
             <Route exact path='/signup' render={props => {
               if (localStorage.getItem('token')) {
                 return <Redirect to='/dashboard' />
