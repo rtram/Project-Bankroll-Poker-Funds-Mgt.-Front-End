@@ -14,6 +14,8 @@ import Hourly from './Hourly'
 // SESSION PANE IMPORT
 import SessionContainer from './sessioncontainer/SessionContainer'
 
+let moment = require('moment')
+
 class PokerDashboard extends Component {
   componentDidMount() {
     this.props.fetchingSessions(localStorage.getItem('currentUser'))
@@ -35,46 +37,50 @@ class PokerDashboard extends Component {
     return winningPercentageData
   }
 
-  // RETURNS AN OBJECT W/ ARRAYS OF THE LAST 30, 90, AND 365 DAYS
-  createOverTimeLabels = () => {
-    let moment = require('moment')
-    let overTimeLabels = {}
+  // RETURNS DATE ARRAY SORTED FROM OLDEST DATE FIRST TO MOST CURRENT DATE LAST
+  dateSorter = (arr) => (
+    arr.sort((a,b) => {
+       let dateA = new Date(a)
+       let dateB = new Date(b)
+       return (dateA - dateB)
+       }
+     )
+  )
 
-    // RETURNS DATE ARRAY SORTED FROM OLDEST DATE FIRST TO MOST CURRENT DATE LAST
-    function dateSorter(arr) {
-      return arr.sort((a,b) => {
-        let dateA = new Date(a)
-        let dateB = new Date(b)
-        return (dateA - dateB)
-        }
-      )
-    }
-
+  thirtyDayLabels = () => {
     let last30DayArray = []
     for (let i = 0; i < 30; i++) {
       let day = moment().subtract(i, 'days').format('l')
       last30DayArray.push(day)
     }
+    return last30DayArray
+  }
 
-    last30DayArray = dateSorter(last30DayArray)
-
+  twelveWeekLabels = () => {
     let last12WeekArray = []
     for (let i = 0; i < 12; i++) {
       let week = moment().subtract(i, 'weeks').format('l')
       last12WeekArray.push(week)
     }
+    return last12WeekArray
+  }
 
-    last12WeekArray = dateSorter(last12WeekArray)
-
+  twelveMonthLabels = () => {
     let last12MonthArray = []
     for (let i = 0; i < 12; i++) {
       let month = moment().subtract(i, 'months').format('l')
       last12MonthArray.push(month)
     }
+    return last12MonthArray
+  }
 
-    last12MonthArray = dateSorter(last12MonthArray)
+  // RETURNS AN OBJECT W/ ARRAYS OF THE LAST 30, 90, AND 365 DAYS
+  createOverTimeLabels = () => {
+    let last30DayArray = this.dateSorter(this.thirtyDayLabels())
+    let last12WeekArray = this.dateSorter(this.twelveWeekLabels())
+    let last12MonthArray = this.dateSorter(this.twelveMonthLabels())
 
-    overTimeLabels = {
+    let overTimeLabels = {
       '30days': last30DayArray,
       '12weeks': last12WeekArray,
       '12months': last12MonthArray
@@ -83,44 +89,50 @@ class PokerDashboard extends Component {
     return overTimeLabels
   }
 
+  // RETURNS ALL SESSION OBJECTS BETWEEN START AND END DATE
+  filterSessions = (startDate, endDate) => (
+    this.props.sessions.filter(session => {
+      let sessionDate = new Date(session.date)
+      return (sessionDate >= startDate && sessionDate <= endDate)
+    })
+  )
+
+  arrayReducer = (arr) => {
+    const reducer = (sum, currentValue) => sum + currentValue
+    return arr.reduce(reducer, 0)
+  }
+
+  getRunningTotal = (datesArr) => {
+    let dateValues = []
+
+    // POPULATES monthValues ARRAY W/ RUNNING TOTAL PER DATE
+    for (let i = 0; i < datesArr.length ; i++) {
+      let startDate = new Date(datesArr[0])
+      let endDate = new Date(datesArr[i])
+
+      let filteredSessions = this.filterSessions(startDate, endDate)
+
+      // RETURNS ARRAY WITH RUNNING TOTAL PER DATE
+      let mappedSessionTotals = filteredSessions.map(session => session.amount)
+      let dateSum = this.arrayReducer(mappedSessionTotals)
+
+      dateValues.push(parseInt(dateSum))
+    }
+    return dateValues
+  }
+
   // RETURNS AN OBJECT W/ ARRAYS TRACKING THE TOTAL FOR THE 30, 90, 365 DAYS
   overTimeDataPoints = () => {
     let overTimeDataPoints;
     let overTimeLabels = this.createOverTimeLabels()
-    let userSessions = this.props.sessions
-
-    function getRunningTotal(datesArr) {
-      let dateValues = []
-
-      // POPULATES monthValues ARRAY W/ RUNNING TOTAL PER DATE
-      for (let i = 0; i < datesArr.length ; i++) {
-        let startDate = new Date(datesArr[0])
-        let endDate = new Date(datesArr[i])
-
-        // RETURNS ALL SESSION OBJECTS BETWEEN START AND END DATE
-        let filteredSessions = userSessions.filter(session => {
-          let sessionDate = new Date(session.date)
-          return (sessionDate >= startDate && sessionDate <= endDate)
-        })
-
-        // RETURNS ARRAY WITH RUNNING TOTAL PER DATE
-        let mappedSessionTotals = filteredSessions.map(session => session.amount)
-
-        const reducer = (sum, currentValue) => sum + currentValue
-        let dateSum = mappedSessionTotals.reduce(reducer, 0)
-
-        dateValues.push(parseInt(dateSum))
-      }
-      return dateValues
-    }
 
     let monthDates = overTimeLabels['30days']
     let quarterDates = overTimeLabels['12weeks']
     let yearDates = overTimeLabels['12months']
 
-    let monthValues = getRunningTotal(monthDates)
-    let quarterValues = getRunningTotal(quarterDates)
-    let yearValues = getRunningTotal(yearDates)
+    let monthValues = this.getRunningTotal(monthDates)
+    let quarterValues = this.getRunningTotal(quarterDates)
+    let yearValues = this.getRunningTotal(yearDates)
 
     overTimeDataPoints={
       '30days': monthValues,
