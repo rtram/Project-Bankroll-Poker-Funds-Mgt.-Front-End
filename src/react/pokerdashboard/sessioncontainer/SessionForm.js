@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import { postingSession } from '../../../redux/actions/sessions.js'
-
 import { Form, Button, Header } from 'semantic-ui-react'
 
 class SessionForm extends Component {
@@ -51,7 +49,6 @@ class SessionForm extends Component {
 
   onSubmit = event => {
     event.preventDefault()
-
     let sessionObject = {
       date: this.state.date,
       location: this.state.location,

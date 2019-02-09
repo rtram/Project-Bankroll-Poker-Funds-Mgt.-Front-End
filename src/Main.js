@@ -24,92 +24,89 @@ class Body extends Component {
    // }
 
     return (
-      <>
-
-        <div class='main'>
-          <Switch>
-            <Route exact path='/' render={() => {
-              return <Home />
-            }} />
-            <Route exact path='/home' render={() => {
-              return <Home />
-            }} />
-            <Route exact path='/map' render={props => {
-              return <CasinoMap />
-            }} />
-            <Route exact path='/login' render={() => {
-                if (localStorage.getItem('token')) {
-                  return <Redirect to='/dashboard' />
-                } else {
-                  return <Login />
-                }
-              }} />
-            <Route exact path='/signup' render={props => {
+      <div class='main'>
+        <Switch>
+          <Route exact path='/' render={() => {
+            return <Home />
+          }} />
+          <Route exact path='/home' render={() => {
+            return <Home />
+          }} />
+          <Route exact path='/map' render={props => {
+            return <CasinoMap />
+          }} />
+          <Route exact path='/login' render={() => {
               if (localStorage.getItem('token')) {
                 return <Redirect to='/dashboard' />
               } else {
-              return <SignUp />
+                return <Login />
               }
             }} />
-            <Route exact path='/pokerdashboard' render={() => {
-              if (localStorage.getItem('token')) {
-                return <PokerDashboard />
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
+          <Route exact path='/signup' render={props => {
+            if (localStorage.getItem('token')) {
+              return <Redirect to='/dashboard' />
+            } else {
+            return <SignUp />
+            }
+          }} />
+          <Route exact path='/pokerdashboard' render={() => {
+            if (localStorage.getItem('token')) {
+              return <PokerDashboard />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
 
-  {// TRANSFER DROPDOWN------------------------------------------------------
-  }
-            <Route exact path='/transactiondashboard' render={() => {
-              if (localStorage.getItem('token')) {
-                return <TransactionDashboard />
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
-            <Route exact path='/banktransfer' render={() => {
-              if (localStorage.getItem('token')) {
-                return <BankTransfer />
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
-            <Route exact path='/usersearch' render={() => {
-              if (localStorage.getItem('token')) {
-                return <UserSearchContainer />
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
-            <Route exact path='/user/:id' render={props => {
-              let id = props.match.params.id
-              if (localStorage.getItem('token')) {
-                return <ProfilePageContainer id={id}/>
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
-  {// ---------------------------------------------------------------
-  }
-            <Route exact path='/inbox' render={() => {
-              if (localStorage.getItem('token')) {
-                return <InboxContainer />
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
-            <Route exact path='/myprofile' render={() => {
-              if (localStorage.getItem('token')) {
-                return <MyProfileContainer />
-              } else {
-                return <Redirect to='/login' />
-              }
-            }}/>
-            <Route component={Home} />
-          </Switch>
-        </div>
-      </>
+{// TRANSFER DROPDOWN------------------------------------------------------
+}
+          <Route exact path='/transactiondashboard' render={() => {
+            if (localStorage.getItem('token')) {
+              return <TransactionDashboard />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
+          <Route exact path='/banktransfer' render={() => {
+            if (localStorage.getItem('token')) {
+              return <BankTransfer />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
+          <Route exact path='/usersearch' render={() => {
+            if (localStorage.getItem('token')) {
+              return <UserSearchContainer />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
+          <Route exact path='/user/:id' render={props => {
+            let id = props.match.params.id
+            if (localStorage.getItem('token')) {
+              return <ProfilePageContainer id={id}/>
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
+{// ---------------------------------------------------------------
+}
+          <Route exact path='/inbox' render={() => {
+            if (localStorage.getItem('token')) {
+              return <InboxContainer />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
+          <Route exact path='/myprofile' render={() => {
+            if (localStorage.getItem('token')) {
+              return <MyProfileContainer />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }}/>
+          <Route component={Home} />
+        </Switch>
+      </div>
     );
   }
 }

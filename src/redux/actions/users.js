@@ -1,5 +1,5 @@
-// const URL = 'http://localhost:3001/api/v1'
-const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
+const URL = 'http://localhost:3001/api/v1'
+// const URL = 'https://project-bankroll-backend.herokuapp.com/api/v1'
 
 const displayErrors = (data) => {
   return {
@@ -70,7 +70,6 @@ const fetchedUserBalances = (data) => {
 
 const fetchingUserBalances = (user_id) => {
   let token = localStorage.getItem('token')
-  debugger
   return (dispatch) => {
     fetch(`${URL}/users/${user_id}`, {
       method: 'GET',

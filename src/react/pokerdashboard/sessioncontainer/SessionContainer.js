@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-
+import React, { Component } from 'react';
 import { Header, Grid, Icon } from 'semantic-ui-react'
 
 // CONTAINER IMPORTS
@@ -10,7 +9,7 @@ class SessionContainer extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Grid
           style={{
             marginBottom: '5em'
@@ -44,7 +43,7 @@ class SessionContainer extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Fragment>
+      </>
     )
   }
 
