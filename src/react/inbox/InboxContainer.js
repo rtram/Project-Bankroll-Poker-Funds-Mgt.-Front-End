@@ -4,6 +4,7 @@ import RequestContainer from './RequestContainer'
 import UserBalance from '../transfer/UserBalance'
 // import { Container } from 'semantic-ui-react'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
+import '../../App.css'
 
 class InboxContainer extends Component {
   componentDidMount() {
@@ -12,10 +13,10 @@ class InboxContainer extends Component {
 
   render() {
     return(
-      <>
+      <div class='margin-bottom'>
         <UserBalance />
         <RequestContainer />
-      </>
+      </div>
     )
   }
 }
