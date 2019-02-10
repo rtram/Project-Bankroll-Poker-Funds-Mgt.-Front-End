@@ -9,6 +9,7 @@ import {
   Input,
   Icon
  } from 'semantic-ui-react'
+ import '../../../App.css'
 
 export default class Withdraw extends Component {
   constructor() {
@@ -32,47 +33,49 @@ export default class Withdraw extends Component {
 
   render() {
     return(
-      <Segment
-        style={{
-          height: '15em',
-          backgroundColor: 'gainsboro'
-        }}
-      >
-        <Grid columns={2} relaxed='very'>
-          <Grid.Column>
-            <Container>
-            <Header>Account</Header>
-              <Input
-                onChange={this.handleChange}
-                action={{ color: 'red', labelPosition: 'left', icon: 'minus', content: 'Amount' }}
-                actionPosition='left'
-                placeholder='$'
-                type='number'
-                min="0.01"
-                step="0.01"
-                name='withdraw'
-                value={this.state.withdraw}
-              />
-            </Container>
-            <Container style={{marginTop:'1em'}}>
-              <WithdrawModal
-                withdraw={this.state.withdraw}
-                clearWithdrawState={this.clearWithdrawState}
-              >
-                Withdraw
-              </WithdrawModal>
-            </Container>
-          </Grid.Column>
-          <Grid.Column>
-            <Header>Bank</Header>
-            <Icon name='cogs' size='huge'/>
-            <Header as='h3' style={{ color:'black'}}>
-              Under Construction Come Back Later!
-            </Header>
-          </Grid.Column>
-        </Grid>
-        <Divider vertical>Withdraw</Divider>
-      </Segment>
+      <div class='deposit-withdraw'>
+        <Segment
+          style={{
+            height: '15em',
+            backgroundColor: 'gainsboro'
+          }}
+        >
+          <Grid columns={2} relaxed='very'>
+            <Grid.Column>
+              <Container>
+              <Header>Account</Header>
+                <Input
+                  onChange={this.handleChange}
+                  action={{ color: 'red', labelPosition: 'left', icon: 'minus', content: 'Amount' }}
+                  actionPosition='left'
+                  placeholder='$'
+                  type='number'
+                  min="0.01"
+                  step="0.01"
+                  name='withdraw'
+                  value={this.state.withdraw}
+                />
+              </Container>
+              <Container style={{marginTop:'1em'}}>
+                <WithdrawModal
+                  withdraw={this.state.withdraw}
+                  clearWithdrawState={this.clearWithdrawState}
+                >
+                  Withdraw
+                </WithdrawModal>
+              </Container>
+            </Grid.Column>
+            <Grid.Column>
+              <Header>Bank</Header>
+              <Icon name='cogs' size='huge'/>
+              <Header as='h3' style={{ color:'black'}}>
+                Under Construction Come Back Later!
+              </Header>
+            </Grid.Column>
+          </Grid>
+          <Divider vertical>Withdraw</Divider>
+        </Segment>
+      </div>
     )
   }
 }

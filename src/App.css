@@ -40,6 +40,17 @@
   margin-bottom: 5em;
 }
 
+.deposit-withdraw {
+  width: 80vw;
+  margin: 5em auto;
+}
+
+.user-card-frame {
+  height: 10em;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
 p,h1,h2,h3,h4 {
   color: white;
 
