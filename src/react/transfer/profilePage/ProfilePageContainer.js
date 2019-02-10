@@ -20,11 +20,7 @@ class ProfilePageContainer extends Component {
   render() {
     return(
       this.props.selectedProfile ?
-      <Container
-        style={{
-          marginTop: '10em'
-        }}
-      >
+      <Container>
         <Link to='/usersearch'>
           <Button
             style={{
