@@ -13,7 +13,7 @@ class BankTransfer extends Component {
 
   render() {
     return(
-      <div class='margin-bottom'>
+      <div class='margin-bottom margin-top'>
         <UserBalance />
         <Deposit />
         <Withdraw />

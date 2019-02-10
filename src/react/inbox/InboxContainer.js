@@ -13,7 +13,7 @@ class InboxContainer extends Component {
 
   render() {
     return(
-      <div class='margin-bottom'>
+      <div class='margin-bottom margin-top'>
         <UserBalance />
         <RequestContainer />
       </div>

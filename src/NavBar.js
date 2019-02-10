@@ -48,7 +48,7 @@ class NavBar extends Component {
   render() {
 
     return(
-      <Menu inverted>
+      <Menu inverted style={{margin: '0'}}>
         <Container>
           <Menu.Item header>
             <Link to='/home'>

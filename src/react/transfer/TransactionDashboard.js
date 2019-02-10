@@ -12,7 +12,7 @@ class TransactionDashboard extends Component {
 
   render() {
     return(
-      <div class='margin-bottom'>
+      <div class='margin-bottom margin-top'>
         <UserBalance />
         <TransactionHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
       </div>

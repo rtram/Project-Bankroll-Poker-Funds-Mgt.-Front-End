@@ -46,11 +46,11 @@ class DesktopContainer extends Component {
 
   render() {
     return (
-      <Container
+      <div
         className='home-segment'
       >
         <HomepageHeading />
-      </Container >
+      </div >
     )
   }
 }

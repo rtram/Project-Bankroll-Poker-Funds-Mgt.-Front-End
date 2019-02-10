@@ -165,7 +165,7 @@ class PokerDashboard extends Component {
   render() {
 
     return (
-      <div class='body'>
+      <div class='body margin-top'>
         <Header style={{ fontSize:'4em', color:'white'}}>
           Welcome Back, {this.props.user.first_name}
         </Header>
