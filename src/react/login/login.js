@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Grid, Header, Icon, Message, Segment, Container } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
 import { loggingIn } from '../../redux/actions/login.js'
 import { Link } from 'react-router-dom'
+import '../../App.css'
 
 class Login extends Component {
   constructor() {
@@ -35,7 +36,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Container>
+      <div class='login'>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='white' textAlign='center'>
@@ -77,7 +78,7 @@ class Login extends Component {
             </Message>
           </Grid.Column>
         </Grid>
-      </Container>
+      </div>
     )
   }
 }

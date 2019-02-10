@@ -37,14 +37,14 @@ class Body extends Component {
           }} />
           <Route exact path='/login' render={() => {
               if (localStorage.getItem('token')) {
-                return <Redirect to='/dashboard' />
+                return <Redirect to='/pokerdashboard' />
               } else {
                 return <Login />
               }
             }} />
           <Route exact path='/signup' render={props => {
             if (localStorage.getItem('token')) {
-              return <Redirect to='/dashboard' />
+              return <Redirect to='/pokerdashboard' />
             } else {
             return <SignUp />
             }
