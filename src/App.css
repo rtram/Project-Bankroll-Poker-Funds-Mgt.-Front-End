@@ -32,8 +32,12 @@
   left: .5em;
 }
 
-.login {
+.margin-top {
   margin-top: 5em;
+}
+
+.margin-bottom {
+  margin-bottom: 5em;
 }
 
 p,h1,h2,h3,h4 {

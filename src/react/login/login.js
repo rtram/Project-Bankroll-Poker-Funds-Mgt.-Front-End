@@ -36,7 +36,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div class='login'>
+      <div class='margin-top'>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='white' textAlign='center'>

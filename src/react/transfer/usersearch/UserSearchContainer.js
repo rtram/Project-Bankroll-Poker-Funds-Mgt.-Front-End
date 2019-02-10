@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import UserBalance from '../UserBalance'
 import UserSearchList from './UserSearchList'
 import { fetchingUserList, fetchingUserBalances } from '../../../redux/actions/users.js'
+import '../../../App.css'
 
 class UserSearchContainer extends Component {
   componentDidMount() {
@@ -12,10 +13,10 @@ class UserSearchContainer extends Component {
 
   render() {
     return(
-      <>
+      <div class='margin-bottom'>
         <UserBalance />
         <UserSearchList />
-      </>
+      </div>
     )
   }
 }

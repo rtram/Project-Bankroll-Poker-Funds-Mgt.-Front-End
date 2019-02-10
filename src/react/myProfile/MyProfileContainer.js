@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
 import MyProfileInfo from './MyProfileInfo'
 import MyProfileBankInfo from './MyProfileBankInfo'
+import '../../App.css'
 
 class MyProfileContainer extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class MyProfileContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div class='margin-bottom'>
         <MyProfileInfo />
         <MyProfileBankInfo />
       </div>

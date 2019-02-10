@@ -4,6 +4,7 @@ import { fetchingUserBalances } from '../../../redux/actions/users.js'
 import UserBalance from '../UserBalance'
 import Deposit from './Deposit.js'
 import Withdraw from './Withdraw.js'
+import '../../../App.css'
 
 class BankTransfer extends Component {
   componentDidMount() {
@@ -12,11 +13,11 @@ class BankTransfer extends Component {
 
   render() {
     return(
-      <>
+      <div class='margin-bottom'>
         <UserBalance />
         <Deposit />
         <Withdraw />
-      </>
+      </div>
     )
   }
 }

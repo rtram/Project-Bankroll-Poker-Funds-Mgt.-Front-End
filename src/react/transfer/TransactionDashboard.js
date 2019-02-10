@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import TransactionHistoryContainer from './transactioncontainer/TransactionHistoryContainer.js'
 import UserBalance from './UserBalance'
 import { fetchingUserBalances } from '../../redux/actions/users.js'
-import { Grid } from 'semantic-ui-react'
+import '../../App.css'
 
 class TransactionDashboard extends Component {
   componentDidMount() {
@@ -12,10 +12,10 @@ class TransactionDashboard extends Component {
 
   render() {
     return(
-      <Grid>
+      <div class='margin-bottom'>
         <UserBalance />
         <TransactionHistoryContainer sent_transactions={this.props.sent_transactions} received_transactions={this.props.received_transactions} />
-      </Grid>
+      </div>
     )
   }
 }
