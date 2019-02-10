@@ -7,7 +7,7 @@ import TransactionHistoryContainer from '../transactioncontainer/TransactionHist
 import ProfileInformation from './ProfileInformation'
 import PayModal from './PayModal'
 import RequestModal from './RequestModal'
-import { Container } from 'semantic-ui-react'
+import '../../../App.css'
 
 class ProfilePageContainer extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class ProfilePageContainer extends Component {
   render() {
     return(
       this.props.selectedProfile ?
-      <Container>
+      <div class='margin-top'>
         <Link to='/usersearch'>
           <Button
             style={{
@@ -35,7 +35,7 @@ class ProfilePageContainer extends Component {
         <RequestModal />
         <TransactionHistoryContainer
          sent_transactions={this.props.selectedProfile.sent_transactions} received_transactions={this.props.selectedProfile.received_transactions} />
-      </Container>:
+      </div>:
       null
     )
   }
